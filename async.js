@@ -46,15 +46,34 @@
 //   return Promise.all(imgs.map(img => getSize(img)));
 // }
 
+
+
+
 console.log("1");
 setTimeout(function () {
     console.log("2")
-}, 0);
+}, 300);
 setTimeout(function () {
     console.log("3")
-}, 0);
+}, 200);
 setTimeout(function () {
     console.log("4")
-}, 0);
+}, 100);
+
+//  1 5 4 3 2
+async function fn1(name) {
+     console.log(`f1 开始执行`);
+    return name;
+}
+async function fn2(name) {
+    await console.log(`f2 开始执行`);
+    let myName = await fn1(name);
+    return myName;
+}
+fn2('wang').then( (result)=> {
+    console.log(`result ：${ result }`);
+}).catch((err)=>{
+     console.log(err);
+});
 console.log("5");
-//  1 5 2 3 4
+// 1 f2 5 wang 4 3 2
