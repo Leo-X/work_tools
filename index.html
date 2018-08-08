@@ -11,42 +11,105 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Go!</button>
-          </span>
-          <input type="text" class="form-control" placeholder="Search for...">
-        </div>
-        <!-- /input-group -->
+  <div class="container p20">
+    <div class=" row">
+      <div class="col-md-12">
+        <h2>常用工具</h2>
       </div>
-      <!-- /.col-lg-6 -->
-      <div class="col-lg-6">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for...">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Go!</button>
-          </span>
-        </div>
-        <!-- /input-group -->
-      </div>
-      <!-- /.col-lg-6 -->
     </div>
-    <!-- /.row -->
+    <div class="row mt20">
+
+      <div class="col-md-12">
+        <div class="input-group ">
+          <input id="input_branch" type="text" class="form-control" placeholder="输入分支 : branchname">
+          <span class="input-group-btn">
+            <button id="ebk_branch" class="btn btn-primary" type="button">生成命令行</button>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-6 mt20">
+        <div class="input-group ">
+          <input id="new_branch" type="text" class="form-control" placeholder="新建分支 : git checkout -b branchname release">
+          <span class="input-group-btn">
+            <button id="ebk_branch" class="btn btn-success" type="button">Copy</button>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-6 mt20">
+        <div class="input-group ">
+          <input id="push_u_branch" type="text" class="form-control" placeholder="推送 : git push -u origin branchname">
+          <span class="input-group-btn">
+            <button id="ebk_branch" class="btn btn-success" type="button">Copy</button>
+          </span>
+        </div>
+      </div>
+
+      <!-- <div class="p20 danger f-14 " >值为空，不符合格式要求</div> -->
+
+      <div class="col-md-12 mt20">
+        <div class="input-group">
+          <input id="text_push_refs" type="text" class="form-control" placeholder="push refs">
+          <span class="input-group-btn">
+            <button class="btn btn-success" type="button">Copy</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-12 mt20">
+        <div class="input-group">
+          <input id="text_push" type="text" class="form-control" placeholder="push">
+          <span class="input-group-btn">
+            <button class="btn btn-success" type="button">Copy</button>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-12 mt20">
+        <div class="p20 d-green bold f-22 ta-c">
+          <span class="msg_success hidden" >复制成功</span>
+        </div>
+        <div class="msg-fail p20 d-red bold f-22 ta-c hidden">复制失败</div>
+      </div>
+
+    </div>
   </div>
 
   <script src="./src/js/libs/jquery.js"></script>
   <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
   <script src="./src/js/libs/bootstrap.min.js"></script>
-  <script src="./async.js">
+  <!-- <script src="./async.js"> -->
   </script>
 </body>
 <script>
   $(function () {
+    const creat_command_line = (e) => {
+      let text = $("#input_branch").val();
+      if (!text) {
+        console.log(`值为空，不符合格式要求`);
+        return false;
+      }
+      let new_branch=` git checkout -b ${text} release`;
+      let push_u_branch=`git push -u origin ${text}`;
+      let text_push_refs = `git push origin ${text}:refs/for/${text}`;
+      let text_push = `git push origin ${text}`;
+      $("#push_u_branch").val(push_u_branch);
+      $("#new_branch").val(text_push_refs);
+      $("#text_push_refs").val(text_push_refs);
+      $("#text_push").val(text_push);
+      console.log(`text ：${ text }`);
+    };
+    $("#ebk_branch").click(creat_command_line);
 
+
+
+    const copyToClipbord = (e) => {
+
+    }
+    $(".btn-success").click(function (e) {
+      $(this).parent().prev().select();
+      document.execCommand("Copy");
+      // $(".msg_success").show().delay(200).hide(500);
+    });
 
 
 

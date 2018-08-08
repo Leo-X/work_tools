@@ -1,5 +1,4 @@
 @charset "utf-8";
-
 /*S Global*/
 
 html,
@@ -68,9 +67,7 @@ ul {
     list-style: none;
 }
 
-
 /*=E  */
-
 
 /* HTML5 display definitions */
 
@@ -102,9 +99,7 @@ audio:not([controls]) {
     height: 0;
 }
 
-
 /*=E */
-
 
 /* image reset */
 
@@ -122,9 +117,7 @@ svg:not(:root) {
     overflow: hidden;
 }
 
-
 /*=E */
-
 
 /* form reset */
 
@@ -209,9 +202,7 @@ input[type="search"]::-webkit-search-decoration {
     color: #999;
 }
 
-
 /*=E  */
-
 
 /* Text-level semantics */
 
@@ -230,7 +221,7 @@ strong {
 
 dfn {
     font-style: normal;
-    font-family: Arial !important;
+    font-family: Arial;
 }
 
 mark,
@@ -238,7 +229,6 @@ mark,
     background: #ff0;
     color: #333;
 }
-
 
 /*=E  */
 
@@ -252,9 +242,7 @@ th {
     text-align: left;
 }
 
-
 /*=E  */
-
 
 /* others */
 
@@ -284,22 +272,20 @@ a:focus {
     outline-style: none;
 }
 
-
 /*=E  */
-
 
 /* Special style*/
 
 .invisible {
-    visibility: hidden !important;
+    visibility: hidden;
 }
 
 .visible {
-    visibility: visible !important;
+    visibility: visible;
 }
 
 .hidden {
-    display: none !important;
+    display: none;
 }
 
 .ellipsis {
@@ -328,9 +314,7 @@ a:focus {
     *zoom: 1;
 }
 
-
 /*=E  */
-
 
 /* Course */
 
@@ -338,26 +322,24 @@ a:focus {
     cursor: not-allowed;
 }
 
-.c-1 {
+.c-d {
     cursor: default;
 }
 
-.c-2 {
+.c-p {
     cursor: pointer;
 }
 
-.c-3 {
+.c-h {
     cursor: help;
 }
 
-.c-4 {
-    cursor: context-menu\0 !important;
+.c-m {
+    cursor: context-menu\0;
     cursor: url(http://pic.c-ctrip.com/kolibre/c_4.cur), context-menu;
 }
 
-
 /*E Global*/
-
 
 /**/
 
@@ -368,9 +350,7 @@ a:focus {
     text-align: left;
 }
 
-
 /*E Normal text style*/
-
 
 /*=S Grids*/
 
@@ -433,9 +413,7 @@ a:focus {
     width: 980px;
 }
 
-
 /*=E Grids*/
-
 
 /*=S layout control*/
 
@@ -619,9 +597,7 @@ a:focus {
     padding-right: 20px;
 }
 
-
 /*=E layout control*/
-
 
 /*=S text color*/
 
@@ -685,54 +661,112 @@ a:focus {
     font-weight: bold;
 }
 
+.f-12,
 .f-14,
+.f-15,
 .f-16,
+.f-17,
+.f-18,
+.f-19,
+.f-20,
 .f-21,
+.f-22,
+.f-23,
+.f-24,
+.f-25,
+.f-26,
+.f-27,
 .f-28,
+.f-30,
+.f-32,
+.f-34,
 .f-36 {
-    font-family: Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5fae\8f6f\96c5\9ed1", simsun, "\9ed1\4f53", "STHeiti", sans-serif;
+    font-family: "Microsoft YaHei", "\5fae\8f6f\96c5\9ed1", simsun, "\9ed1\4f53", "STHeiti", sans-serif, Arial, "Hiragino Sans GB";
 }
 
 .f-12 {
     font-size: 12px;
 }
 
+.f-13 {
+    font-size: 13px;
+}
+
 .f-14 {
     font-size: 14px;
+}
+
+.f-15 {
+    font-size: 15px;
 }
 
 .f-16 {
     font-size: 16px;
 }
 
+.f-17 {
+    font-size: 17px;
+}
+
 .f-18 {
     font-size: 18px;
+}
+
+.f-19 {
+    font-size: 19px;
 }
 
 .f-20 {
     font-size: 20px;
 }
 
+.f-21 {
+    font-size: 21px;
+}
+
 .f-22 {
     font-size: 22px;
+}
+
+.f-23 {
+    font-size: 23px;
 }
 
 .f-24 {
     font-size: 24px;
 }
 
+.f-25 {
+    font-size: 25px;
+}
+
 .f-26 {
     font-size: 26px;
+}
+
+.f-27 {
+    font-size: 27px;
 }
 
 .f-28 {
     font-size: 28px;
 }
 
-.f-36 {
+.f-30 {
+    font-size: 30px;
+}
+
+.f-32 {
     font-size: 32px;
 }
 
+.f-34 {
+    font-size: 34px;
+}
+
+.f-36 {
+    font-size: 32px;
+}
 
 /*=End text color*/
 
@@ -749,16 +783,18 @@ a:focus {
 }
 
 .va-t {
-    vertical-align: top !important;
+    vertical-align: top;
 }
 
 .va-m {
-    vertical-align: middle !important;
+    vertical-align: middle;
 }
 
+.va-b {
+    vertical-align: bottom;
+}
 
 /*E Normal text style*/
-
 
 /*=S icon*/
 
@@ -771,8 +807,8 @@ a:focus {
     color: #fff;
     overflow: hidden;
     border-radius: 2px;
-    line-height: 1 !important;
-    font-family: Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5fae\8f6f\96c5\9ed1", simsun, "\9ed1\4f53", "STHeiti", sans-serif !important;
+    line-height: 1;
+    font-family: Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5fae\8f6f\96c5\9ed1", simsun, "\9ed1\4f53", "STHeiti", sans-serif;
     white-space: nowrap;
     word-break: keep-all;
 }
@@ -838,7 +874,6 @@ a:focus {
     border-color: #ffeca3;
     background-color: #fff5ce;
 }
-
 
 /*=S table style*/
 
@@ -923,9 +958,7 @@ a:focus {
     border-color: #06c transparent transparent;
 }
 
-
 /*=E table*/
-
 
 /*=S btn*/
 
@@ -1045,7 +1078,7 @@ a.d-btn-xs {
     border-color: #ddd;
     background-color: #ddd;
     color: #aaa;
-    cursor: not-allowed !important;
+    cursor: not-allowed;
 }
 
 .d-btn-disabled:hover {
@@ -1057,7 +1090,7 @@ a.d-btn-xs {
     border-color: #aaa;
     background-color: transparent;
     color: #aaa;
-    cursor: not-allowed !important;
+    cursor: not-allowed;
 }
 
 .d-btn-link-disabled:hover {
@@ -1087,9 +1120,7 @@ button.d-close {
     outline: none;
 }
 
-
 /*=E btn*/
-
 
 /*=S forms*/
 
@@ -1240,9 +1271,7 @@ textarea.d-input {
     vertical-align: middle;
 }
 
-
 /*=E forms*/
-
 
 /*=S icons*/
 
@@ -1289,9 +1318,7 @@ textarea.d-input {
     background-position: -167px -42px;
 }
 
-
 /*=E icons*/
-
 
 /*=S layer*/
 
@@ -1302,9 +1329,7 @@ textarea.d-input {
     box-shadow: 5px 5px 8px rgba(0, 0, 0, .15);
 }
 
-
 /*=E icons*/
-
 
 /*=S layer*/
 
@@ -1387,9 +1412,7 @@ textarea.d-input {
     filter: blur(10px);
 }
 
-
 /*=E modal*/
-
 
 /*=S Breadcrumb*/
 
@@ -1405,9 +1428,7 @@ textarea.d-input {
     cursor: default;
 }
 
-
 /*=E Breadcrumb*/
-
 
 /*=S tab*/
 
@@ -1449,9 +1470,7 @@ textarea.d-input {
     font-weight: bold;
 }
 
-
 /*=E tab*/
-
 
 /*=S paging*/
 
@@ -1558,9 +1577,7 @@ textarea.d-input {
     line-height: 20px;
 }
 
-
 /*=E paging*/
-
 
 /*=S chart histogram*/
 
@@ -1608,12 +1625,28 @@ textarea.d-input {
     border-color: transparent #666 #666 transparent;
 }
 
-
 /*=E paging*/
+
+/*=S modify bootstrap*/
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.btn.focus,
+.btn:focus {
+    box-shadow: none;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    box-shadow: none;
+}
+
+/*=E modify bootstrap*/
 
 .header {
     width: 100%;
-    background-color: #003479;
 }
 
 .header-cont {
