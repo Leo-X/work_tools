@@ -93,18 +93,12 @@
       let text_push_refs = `git push origin ${text}:refs/for/${text}`;
       let text_push = `git push origin ${text}`;
       $("#push_u_branch").val(push_u_branch);
-      $("#new_branch").val(text_push_refs);
+      $("#new_branch").val(new_branch);
       $("#text_push_refs").val(text_push_refs);
       $("#text_push").val(text_push);
       console.log(`text ：${ text }`);
     };
     $("#ebk_branch").click(creat_command_line);
-
-
-
-    const copyToClipbord = (e) => {
-
-    }
     $(".btn-success").click(function (e) {
       $(this).parent().prev().select();
       document.execCommand("Copy");
