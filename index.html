@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="./src/css/core.css">
   <title>常用工具</title>
 </head>
-
 <body>
   <div class="container p20">
     <div class=" row">
@@ -17,8 +16,11 @@
         <h2>常用工具</h2>
       </div>
     </div>
+    <div class="mv20" >
+      <span class="f-18 mr10" >快捷键:</span>
+      <span class="f-18 mr10" >Alt + C</span>
+    </div>
     <div class="row mt20">
-
       <div class="col-md-12">
         <div class="input-group ">
           <input id="input_branch" type="text" class="form-control" placeholder="输入分支 : branchname">
@@ -65,7 +67,7 @@
       </div>
       <div class="col-md-12 mt20">
         <div class="p20 d-green bold f-22 ta-c">
-          <span class="msg_success hidden" >复制成功</span>
+          <span class="msg_success hidden">复制成功</span>
         </div>
         <div class="msg-fail p20 d-red bold f-22 ta-c hidden">复制失败</div>
       </div>
@@ -77,32 +79,55 @@
   <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
   <script src="./src/js/libs/bootstrap.min.js"></script>
+  <script src="./src/js/plugins/layer/layer.js">
+    
+  </script>
   <!-- <script src="./async.js"> -->
   </script>
 </body>
 <script>
   $(function () {
-    const creat_command_line = (e) => {
+    const creat_command_line = (vald) => {
       let text = $("#input_branch").val();
       if (!text) {
-        console.log(`值为空，不符合格式要求`);
+        layer.msg("分支为空，或不符合格式要求",{time:2500});
         return false;
       }
-      let new_branch=` git checkout -b ${text} release`;
-      let push_u_branch=`git push -u origin ${text}`;
+      let new_branch = ` git checkout -b ${text} release`;
+      let push_u_branch = `git push -u origin ${text}`;
       let text_push_refs = `git push origin ${text}:refs/for/${text}`;
       let text_push = `git push origin ${text}`;
       $("#push_u_branch").val(push_u_branch);
       $("#new_branch").val(new_branch);
       $("#text_push_refs").val(text_push_refs);
       $("#text_push").val(text_push);
-      console.log(`text ：${ text }`);
+      layer.msg('命令行已生成',{time: 2500}); 
     };
+
+    // ctrlKey（metaKey）、altKey、shiftKey
+    // 绑定 输入框enter 键 输入框绑定
+    $("#input_branch").keyup(function (e) {
+      if (e.keyCode == 13) {
+        creat_command_line();
+      }
+    });
+    // 全局快捷键 
+    $(document).keyup(function (e) {
+      if ((e.keyCode == 67) && e.altKey) {
+        creat_command_line();
+      }
+    });
+
+
+
+
+
     $("#ebk_branch").click(creat_command_line);
     $(".btn-success").click(function (e) {
       $(this).parent().prev().select();
       document.execCommand("Copy");
-      // $(".msg_success").show().delay(200).hide(500);
+      layer.msg('复制成功'); 
+      
     });
 
 
