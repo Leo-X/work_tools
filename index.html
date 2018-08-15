@@ -76,8 +76,8 @@
   </div>
 
   <script src="./src/js/libs/jquery.js"></script>
-  <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script> -->
   <script src="./src/js/libs/bootstrap.min.js"></script>
   <script src="./src/js/plugins/layer/layer.js">
     
@@ -90,7 +90,7 @@
     const creat_command_line = (vald) => {
       let text = $("#input_branch").val();
       if (!text) {
-        layer.msg("分支为空，或不符合格式要求",{time:2500});
+        layer.msg("分支为空，或不符合格式要求",{time:2000});
         return false;
       }
       let new_branch = ` git checkout -b ${text} release`;
@@ -101,7 +101,7 @@
       $("#new_branch").val(new_branch);
       $("#text_push_refs").val(text_push_refs);
       $("#text_push").val(text_push);
-      layer.msg('命令行已生成',{time: 2500}); 
+      layer.msg('命令行已生成，分支： '+text,{time: 3000}); 
     };
 
     // ctrlKey（metaKey）、altKey、shiftKey
@@ -124,10 +124,15 @@
 
     $("#ebk_branch").click(creat_command_line);
     $(".btn-success").click(function (e) {
-      $(this).parent().prev().select();
+      let text=$(this).parent().prev().val();
+      if (text&&(text!='')) {
+        $(this).parent().prev().select();
       document.execCommand("Copy");
-      layer.msg('复制成功'); 
-      
+      layer.msg('复制成功，内容： '+text,{time: 3000}); 
+      }else{
+        layer.msg('值为空，或内容格式不符合要求',{time: 2000}); 
+      }
+     
     });
 
 
