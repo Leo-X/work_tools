@@ -87,13 +87,20 @@
 </body>
 <script>
   $(function () {
+    // 有 空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符，返回true 
+    const hasWhiteSpace=(string)=>{
+      let regex=/\s{1,}?/g;
+      return string.match(regex);
+    }
+
+    
     const creat_command_line = (vald) => {
       let text = $("#input_branch").val();
-      if (!text) {
+      if (!text || hasWhiteSpace(text)) {
         layer.msg("分支为空，或不符合格式要求",{time:2000});
         return false;
       }
-      let new_branch = ` git checkout -b ${text} release`;
+      let new_branch = `git checkout -b ${text} release`;
       let push_u_branch = `git push -u origin ${text}`;
       let text_push_refs = `git push origin ${text}:refs/for/${text}`;
       let text_push = `git push origin ${text}`;
