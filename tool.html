@@ -5,15 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Tools</title>
-    <!-- <link rel="stylesheet" href="./src/js/plugins/layer/theme/default/layer.css"> -->
     <link rel="stylesheet" href="./src/lib_ui/layui_2.3/css/layui.css">
+    <link rel="stylesheet" href="./src/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="./src/css/core.css">
+    <link rel="stylesheet" href="./src/css/views/tool.css">
 </head>
 
-<body class="layui-layout-body">
+<body class="">
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
-            <div class="layui-logo">Leo work Tools</div>
-            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <a href="javascript:void(0);" class="layui-logo c-p td-n d-block">Leo work Tools</a>
             <ul class="layui-nav layui-layout-left">
                 <li class="layui-nav-item">
                     <a href="">控制台</a>
@@ -54,6 +55,9 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
+                    <a href="">Setting</a>
+                </li>
+                <li class="layui-nav-item">
                     <a href="">退出</a>
                 </li>
             </ul>
@@ -61,19 +65,26 @@
 
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
-                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <ul class="layui-nav layui-nav-tree " lay-filter="test" lay-shrink="all">
                     <li class="layui-nav-item layui-nav-itemed">
-                        <a class="" href="javascript:;">所有商品</a>
+                        <a class="" href="javascript:;">EBK</a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;">列表一</a>
+                                <a href="javascript:;">UI-Demo</a>
                             </dd>
                             <dd>
-                                <a href="javascript:;">列表二</a>
+                                <a href="javascript:;">交互组件</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:void(0);">React Native</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;">document</a>
                             </dd>
                             <dd>
-                                <a href="javascript:;">列表三</a>
+                                <a href="javascript:;">UI</a>
                             </dd>
                             <dd>
                                 <a href="">超链接</a>
@@ -81,32 +92,34 @@
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;">解决方案</a>
+                        <a href="javascript:void(0);">发布</a>
                         <dl class="layui-nav-child">
-                            <dd>
-                                <a href="javascript:;">列表一</a>
-                            </dd>
-                            <dd>
-                                <a href="javascript:;">列表二</a>
-                            </dd>
-                            <dd>
-                                <a href="">超链接</a>
-                            </dd>
-                        </dl>
+                                <dd>
+                                    <a href="javascript:;">图片发布</a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;">H5发布</a>
+                                </dd>
+                                <dd>
+                                    <a href="">超链接</a>
+                                </dd>
+                            </dl>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="">云市场</a>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="">发布商品</a>
+                        <a href="">其他</a>
                     </li>
                 </ul>
             </div>
         </div>
-
         <div class="layui-body">
-            <!-- 内容主体区域 -->
-            <div style="padding: 15px;">内容主体区域</div>
+            <div class="p20">
+                <span class="layui-breadcrumb" lay-separator="|">
+                    <a href="">首页</a>
+                    <a href="">国际新闻</a>
+                    <a href="">亚太地区</a>
+                    <a href="">正文</a>
+                </span>
+            </div>
         </div>
 
         <div class="layui-footer">© Leo.com </div>
@@ -115,10 +128,6 @@
     <script src="./src/lib_ui/layui_2.3/layui.all.js"></script>
     <script>
         $(function () {
-            layui.use(['element', 'layer'], function () {
-                var element = layui.element;
-
-            });
         });
     </script>
 </body>
