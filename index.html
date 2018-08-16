@@ -92,7 +92,6 @@
             return string.match(regex);
         }
 
-
         const creat_command_line = (vald) => {
             let text = $("#input_branch").val();
             if (!text || hasWhiteSpace(text)) {
@@ -128,10 +127,6 @@
             }
         });
 
-
-
-
-
         $("#ebk_branch").click(creat_command_line);
         $(".btn-success").click(function(e) {
             let text = $(this).parent().prev().val();
@@ -146,13 +141,9 @@
                     time: 2000
                 });
             }
-
         });
-
-
-
-
-
+        // 自动聚焦到输入框
+        $("#input_branch").focus();
     });
 </script>
 
