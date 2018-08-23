@@ -435,15 +435,62 @@ document.addEventListener('click', function (e: MouseEvent) {
 // private 修饰的属性或方法是私有的，不能在声明它的类的外部访问
 // protected 修饰的属性或方法是受保护的，它和 private 类似，区别是它在子类中也是允许被访问的
 
-class Animal {
+class Animal1 {
     public name;
-    private name2;
     public constructor(name) {
         this.name = name;
     }
 }
 
-let dog = new Animal('dog1');
+let dog = new Animal1('dog1');
 console.log(`dog.name ：${ dog.name }`);// Jack
 dog.name = 'dog1';
 console.log(`dog.name ：${ dog.name }`);// Tom
+// name 被设置为了 public，所以直接访问实例的 name 属性是允许的。
+
+class Animal2 {
+    private name;
+    public constructor(name) {
+        this.name = name;
+    }
+}
+let dog2 = new Animal2('dog2');
+// console.log(`dog2.name ：${ dog2.name }`);
+// dog2.name = 'Tom';
+
+
+
+// 使用 private 修饰的属性或方法，在子类中也是不允许访问的
+// class Animal {
+//     private name;
+//     public constructor(name) {
+//         this.name = name;
+//     }
+// }
+
+// class Cat extends Animal {
+//     constructor(name) {
+//         super(name);
+//         console.log(this.name);
+//     }
+// }
+
+
+
+
+
+
+// 而如果是用 protected 修饰，则允许在子类中访问：
+// class Animal {
+//     protected name;
+//     public constructor(name) {
+//         this.name = name;
+//     }
+// }
+
+// class Cat extends Animal {
+//     constructor(name) {
+//         super(name);
+//         console.log(this.name);
+//     }
+// }

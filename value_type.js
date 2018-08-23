@@ -278,13 +278,23 @@ document.addEventListener('click', function (e) {
 // public 修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 public 的
 // private 修饰的属性或方法是私有的，不能在声明它的类的外部访问
 // protected 修饰的属性或方法是受保护的，它和 private 类似，区别是它在子类中也是允许被访问的
-var Animal = /** @class */ (function () {
-    function Animal(name) {
+var Animal1 = /** @class */ (function () {
+    function Animal1(name) {
         this.name = name;
     }
-    return Animal;
+    return Animal1;
 }());
-var dog = new Animal('dog1');
+var dog = new Animal1('dog1');
 console.log("dog.name \uFF1A" + dog.name); // Jack
-dog.name = 'Tom';
+dog.name = 'dog1';
 console.log("dog.name \uFF1A" + dog.name); // Tom
+// name 被设置为了 public，所以直接访问实例的 name 属性是允许的。
+var Animal2 = /** @class */ (function () {
+    function Animal2(name) {
+        this.name = name;
+    }
+    return Animal2;
+}());
+var dog2 = new Animal2('dog2');
+console.log("dog2.name \uFF1A" + dog2.name);
+dog2.name = 'Tom';
