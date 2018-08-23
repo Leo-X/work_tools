@@ -74,77 +74,74 @@
 
         </div>
     </div>
-
-    <script src="./src/js/libs/jquery.js"></script>
-    <!-- <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script> -->
-    <script src="./src/js/libs/bootstrap.min.js"></script>
-    <script src="./src/js/plugins/layer/layer.js">
-    </script>
-    <!-- <script src="./async.js"> -->
-    </script>
 </body>
-<script>
-    $(function() {
-        // 有 空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符，返回true 
-        const hasWhiteSpace = (string) => {
-            let regex = /\s{1,}?/g;
-            return string.match(regex);
-        }
 
-        const creat_command_line = (vald) => {
-            let text = $("#input_branch").val();
-            if (!text || hasWhiteSpace(text)) {
-                layer.msg("分支为空，或不符合格式要求", {
-                    time: 2000
-                });
-                return false;
+<script src="./src/js/libs/jquery.js"></script>
+<!-- <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script> -->
+<script src="./src/js/libs/bootstrap.min.js"></script>
+<script src="./src/js/plugins/layer/layer.js">
+    < script >
+        $(function () {
+            // 有 空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符，返回true 
+            const hasWhiteSpace = (string) => {
+                let regex = /\s{1,}?/g;
+                return string.match(regex);
             }
-            let new_branch = `git checkout -b ${text} release`;
-            let push_u_branch = `git push -u origin ${text}`;
-            let text_push_refs = `git push origin ${text}:refs/for/${text}`;
-            let text_push = `git push origin ${text}`;
-            $("#push_u_branch").val(push_u_branch);
-            $("#new_branch").val(new_branch);
-            $("#text_push_refs").val(text_push_refs);
-            $("#text_push").val(text_push);
-            layer.msg('命令行已生成，分支： ' + text, {
-                time: 3000
-            });
-        };
 
-        // ctrlKey（metaKey）、altKey、shiftKey
-        // 绑定 输入框enter 键 输入框绑定
-        $("#input_branch").keyup(function(e) {
-            if (e.keyCode == 13) {
-                creat_command_line();
-            }
-        });
-        // 全局快捷键 
-        $(document).keyup(function(e) {
-            if ((e.keyCode == 67) && e.altKey) {
-                creat_command_line();
-            }
-        });
-
-        $("#ebk_branch").click(creat_command_line);
-        $(".btn-success").click(function(e) {
-            let text = $(this).parent().prev().val();
-            if (text && (text != '')) {
-                $(this).parent().prev().select();
-                document.execCommand("Copy");
-                layer.msg('复制成功，内容： ' + text, {
+            const creat_command_line = (vald) => {
+                let text = $("#input_branch").val();
+                if (!text || hasWhiteSpace(text)) {
+                    layer.msg("分支为空，或不符合格式要求", {
+                        time: 2000
+                    });
+                    return false;
+                }
+                let new_branch = `git checkout -b ${text} release`;
+                let push_u_branch = `git push -u origin ${text}`;
+                let text_push_refs = `git push origin ${text}:refs/for/${text}`;
+                let text_push = `git push origin ${text}`;
+                $("#push_u_branch").val(push_u_branch);
+                $("#new_branch").val(new_branch);
+                $("#text_push_refs").val(text_push_refs);
+                $("#text_push").val(text_push);
+                layer.msg('命令行已生成，分支： ' + text, {
                     time: 3000
                 });
-            } else {
-                layer.msg('值为空，或内容格式不符合要求', {
-                    time: 2000
-                });
-            }
+            };
+
+            // ctrlKey（metaKey）、altKey、shiftKey
+            // 绑定 输入框enter 键 输入框绑定
+            $("#input_branch").keyup(function (e) {
+                if (e.keyCode == 13) {
+                    creat_command_line();
+                }
+            });
+            // 全局快捷键 
+            $(document).keyup(function (e) {
+                if ((e.keyCode == 67) && e.altKey) {
+                    creat_command_line();
+                }
+            });
+
+            $("#ebk_branch").click(creat_command_line);
+            $(".btn-success").click(function (e) {
+                let text = $(this).parent().prev().val();
+                if (text && (text != '')) {
+                    $(this).parent().prev().select();
+                    document.execCommand("Copy");
+                    layer.msg('复制成功，内容： ' + text, {
+                        time: 3000
+                    });
+                } else {
+                    layer.msg('值为空，或内容格式不符合要求', {
+                        time: 2000
+                    });
+                }
+            });
+            // 自动聚焦到输入框
+            $("#input_branch").focus();
         });
-        // 自动聚焦到输入框
-        $("#input_branch").focus();
-    });
 </script>
 
 </html>

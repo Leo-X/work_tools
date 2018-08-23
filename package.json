@@ -1,28 +1,29 @@
 {
-  "name": "my-babel",
-  "version": "1.0.0",
-  "description": "",
-  "main": "test.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"browser-sync start --port 6060 --server --files '**/*.css, **/*.html,**/*.js,src/*.*' "
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Leo-X/1test.git"
-  },
-  "author": "Leo-X",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Leo-X/1test/issues"
-  },
-  "homepage": "https://github.com/Leo-X/1test#readme",
-  "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.10.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0"
-  }
+    "name": "my-babel",
+    "version": "1.0.0",
+    "description": "",
+    "main": "test.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "browser-sync start --port 6060 --server --files '**/*.css, **/*.html,**/*.js,src/*.*' ",
+        "ts1": "tsc value_type.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Leo-X/1test.git"
+    },
+    "author": "Leo-X",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Leo-X/1test/issues"
+    },
+    "homepage": "https://github.com/Leo-X/1test#readme",
+    "devDependencies": {
+        "eslint": "^4.19.1",
+        "eslint-config-airbnb": "^16.1.0",
+        "eslint-loader": "^2.0.0",
+        "eslint-plugin-import": "^2.10.0",
+        "eslint-plugin-jsx-a11y": "^6.0.3",
+        "eslint-plugin-react": "^7.7.0"
+    }
 }
