@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/css/core.css">
+</head>
+
+
+<style>
+    body {
+        background-color: #e9ebed;
+        counter-reset: chapter;
+    }
+
+    html {
+        counter-reset: section;
+    }
+
+    .title {
+        width: 1200px;
+        margin: 40px auto;
+    }
+
+    .title h2:before {
+        content: counter(section)'. ';
+        counter-increment: section;
+    }
+
+    blockquote {
+        width: 1280px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        /* text-transform: capitalize; */
+        box-shadow: 8px 8px 15px rgba(0, 0, 0, .2);
+    }
+
+    blockquote::before {
+        content: counter(chapter)'. ' attr(title);
+        counter-increment: chapter;
+        display: block;
+        position: absolute;
+        margin-top: -35px;
+        padding: 0 10px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #0a78c4;
+    }
+
+    div.head {
+        background-color: ;
+        background: url(logo.png) #0a78c4;
+    }
+
+    .head h1 {
+        color: #fff;
+        text-align: center;
+        font-size: 48px;
+        padding: 25px 10px;
+        font-family: 'microsoft yahei'
+    }
+
+    .head h1 i {
+        position: absolute;
+        padding: 0 8px 0 5px;
+        margin: 0;
+        background-color: #fff;
+        color: #f00;
+        font-size: 12px;
+        vertical-align: top;
+        border-radius: 10px 10px 10px 0;
+    }
+
+    .head h1 strong {
+        margin: 0 20px;
+        font-family: 'Showcard Gothic';
+    }
+
+    .head h1 small {
+        margin: 0 20px;
+        font-size: 24px;
+        font-weight: normal;
+        color: #fff;
+    }
+
+    .o-container {
+        width: 100%;
+        padding: 0;
+        border-bottom: 1px solid #ddd;
+        background-color: #f7f7f7;
+    }
+
+    section {
+        padding: 5px;
+    }
+</style>
+</head>
+
+<body>
+    <div class="head">
+        <h1>
+            Demo
+            <!-- <i>V1</i> -->
+            <!-- <small>@hotel StyleGuide</small> -->
+        </h1>
+    </div>
+
+
+    <div class="title">
+        <h2 class="d-36">Layout</h2>
+    </div>
+    <blockquote title="layout">
+        <style>
+            blockquote[title="layout"] section {
+                background-color: azure;
+                counter-reset: count;
+                padding: 10px;
+                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUAQMAAAC3R49OAAAABlBMVEX/////5eUYM/bNAAAAFElEQVQI12P4f4CBgRjMYP+BGAwABZEdTUAK3/AAAAAASUVORK5CYII=);
+            }
+
+            blockquote[title="layout"] .d-container {
+                background: #fff;
+            }
+
+            .d-container [class*="d-col"] {
+                background-color: #c8e1ef;
+                height: 60px;
+            }
+
+            .d-container [class*="d-col"]::before {
+                content: counter(count)': ' attr(class);
+                counter-increment: count;
+                display: block;
+                text-align: center;
+                color: #fff;
+                background-color: #0a78c4;
+            }
+        </style>
+        <section>
+            <div class="d-container">
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+                <div class="d-col1"></div>
+            </div>
+        </section>
+        <section>
+            <div class="d-container">
+                <div class="d-col1"></div>
+                <div class="d-col2"></div>
+                <div class="d-col3"></div>
+                <div class="d-col4"></div>
+                <div class="d-col2"></div>
+            </div>
+        </section>
+        <section>
+            <div class="d-container">
+                <div class="d-col1"></div>
+                <div class="d-col5"></div>
+                <div class="d-col6"></div>
+            </div>
+        </section>
+        <section>
+            <div class="d-container">
+                <div class="d-col3"></div>
+                <div class="d-col3"></div>
+                <div class="d-col3"></div>
+                <div class="d-col3"></div>
+            </div>
+        </section>
+        <section>
+            <div class="d-container">
+                <div class="d-col4"></div>
+                <div class="d-col4"></div>
+                <div class="d-col4"></div>
+            </div>
+        </section>
+        <section>
+            <div class="d-container">
+                <div class="d-col6"></div>
+                <div class="d-col6"></div>
+            </div>
+        </section>
+    </blockquote>
+
+    <blockquote title="layout control style">
+        <section>
+            <div>
+                margin:提供5，10，20边界单位
+                <br/> padding:提供5，10，20边界单位
+                <br/>
+            </div>
+        </section>
+    </blockquote>
+
+
+    <div class="title">
+        <h2 class="d-36">elements</h2>
+    </div>
+    <blockquote title="txt">
+        <section>
+            <a href="javascript:;">link color</a>
+            <br/>
+            <p class="d-red">文本示例 d-red</p>
+            <p class="d-orange">文本示例 d-yellow</p>
+            <p class="d-yellow">文本示例 d-yellow</p>
+            <p class="d-blue">文本示例 d-blue</p>
+            <p class="d-lightblue">文本示例 d-lightblue</p>
+            <p class="d-green">文本示例 d-green</p>
+            <p class="d-darkgreen">文本示例 d-darkgreen</p>
+            <p class="d-brown">文本示例 d-brown</p>
+            <p class="d-darkgray">文本示例 d-darkgray</p>
+            <p class="d-gray">文本示例 d-gray</p>
+            <p class="d-lightgray">文本示例 d-lightgray</p>
+            <br/>
+            <p class="d-underline">文本示例 d-underline</p>
+            <p>
+                <span class="d-dash">文本示例 d-dash</span>
+            </p>
+            <p class="d-bold">文本示例 d-bold</p>
+            <br/>
+            <p class="d-money">&#165;&nbsp;&nbsp;&#38;&#35;165;&emsp;d-money</p>
+            <p class="d-12">1214文本示例 d-12</p>
+            <p class="d-14">14文本示例 d-14</p>
+            <p class="d-16">16文本示例 d-16</p>
+            <p class="d-21">21文本示例 d-21</p>
+            <p class="d-28">18文本示例 d-28</p>
+            <p class="d-36">32文本示例 d-36</p>
+        </section>
+    </blockquote>
+
+    <blockquote title="tag">
+        <div>
+            <span class="d-ico-state d-ico-red">标签1</span>
+            <span class="d-ico-state d-ico-orange">标签2</span>
+            <span class="d-ico-state d-ico-blue">标签2</span>
+            <span class="d-ico-state d-ico-green">标签2</span>
+            <span class="d-ico-state d-ico-gray">标签2</span>
+            <span class="d-ico-state d-ico-cyan">标签2</span>
+            <span class="d-ico-state d-ico-smalt">标签2</span>
+            <span class="d-ico-state d-ico-vip">VIP</span>
+            <br/>
+            <span class="d-ico-lucency-tag d-ico-lucency-orange">标签8</span>
+            <span class="d-ico-lucency-tag d-ico-lucency-blue">标签9</span>
+            <span class="d-ico-lucency-tag d-ico-lucency-green">标签10</span>
+            <span class="d-ico-lucency-tag d-ico-complex-yellow">标签11</span>
+            <br/>
+        </div>
+    </blockquote>
+
+    <blockquote title="table style">
+        <section>
+            <table class="d-table">
+                <tbody>
+                    <tr>
+                        <th>运营人</th>
+                        <th>EBK账号</th>
+                        <th>职责</th>
+                        <th>常用电话</th>
+                        <th>其他联系方式</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                    </tr>
+                    <tr>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <table class="d-table d-table-style01">
+                <tbody>
+                    <tr>
+                        <th>运营人</th>
+                        <th>EBK账号</th>
+                        <th>职责</th>
+                        <th>常用电话</th>
+                        <th>其他联系方式</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                    </tr>
+                    <tr>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                        <td>内容</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <section>
+            <table class="d-table d-table-style01">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="d-sort isSort">员工EID
+                                <i class="d-sort-arrows"></i>
+                            </div>
+                        </th>
+                        <th>
+                            <div>组别</div>
+                        </th>
+                        <th>
+                            <div class="d-sort isReverse">会话上限
+                                <i class="d-sort-arrows"></i>
+                            </div>
+                        </th>
+                        <th>
+                            <div>在岗状态</div>
+                        </th>
+                        <th>
+                            <div class="d-sort">已完成任务数
+                                <i class="d-sort-arrows"></i>
+                            </div>
+                        </th>
+                </thead>
+                <tr>
+                    <td>E586956</td>
+                    <td>12</td>
+                    <td>100</td>
+                    <td>在线</td>
+                    <td>1314</td>
+                </tr>
+                <tr>
+                    <td>E586956</td>
+                    <td>12</td>
+                    <td>100</td>
+                    <td>在线</td>
+                    <td>1314</td>
+                </tr>
+            </table>
+        </section>
+    </blockquote>
+
+    <blockquote title="button">
+        <section>
+            <input type="button" class="d-btn" value="默认按钮" />
+            <input type="button" class="d-btn d-btn-level1" value="一级按钮" />
+            <input type="button" class="d-btn d-btn-level2" value="二级按钮" />
+            <input type="button" class="d-btn d-btn-level3" value="三级按钮" />
+        </section>
+
+        <section>
+            <button type="button" class="d-btn d-btn-level0">默认按钮</button>
+            <button type="button" class="d-btn d-btn-level1">一级按钮</button>
+            <button type="button" class="d-btn d-btn-level2">二级按钮</button>
+            <button type="button" class="d-btn d-btn-level3">三级按钮</button>
+        </section>
+
+        <section>
+            <a href="javascript:" class="d-btn d-btn-level">默认按钮</a>
+            <a href="javascript:" class="d-btn d-btn-level1">一级按钮</a>
+            <a href="javascript:" class="d-btn d-btn-level2">二级按钮</a>
+            <a href="javascript:" class="d-btn d-btn-level3">三级按钮</a>
+        </section>
+
+        <section>
+            <a href="javascript:" class="d-btn d-btn-level1">默认按钮</a>
+            <a href="javascript:" class="d-btn d-btn-level1 d-btn-lg">一级按钮</a>
+            <a href="javascript:" class="d-btn d-btn-level1 d-btn-sm">二级按钮</a>
+            <a href="javascript:" class="d-btn d-btn-level1 d-btn-xs">三级按钮</a>
+        </section>
+
+        <section>
+            <button type="button" class="d-btn d-btn-disabled">默认按钮</button>
+            <a href="javascript:" class="d-btn d-btn-link-disabled" title="超链接">超链接</a>
+        </section>
+
+        <section>
+            <a href="javascript:" class="d-close">&times;</a>
+            <button type="button" class="d-close">&times;</button>
+        </section>
+    </blockquote>
+
+    <blockquote title="form element">
+        <section>
+            <input class="d-input" type="text" placeholder="填写内容" value="" />
+            <br/>
+            <br/>
+            <input class="d-input d-input-err" type="text" value="" />
+            <br/>
+            <br/>
+            <input disabled="disabled" type="text" class="d-input" value="" />
+            <br/>
+            <br/>
+            <select class="d-select">
+                <option value="">请选择</option>
+            </select>
+            <br/>
+            <br/>
+            <textarea style="width:400px;height:100px;" class="d-input" placeholder="填写内容"></textarea>
+            <br/>
+            <br/>
+            <label class="d-label">
+                <input type="radio" id="" name="r1" />单选</label>
+            <label class="d-label">
+                <input type="checkbox" id="" />多选</label>
+            <br/>
+            <br/>
+
+        </section>
+        <section>
+            <div class="d-form">
+                <label class="d-form-label">标签名称</label>
+                <div class="d-form-cont">
+                    <input type="text" class="d-input" placeholder="" value="填写内容" />
+                    <button type="button" class="d-btn d-btn-level1">一级按钮</button>
+                </div>
+            </div>
+            <div class="d-form">
+                <label class="d-form-label">标签名称</label>
+                <div class="d-form-cont">
+                    <input type="text" class="d-input d-input-date" placeholder="" value="2015-04-03" />
+                    <span class="d-form-conn">-</span>
+                    <input type="text" class="d-input d-input-date" placeholder="" value="2015-04-04" />
+                </div>
+            </div>
+            <div class="d-form">
+                <label class="d-form-label">标签名称</label>
+                <div class="d-form-cont">
+                    <input type="text" class="d-input d-input-err" placeholder="" />
+                    <div class="d-form-info  d-form-texterr">错啦！ 粗错啦！ 粗错啦！</div>
+                </div>
+            </div>
+            <div class="d-form">
+                <label class="d-form-label">
+                    <span class="d-form-label-mark">*</span>必填项</label>
+                <div class="d-form-cont">
+                    <input type="text" class="d-input " placeholder="" />
+                    <div class="d-form-info ">提示信息</div>
+                </div>
+            </div>
+            <div class="d-form">
+                <label class="d-form-label">标签名称</label>
+                <div class="d-form-cont">
+                    <input type="text" class="d-input d-input-err" placeholder="" />
+                    <div class="d-form-info ">提示信息</div>
+                    <div class="d-form-info-bottom d-form-texterr">粗错啦！ 粗错啦！ 粗错啦！</div>
+                </div>
+            </div>
+            <div class="d-form">
+                <label class="d-form-label">标签名称</label>
+                <div class="d-form-cont">
+                    <label class="d-label">
+                        <input type="checkbox" id="">多项选择1</label>
+                    <label class="d-label">
+                        <input type="checkbox" id="">多项选择2</label>
+                    <label class="d-label">
+                        <input type="checkbox" id="">多项选择3</label>
+                </div>
+            </div>
+            <div class="d-form">
+                <label class="d-form-label">标签名称</label>
+                <div class="d-form-cont">
+                    <label class="d-label">
+                        <input type="radio" name="single" id="">单项选择1</label>
+                    <label class="d-label">
+                        <input type="radio" name="single" id="">单项选择2</label>
+                    <label class="d-label">
+                        <input type="radio" name="single" id="">单项选择3</label>
+                </div>
+            </div>
+            <div class="d-form">
+                <label class="d-form-label">标签名称</label>
+                <div class="d-form-cont">
+                    <div class="d-form-label">单项选择3</div>
+                </div>
+            </div>
+        </section>
+    </blockquote>
+
+    <blockquote title="icon">
+        <section>
+            <i class="d-ico d-ico-succeed32"></i>
+            <i class="d-ico d-ico-warn32"></i>
+            <br/>
+            <i class="d-ico d-ico-succeed16"></i>
+            <i class="d-ico d-ico-warn16"></i>
+            <br/>
+            <i class="d-ico d-ico-arrow-up16"></i>
+            <i class="d-ico d-ico-arrow-down16"></i>
+            <br/>
+            <i class="d-ico d-ico-info14"></i>
+            <i class="d-ico d-ico-right14"></i>
+            <i class="d-ico d-ico-edit14"></i>
+            <br/> 这是文本
+            <i class="d-arr d-ib d-arr-top"></i>
+            <i class="d-arr d-ib d-arr-right"></i>
+            <i class="d-arr d-ib d-arr-bottom"></i>
+            <i class="d-arr d-ib d-arr-left"></i>
+            <br/>
+            <span>展开
+                <i class="d-arr d-ib d-arr-top"></i>
+            </span>
+            &emsp;
+            <span>收起
+                <i class="d-arr d-ib d-arr-bottom"></i>
+            </span>
+            <br/>
+            <i class="d-arr d-arr-ll d-ib" style="border-width: 16px 8px;"></i>
+            <i class="d-arr d-arr-lr d-ib" style="border-width: 16px 8px;"></i>
+        </section>
+    </blockquote>
+
+    <div class="title">
+        <h2 class="d-36">commponent</h2>
+    </div>
+
+    <blockquote title="float layer">
+        <section>
+            <div class="d-layer">
+                <div>
+                    请在此处加载具体内容...
+                    <br/> 经双方合同约定，携程国际旅游（香港）有限公司现提供信用卡支付给（海外测试酒店（请勿预定，后果自负）
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="d-layer">
+                <table class="d-table d-table-style01">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="d-sort isSort">EID</div>
+                            </th>
+                            <th>
+                                <div>组别</div>
+                            </th>
+                            <th>
+                                <div class="d-sort isReverse">上限</div>
+                            </th>
+                            <th>
+                                <div>在岗状态</div>
+                            </th>
+                            <th>
+                                <div class="d-sort">任务数</div>
+                            </th>
+                    </thead>
+                    <tr>
+                        <td>E586956</td>
+                        <td>12</td>
+                        <td>100</td>
+                        <td>在线</td>
+                        <td>1314</td>
+                    </tr>
+                    <tr>
+                        <td>E586956</td>
+                        <td>12</td>
+                        <td>100</td>
+                        <td>在线</td>
+                        <td>1314</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </blockquote>
+
+    <blockquote title="mask layer">
+        <section>
+            <div class="d-modal" style="display:block">
+                <div class="modal-header">
+                    <h4 class="modal-title">模态框-标题</h4>
+                </div>
+                <div class="modal-body">请在此处加载具体内容...</div>
+                <div class="modal-footer">
+                    <button type="button" class="d-btn d-btn-level1">确认</button>
+                    <button type="button" class="d-btn">取消</button>
+                </div>
+                <a href="javascript:" class="d-close">×</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="d-modal" style="display:block">
+                <div class="modal-header">
+                    <h4 class="modal-title">模态框-标题</h4>
+                </div>
+                <div class="modal-body txtc">
+                    <div class="d-ib">
+                        <i class="d-ico d-ico-succeed32"></i>
+                    </div>
+                    &emsp;
+                    <div class="d-ib" style="width:70%">
+                        以下售卖房型中已含连住/提前/间数属性，不允许批量修改含连住/提前/间数的售卖房型售卖规则，请至售卖房型中单独修改。 请在此处加载具体内容...
+                        <br/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="d-btn d-btn-level1">确认</button>
+                    <button type="button" class="d-btn">取消</button>
+                </div>
+                <a href="javascript:" class="d-close">×</a>
+            </div>
+        </section>
+    </blockquote>
+
+    <blockquote title="breadcrumb">
+        <section>
+            <div class="d-bread">
+                <a href="javascript:" class="d-bread-item">上一级标题</a>
+                <span class="d-bread-conn">&gt;</span>
+                <span class="d-bread-item-cur">当前标题</span>
+            </div>
+        </section>
+    </blockquote>
+
+    <blockquote title="tabs">
+        <section>
+            <ul class="d-tabs clearfix">
+                <li class="d-tab">
+                    <a href="">订单日志</a>
+                </li>
+                <li class="d-tab cur">
+                    <a href="">(下单前)该房型该渠道变价日志</a>
+                </li>
+                <li class="d-tab">
+                    <a href="">(下单前)该房型该渠道变价日志</a>
+                </li>
+            </ul>
+
+        </section>
+    </blockquote>
+
+    <blockquote title="pages">
+        <section>
+            <div class="txtl">
+                <div class="d-paging">
+                    <a href="javascript:;" class="d-btn d-btn-xs btn-prev disable">
+                        <i class="ico-prev"></i>
+                    </a>
+                    <a href="javascript:;" class="d-btn d-btn-xs current">1</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">2</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">3</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">4</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">5</a>
+                    <span class="ellipsis">...</span>
+                    <a href="javascript:;" class="d-btn d-btn-xs">115</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs btn-next">
+                        <i class="ico-next"></i>
+                    </a>
+                    <div class="paging-tool">到第
+                        <input type="text" name="value" class="input-text" /> 页
+                        <input type="button" class="d-btn d-btn-xs" value="确定" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="txtc">
+                <div class="d-paging">
+                    <a href="javascript:;" class="d-btn d-btn-xs btn-prev disable">
+                        <i class="ico-prev"></i>
+                    </a>
+                    <a href="javascript:;" class="d-btn d-btn-xs current">1</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">2</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">3</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">4</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">5</a>
+                    <span class="ellipsis">...</span>
+                    <a href="javascript:;" class="d-btn d-btn-xs">115</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs btn-next">
+                        <i class="ico-next"></i>
+                    </a>
+                    <div class="paging-tool">到第
+                        <input type="text" name="value" class="input-text" /> 页
+                        <input type="button" class="d-btn d-btn-xs" value="确定" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="txtr">
+                <div class="d-paging">
+                    <a href="javascript:;" class="d-btn d-btn-xs btn-prev disable">
+                        <i class="ico-prev"></i>
+                    </a>
+                    <a href="javascript:;" class="d-btn d-btn-xs current">1</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">2</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">3</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">4</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs">5</a>
+                    <span class="ellipsis">...</span>
+                    <a href="javascript:;" class="d-btn d-btn-xs">115</a>
+                    <a href="javascript:;" class="d-btn d-btn-xs btn-next">
+                        <i class="ico-next"></i>
+                    </a>
+                    <div class="paging-tool">到第
+                        <input type="text" name="value" class="input-text" /> 页
+                        <input type="button" class="d-btn d-btn-xs" value="确定" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </blockquote>
+
+    <blockquote title="pop list">
+        <section>
+
+
+        </section>
+
+        <section>
+
+
+        </section>
+    </blockquote>
+</body>
+
+</html>

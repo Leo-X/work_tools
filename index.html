@@ -9,26 +9,24 @@
   <link rel="stylesheet" href="./src/css/core.css">
   <title>常用工具</title>
 </head>
+
 <body>
   <div class="container p20">
-    <div class=" row">
-      <div class="col-md-12">
-        <h2>常用工具</h2>
-      </div>
-    </div>
-    <div class="mv20" >
-      <span class="f-18 mr10" >快捷键:</span>
-      <span class="f-18 mr10" >Alt + C</span>
+    <h2>常用工具</h2>
+    <div class="mv20">
+      <span class="f-18 mr10">快捷键:</span>
+      <span class="f-18 mr10">Alt + C</span>
     </div>
     <div class="row mt20">
       <div class="col-md-12">
-        <div class="input-group ">
+        <div class="input-group">
           <input id="input_branch" type="text" class="form-control" placeholder="输入分支 : branchname">
           <span class="input-group-btn">
             <button id="ebk_branch" class="btn btn-primary" type="button">生成命令行</button>
           </span>
         </div>
       </div>
+
       <div class="col-md-6 mt20">
         <div class="input-group ">
           <input id="new_branch" type="text" class="form-control" placeholder="新建分支 : git checkout -b branchname release">
@@ -46,8 +44,6 @@
         </div>
       </div>
 
-      <!-- <div class="p20 danger f-14 " >值为空，不符合格式要求</div> -->
-
       <div class="col-md-12 mt20">
         <div class="input-group">
           <input id="text_push_refs" type="text" class="form-control" placeholder="push refs">
@@ -57,6 +53,11 @@
         </div>
       </div>
 
+
+      <div class="mt20" >
+          <a href="http://code.ctripcorp.com/#/" target="_blank" class="btn btn-default btn-lg" role="button">Code Review &gt;&gt;</a>
+      </div>
+
       <div class="col-md-12 mt20">
         <div class="input-group">
           <input id="text_push" type="text" class="form-control" placeholder="push">
@@ -64,12 +65,6 @@
             <button class="btn btn-success" type="button">Copy</button>
           </span>
         </div>
-      </div>
-      <div class="col-md-12 mt20">
-        <div class="p20 d-green bold f-22 ta-c">
-          <span class="msg_success hidden">复制成功</span>
-        </div>
-        <div class="msg-fail p20 d-red bold f-22 ta-c hidden">复制失败</div>
       </div>
 
     </div>
@@ -87,16 +82,18 @@
 <script>
   $(function () {
     // 有 空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符，返回true 
-    const hasWhiteSpace=(string)=>{
-      let regex=/\s{1,}?/g;
+    const hasWhiteSpace = (string) => {
+      let regex = /\s{1,}?/g;
       return string.match(regex);
     }
 
-    
+
     const creat_command_line = (vald) => {
       let text = $("#input_branch").val();
       if (!text || hasWhiteSpace(text)) {
-        layer.msg("分支为空，或不符合格式要求",{time:2000});
+        layer.msg("分支为空，或不符合格式要求", {
+          time: 2000
+        });
         return false;
       }
       let new_branch = `git checkout -b ${text} release`;
@@ -107,7 +104,9 @@
       $("#new_branch").val(new_branch);
       $("#text_push_refs").val(text_push_refs);
       $("#text_push").val(text_push);
-      layer.msg('命令行已生成，分支： '+text,{time: 3000}); 
+      layer.msg('命令行已生成，分支： ' + text, {
+        time: 3000
+      });
     };
 
     // ctrlKey（metaKey）、altKey、shiftKey
@@ -130,15 +129,19 @@
 
     $("#ebk_branch").click(creat_command_line);
     $(".btn-success").click(function (e) {
-      let text=$(this).parent().prev().val();
-      if (text&&(text!='')) {
+      let text = $(this).parent().prev().val();
+      if (text && (text != '')) {
         $(this).parent().prev().select();
-      document.execCommand("Copy");
-      layer.msg('复制成功，内容： '+text,{time: 3000}); 
-      }else{
-        layer.msg('值为空，或内容格式不符合要求',{time: 2000}); 
+        document.execCommand("Copy");
+        layer.msg('复制成功，内容： ' + text, {
+          time: 3000
+        });
+      } else {
+        layer.msg('值为空，或内容格式不符合要求', {
+          time: 2000
+        });
       }
-     
+
     });
 
 
