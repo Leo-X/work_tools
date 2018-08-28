@@ -31,7 +31,7 @@
         <div class="input-group ">
           <input id="new_branch" type="text" class="form-control" placeholder="新建分支 : git checkout -b branchname release">
           <span class="input-group-btn">
-            <button id="ebk_branch" class="btn btn-success" type="button">Copy</button>
+            <button class="btn btn-success btn-copy" type="button">Copy</button>
           </span>
         </div>
       </div>
@@ -39,7 +39,7 @@
         <div class="input-group ">
           <input id="push_u_branch" type="text" class="form-control" placeholder="推送 : git push -u origin branchname">
           <span class="input-group-btn">
-            <button id="ebk_branch" class="btn btn-success" type="button">Copy</button>
+            <button class="btn btn-success btn-copy" type="button">Copy</button>
           </span>
         </div>
       </div>
@@ -48,24 +48,45 @@
         <div class="input-group">
           <input id="text_push_refs" type="text" class="form-control" placeholder="push refs">
           <span class="input-group-btn">
-            <button class="btn btn-success" type="button">Copy</button>
+            <button class="btn btn-success btn-copy" type="button">Copy</button>
           </span>
         </div>
       </div>
 
 
-      <div class="mt20" >
-          <a href="http://code.ctripcorp.com/#/" target="_blank" class="btn btn-default btn-lg" role="button">Code Review &gt;&gt;</a>
+      <div class="mt20">
+        <a href="http://code.ctripcorp.com/#/" target="_blank" class="btn btn-default btn-lg" role="button">Code Review &gt;&gt;</a>
       </div>
-
       <div class="col-md-12 mt20">
         <div class="input-group">
           <input id="text_push" type="text" class="form-control" placeholder="push">
           <span class="input-group-btn">
-            <button class="btn btn-success" type="button">Copy</button>
+            <button class="btn btn-success btn-copy" type="button">Copy</button>
           </span>
         </div>
       </div>
+
+      <!-- H5 Rem 计算 默认设计尺寸 宽度750px  rem=750/40-->
+      <div class="col-md-12 mt20">
+        <div class="form-inline">
+          <div class="form-group mr20 f-16">
+            <label>rem=750px/40：&emsp;</label>
+          </div>
+          <div class="form-group mr20" id="width_px">
+            <label class="f-16" >设计尺寸( px )&emsp;</label>
+            <input type="text" class="form-control" id="ipt_width_px">
+            <label class="ml5 f-16" >px</label>
+          </div>
+          <div class="form-group">
+            <label class="d-red f-16"> =>Rem &emsp;</label>
+            <input type="text" class="form-control" id="width_rem">
+            <span class="input-group-btn">
+              <button id="copy_rem" class="btn btn-success btn-copy" type="button">复制Rem</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
 
     </div>
   </div>
@@ -123,12 +144,9 @@
       }
     });
 
-
-
-
-
     $("#ebk_branch").click(creat_command_line);
-    $(".btn-success").click(function (e) {
+
+    $(".btn-copy").click(function (e) {
       let text = $(this).parent().prev().val();
       if (text && (text != '')) {
         $(this).parent().prev().select();
@@ -141,11 +159,36 @@
           time: 2000
         });
       }
-
     });
 
 
+    // 监控数值，计算rem
+    $('#width_px').on('input propertychange', function () {
+      let v = $(this).children('input').val();
+      if (isNaN(v)) {
+        layer.msg(v + ' 不是数值，请输入正确数值 ', {
+          time: 1500
+        });
+        return false;
+      } else {
+        v = Math.floor(v / 40 * 1000) / 1000;
+        v = v.toFixed(3);
+        v = parseFloat(v);
+        $('#width_rem').val(v + "rem");
+      }
+    });
+    // 点击复制数值
+    $('#copy_rem').click(function (e) {
+      e.preventDefault();
+      $(this).prev().select();
+      document.execCommand("Copy");
+    });
 
+     $("#ipt_width_px").keyup(function (e) {
+      if (e.keyCode == 13) {
+        $('#copy_rem').click();
+      }
+    });
 
 
   });
