@@ -21,7 +21,7 @@
       <div class="col-md-12">
         <div class="input-group">
           <input id="input_branch" type="text" class="form-control" placeholder="输入分支 : branchname">
-          <span class="input-group-btn">
+          <span class="input-group-btn ebk-branch-box">
             <button id="ebk_branch" class="btn btn-primary" type="button">生成命令行</button>
           </span>
         </div>
@@ -55,7 +55,8 @@
 
 
       <div class="mt20">
-        <a href="http://code.ctripcorp.com/#/" target="_blank" class="btn btn-default btn-lg" role="button">Code Review &gt;&gt;</a>
+        <a href="http://code.ctripcorp.com/#/" target="_blank" class="btn btn-default btn-lg" role="button">Code Review
+          &gt;&gt;</a>
       </div>
       <div class="col-md-12 mt20">
         <div class="input-group">
@@ -72,10 +73,10 @@
           <div class="form-group mr20 f-16">
             <label>rem=750px/40：&emsp;</label>
           </div>
-          <div class="form-group mr20" id="width_px">
-            <label class="f-16" >设计尺寸( px )&emsp;</label>
-            <input type="text" class="form-control" id="ipt_width_px">
-            <label class="ml5 f-16" >px</label>
+          <div class="form-group mr20">
+            <label class="f-16">设计尺寸( px )&emsp;</label>
+            <input type="text" class="form-control" id="width_px">
+            <label class="ml5 f-16">px</label>
           </div>
           <div class="form-group">
             <label class="d-red f-16"> =>Rem &emsp;</label>
@@ -109,7 +110,7 @@
     }
 
 
-    const creat_command_line = (vald) => {
+    const creat_command_line = (e) => {
       let text = $("#input_branch").val();
       if (!text || hasWhiteSpace(text)) {
         layer.msg("分支为空，或不符合格式要求", {
@@ -125,9 +126,9 @@
       $("#new_branch").val(new_branch);
       $("#text_push_refs").val(text_push_refs);
       $("#text_push").val(text_push);
-      layer.msg('命令行已生成，分支： ' + text, {
-        time: 3000
-      });
+      // layer.msg('命令行已生成，分支： ' + text, {
+      //   time: 3000
+      // });
     };
 
     // ctrlKey（metaKey）、altKey、shiftKey
@@ -161,10 +162,16 @@
       }
     });
 
+    // 监控分支输入，直接生成命令
+    $('#input_branch').on('input', function () {
+      let v = $(this).val();
+      creat_command_line();
+    });
+
 
     // 监控数值，计算rem
-    $('#width_px').on('input propertychange', function () {
-      let v = $(this).children('input').val();
+    $('#width_px').on('input', function () {
+      let v = $(this).val();
       if (isNaN(v)) {
         layer.msg(v + ' 不是数值，请输入正确数值 ', {
           time: 1500
@@ -184,7 +191,7 @@
       document.execCommand("Copy");
     });
 
-     $("#ipt_width_px").keyup(function (e) {
+    $("#width_px").keyup(function (e) {
       if (e.keyCode == 13) {
         $('#copy_rem').click();
       }
