@@ -1,6 +1,6 @@
 @charset "utf-8";
-/*S Global*/
 
+/*S Global*/
 html,
 body,
 div,
@@ -68,9 +68,7 @@ ul {
 }
 
 /*=E  */
-
 /* HTML5 display definitions */
-
 article,
 aside,
 details,
@@ -100,9 +98,7 @@ audio:not([controls]) {
 }
 
 /*=E */
-
 /* image reset */
-
 img,
 fieldset {
     border: 0;
@@ -118,9 +114,7 @@ svg:not(:root) {
 }
 
 /*=E */
-
 /* form reset */
-
 input,
 textarea {
     font-size: 12px;
@@ -203,9 +197,7 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 /*=E  */
-
 /* Text-level semantics */
-
 abbr[title],
 acronym[title],
 .abbr {
@@ -231,7 +223,6 @@ mark,
 }
 
 /*=E  */
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -243,9 +234,7 @@ th {
 }
 
 /*=E  */
-
 /* others */
-
 a {
     color: #06c;
     text-decoration: none;
@@ -273,9 +262,7 @@ a:focus {
 }
 
 /*=E  */
-
 /* Special style*/
-
 .invisible {
     visibility: hidden;
 }
@@ -315,9 +302,7 @@ a:focus {
 }
 
 /*=E  */
-
 /* Course */
-
 .c-n {
     cursor: not-allowed;
 }
@@ -336,13 +321,11 @@ a:focus {
 
 .c-m {
     cursor: context-menu\0;
-    cursor: url(http://pic.c-ctrip.com/kolibre/c_4.cur), context-menu;
+    cursor: url(http: //pic.c-ctrip.com/kolibre/c_4.cur), context-menu;
 }
 
 /*E Global*/
-
 /**/
-
 .d-ib {
     display: inline-block;
     *display: inline;
@@ -351,9 +334,7 @@ a:focus {
 }
 
 /*E Normal text style*/
-
 /*=S Grids*/
-
 .d-container {
     width: 1200px;
     margin: 0 auto;
@@ -414,9 +395,7 @@ a:focus {
 }
 
 /*=E Grids*/
-
 /*=S layout control*/
-
 .m5 {
     margin: 5px;
 }
@@ -598,9 +577,7 @@ a:focus {
 }
 
 /*=E layout control*/
-
 /*=S text color*/
-
 .d-white {
     color: #fff;
 }
@@ -657,8 +634,12 @@ a:focus {
     border-bottom: 1px dashed #999;
 }
 
-.bold {
+.d-bold {
     font-weight: bold;
+}
+
+.d-money {
+    font-family: "Microsoft YaHei", Arial, "Hiragino Sans GB", "STHeiti", sans-serif
 }
 
 .f-12,
@@ -769,7 +750,6 @@ a:focus {
 }
 
 /*=End text color*/
-
 .ta-l {
     text-align: left;
 }
@@ -795,9 +775,7 @@ a:focus {
 }
 
 /*E Normal text style*/
-
 /*=S icon*/
-
 .d-ico-state,
 .d-ico-tag,
 .d-ico-lucency-tag {
@@ -876,7 +854,6 @@ a:focus {
 }
 
 /*=S table style*/
-
 .d-table {
     border: 1px solid #e7eef4;
 }
@@ -959,9 +936,7 @@ a:focus {
 }
 
 /*=E table*/
-
 /*=S btn*/
-
 .d-btn {
     display: inline-block;
     *display: inline;
@@ -1121,9 +1096,7 @@ button.d-close {
 }
 
 /*=E btn*/
-
 /*=S forms*/
-
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     height: auto;
@@ -1272,14 +1245,12 @@ textarea.d-input {
 }
 
 /*=E forms*/
-
 /*=S icons*/
-
 .d-ico {
     display: inline-block;
     *display: inline;
     *zoom: 1;
-    background: url(http://pic.c-ctrip.com/mip/un_base.png) no-repeat;
+    background: url(http: //pic.c-ctrip.com/mip/un_base.png) no-repeat;
 }
 
 .d-ico-succeed32 {
@@ -1319,9 +1290,7 @@ textarea.d-input {
 }
 
 /*=E icons*/
-
 /*=S layer*/
-
 .d-layer {
     width: 400px;
     padding: 10px;
@@ -1330,9 +1299,7 @@ textarea.d-input {
 }
 
 /*=E icons*/
-
 /*=S layer*/
-
 .d-modal {
     display: none;
     position: relative;
@@ -1413,9 +1380,7 @@ textarea.d-input {
 }
 
 /*=E modal*/
-
 /*=S Breadcrumb*/
-
 .d-bread {
     font-size: 12px;
 }
@@ -1429,9 +1394,7 @@ textarea.d-input {
 }
 
 /*=E Breadcrumb*/
-
 /*=S tab*/
-
 .d-tabs {
     margin-bottom: 20px;
     padding: 0;
@@ -1471,9 +1434,7 @@ textarea.d-input {
 }
 
 /*=E tab*/
-
 /*=S paging*/
-
 .d-paging {
     overflow: hidden;
 }
@@ -1578,9 +1539,7 @@ textarea.d-input {
 }
 
 /*=E paging*/
-
 /*=S chart histogram*/
-
 .d-arr {
     overflow: hidden;
     width: 0;
@@ -1626,9 +1585,7 @@ textarea.d-input {
 }
 
 /*=E paging*/
-
 /*=S modify bootstrap*/
-
 .form-control:focus {
     box-shadow: none;
 }
@@ -1643,8 +1600,12 @@ textarea.d-input {
     box-shadow: none;
 }
 
-/*=E modify bootstrap*/
+.d-hover{position: relative; display: inline-block;cursor: pointer;}
+.d-hover .d-hover-cont{position: absolute;display: none;top: 21px;left: 0;padding: 10px;width: 180px;border:1px solid #1badda;box-shadow: 0 2px 8px 0 rgba(27, 173, 218,0.2); background-color: #fff; font-size: 12px;white-space: normal; word-break: break-all;}
+.d-hover:hover .d-hover-cont{display: block;}
 
+
+/*=E modify bootstrap*/
 .header {
     width: 100%;
 }

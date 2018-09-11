@@ -12,7 +12,7 @@
 
 <body>
   <div class="container p20">
-    <h2>常用工具</h2>
+    <h2 id="test">常用工具</h2>
     <div class="mv20">
       <span class="f-18 mr10">快捷键:</span>
       <span class="f-18 mr10">Alt + C</span>
@@ -87,6 +87,9 @@
           </div>
         </div>
       </div>
+      <div class="mv20">
+
+      </div>
 
 
     </div>
@@ -103,6 +106,14 @@
 </body>
 <script>
   $(function () {
+    function getElement(id) {
+      let e = document.getElementById(id);
+      return e;
+    }
+
+
+
+
     // 有 空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符，返回true 
     const hasWhiteSpace = (string) => {
       let regex = /\s{1,}?/g;
@@ -196,6 +207,11 @@
         $('#copy_rem').click();
       }
     });
+
+    var dd = getElement('test');
+    dd.addEventListener('click',function () { console.log(`1`);},false);
+    dd.addEventListener('mousemove',function () { console.log(`2`);},false);
+
 
 
   });
