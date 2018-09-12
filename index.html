@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="./src/lib_ui/bootstrap-3.3.7-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="./src/lib_ui/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
   <link rel="stylesheet" href="./src/css/core.css">
   <title>常用工具</title>
 </head>
@@ -13,86 +13,124 @@
 <body>
   <div class="container p20">
     <h2 id="test">常用工具</h2>
-    <div class="mv20">
-      <span class="f-18 mr10">快捷键:</span>
-      <span class="f-18 mr10">Alt + C</span>
+    <div class="mv20 f-16">
+      <span class="mr10">快捷键:</span>
+      <span class="mr10">Alt + C</span>
     </div>
-    <div class="row mt20">
-      <div class="col-md-12">
-        <div class="input-group">
-          <input id="input_branch" type="text" class="form-control" placeholder="输入分支 : branchname">
-          <span class="input-group-btn ebk-branch-box">
-            <button id="ebk_branch" class="btn btn-primary" type="button">生成命令行</button>
-          </span>
-        </div>
-      </div>
-
-      <div class="col-md-6 mt20">
-        <div class="input-group ">
-          <input id="new_branch" type="text" class="form-control" placeholder="新建分支 : git checkout -b branchname release">
-          <span class="input-group-btn">
-            <button class="btn btn-success btn-copy" type="button">Copy</button>
-          </span>
-        </div>
-      </div>
-      <div class="col-md-6 mt20">
-        <div class="input-group ">
-          <input id="push_u_branch" type="text" class="form-control" placeholder="推送 : git push -u origin branchname">
-          <span class="input-group-btn">
-            <button class="btn btn-success btn-copy" type="button">Copy</button>
-          </span>
-        </div>
-      </div>
-
-      <div class="col-md-12 mt20">
-        <div class="input-group">
-          <input id="text_push_refs" type="text" class="form-control" placeholder="push refs">
-          <span class="input-group-btn">
-            <button class="btn btn-success btn-copy" type="button">Copy</button>
-          </span>
-        </div>
-      </div>
-
-
-      <div class="mt20">
-        <a href="http://code.ctripcorp.com/#/" target="_blank" class="btn btn-default btn-lg" role="button">Code Review
-          &gt;&gt;</a>
-      </div>
-      <div class="col-md-12 mt20">
-        <div class="input-group">
-          <input id="text_push" type="text" class="form-control" placeholder="push">
-          <span class="input-group-btn">
-            <button class="btn btn-success btn-copy" type="button">Copy</button>
-          </span>
-        </div>
-      </div>
-
-      <!-- H5 Rem 计算 默认设计尺寸 宽度750px  rem=750/40-->
-      <div class="col-md-12 mt20">
-        <div class="form-inline">
-          <div class="form-group mr20 f-16">
-            <label>rem=750px/40：&emsp;</label>
+    <div class="panel panel-primary">
+      <div class="panel-heading">域名复制</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6 mb10">
+            <div class="input-group ">
+              <input type="text" class="form-control" value="http://localhost:9066">
+              <span class="input-group-btn">
+                <button class="btn btn-success btn-copy" type="button">copy live domain</button>
+              </span>
+            </div>
           </div>
-          <div class="form-group mr20">
-            <label class="f-16">设计尺寸( px )&emsp;</label>
-            <input type="text" class="form-control" id="width_px">
-            <label class="ml5 f-16">px</label>
+          <div class="col-md-6 mb10">
+            <div class="input-group ">
+              <input type="text" class="form-control" value="http://hfdoc.qa.lc.ctripcorp.com">
+              <span class="input-group-btn">
+                <button class="btn btn-success btn-copy" type="button">Copy local domain</button>
+              </span>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="d-red f-16"> =>Rem &emsp;</label>
-            <input type="text" class="form-control" id="width_rem">
-            <span class="input-group-btn">
-              <button id="copy_rem" class="btn btn-success btn-copy" type="button">复制Rem</button>
-            </span>
+          <div class="col-md-12">
+            <div class="input-group ">
+              <input type="text" class="form-control" value="http://hfdoc.qa.nt.ctripcorp.com">
+              <span class="input-group-btn">
+                <button class="btn btn-success btn-copy" type="button">Copy online domain</button>
+              </span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="mv20">
-
-      </div>
-
-
+      <div class="panel-footer">&nbsp;</div>
     </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">分支操作</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="input-group">
+              <input id="input_branch" type="text" class="form-control" placeholder="输入分支 : branchname">
+              <span class="input-group-btn ebk-branch-box">
+                <button id="ebk_branch" class="btn btn-primary" type="button">生成命令行</button>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-md-6 mt20">
+            <div class="input-group ">
+              <input id="new_branch" type="text" class="form-control" placeholder="新建分支 : git checkout -b branchname release">
+              <span class="input-group-btn">
+                <button class="btn btn-success btn-copy" type="button">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6 mt20">
+            <div class="input-group ">
+              <input id="push_u_branch" type="text" class="form-control" placeholder="推送 : git push -u origin branchname">
+              <span class="input-group-btn">
+                <button class="btn btn-success btn-copy" type="button">Copy</button>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-md-12 mt20">
+            <div class="input-group">
+              <input id="text_push_refs" type="text" class="form-control" placeholder="push refs">
+              <span class="input-group-btn">
+                <button class="btn btn-success btn-copy" type="button">Copy</button>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-12 mt20">
+            <button onclick=" window.open('http://code.ctripcorp.com/#/','_blank'); " target="_blank" type="button"
+              class="btn btn-info">CodeReview &gt;&gt;</button>
+          </div>
+          <div class="col-md-12 mt20">
+            <div class="input-group">
+              <input id="text_push" type="text" class="form-control" placeholder="push">
+              <span class="input-group-btn">
+                <button class="btn btn-success btn-copy" type="button">Copy</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">&nbsp;</div>
+    </div>
+
+    <div class="panel panel-primary">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Panel heading</div>
+      <div class="panel-body">
+        <div class="row f-16">
+          <div class="col-md-12">
+            <div class="form-inline">
+              <label class="mr20">rem=750px/40：</label>
+              <label>设计尺寸( px )&emsp;</label>
+              <div class="input-group mr20">
+                <input type="text" id="width_px" class="form-control" aria-label="Text input with checkbox">
+                <span class="input-group-addon bold">px</span>
+              </div>
+              <label class="d-red f-16"> =>Rem &emsp;</label>
+              <div class="input-group mr20">
+                <input type="text" class="form-control" id="width_rem">
+                <span class="input-group-btn">
+                  <button id="copy_rem" class="btn btn-success btn-copy" type="button">复制Rem</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 
   <script src="./src/js/libs/jquery.js"></script>
@@ -106,21 +144,11 @@
 </body>
 <script>
   $(function () {
-    function getElement(id) {
-      let e = document.getElementById(id);
-      return e;
-    }
-
-
-
-
     // 有 空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符，返回true 
     const hasWhiteSpace = (string) => {
       let regex = /\s{1,}?/g;
       return string.match(regex);
     }
-
-
     const creat_command_line = (e) => {
       let text = $("#input_branch").val();
       if (!text || hasWhiteSpace(text)) {
@@ -208,12 +236,21 @@
       }
     });
 
+    function getElement(id) {
+      let e = document.getElementById(id);
+      return e;
+    }
     var dd = getElement('test');
-    dd.addEventListener('click',function () { console.log(`1`);},false);
-    dd.addEventListener('mousemove',function () { console.log(`2`);},false);
-
-
-
+    dd.addEventListener('click', function () {
+      console.log(`1`);
+    }, false);
+    dd.addEventListener('mousemove', function () {
+      console.log(`2`);
+    }, false);
+    function handle() {
+      alert("I am an alert box!!")
+    }
+   window.addEventListener("beforeunload", handle);
   });
 </script>
 
