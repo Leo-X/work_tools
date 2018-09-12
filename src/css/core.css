@@ -509,7 +509,7 @@ a:focus {
 
 .c-m {
     cursor: context-menu\0;
-    cursor: url(http: //pic.c-ctrip.com/kolibre/c_4.cur), context-menu;
+    cursor: url(http://pic.c-ctrip.com/kolibre/c_4.cur), context-menu;
 }
 
 /*E Global*/
@@ -1501,7 +1501,7 @@ textarea.d-input {
     display: inline-block;
     *display: inline;
     *zoom: 1;
-    background: url(http: //pic.c-ctrip.com/mip/un_base.png) no-repeat;
+    background: url(http://pic.c-ctrip.com/mip/un_base.png) no-repeat;
 }
 
 .d-ico-succeed32 {
