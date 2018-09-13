@@ -862,16 +862,25 @@ a:focus {
     color: #aa6708;
 }
 
-.d-darkgray {
+.d-dark {
     color: #333;
 }
 
-.d-gray {
+.d-gray0 {
     color: #666;
 }
 
-.d-lightgray {
-    color: #999;
+.d-gray {
+    color: #ccc;
+}
+
+
+.d-gray2 {
+    color: #ddd;
+}
+
+.d-gray3 {
+    color: #eee;
 }
 
 .d-underline {
@@ -885,6 +894,7 @@ a:focus {
 .d-bold {
     font-weight: bold !important;
 }
+
 .bold {
     font-weight: bold !important;
 }
