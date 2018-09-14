@@ -20,7 +20,7 @@
 
       <div class="collapse navbar-collapse">
         <ul class="nav nav-pills fl" style="padding: 5px 0;">
-          <li class="active"><a href="./index.html">首页</a></li>
+          <li class="active" id="test"><a href="./index.html">首页</a></li>
           <li><a href="./src/pages/demo.html" target="_blank">Demo</a></li>
           <li><a href="./tool.html" target="_blank">Tools</a></li>
           <li>
@@ -302,14 +302,15 @@
       console.log(`2`);
     }, false);
 
-
-
-
     var cc = getElement('width_px');
+
     function handle() {
-      alert("I am an alert box!!")
+      var keys = this.which || this.keyCode;;
+      console.log(`name_or_key ：${ keys }`);
     }
-    cc.addEventListener("change", handle);
+
+    cc.addEventListener("input", handle);
+
   });
 </script>
 
