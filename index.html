@@ -75,23 +75,31 @@
             <div class="input-group ">
               <input type="text" class="form-control" value="http://localhost:9066">
               <span class="input-group-btn">
-                <button class="btn btn-success btn-copy" type="button">copy live domain</button>
+                <button class="btn btn-success btn-copy" type="button">Copy live domain</button>
               </span>
             </div>
           </div>
           <div class="col-md-6 mb10">
             <div class="input-group ">
-              <input type="text" class="form-control" value="http://hfdoc.qa.lc.ctripcorp.com">
-              <span class="input-group-btn">
-                <button class="btn btn-success btn-copy" type="button">Copy local domain</button>
-              </span>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="input-group ">
               <input type="text" class="form-control" value="http://hfdoc.qa.nt.ctripcorp.com">
               <span class="input-group-btn">
                 <button class="btn btn-success btn-copy" type="button">Copy online domain</button>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group ">
+              <input type="text" class="form-control" value="http://localhost:3000">
+              <span class="input-group-btn">
+                <button class="btn btn-success btn-copy" type="button">Copy react domain</button>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group ">
+              <input type="text" class="form-control" value="http://hfdoc.qa.lc.ctripcorp.com">
+              <span class="input-group-btn">
+                <button class="btn btn-success btn-copy" type="button">Copy local domain</button>
               </span>
             </div>
           </div>
@@ -305,11 +313,29 @@
     var cc = getElement('width_px');
 
     function handle() {
-      var keys = this.which || this.keyCode;;
-      console.log(`name_or_key ：${ keys }`);
-    }
+      console.log(`lastname ：${ window.localStorage.getItem("lastname")}`);
 
-    cc.addEventListener("input", handle);
+    }
+    window.localStorage["lastname"] = "Smith";
+    // window.localStorage.setItem("lastname", "Smith");
+    window.localStorage.lastname += 6;
+    // window.localStorage.removeItem("lastname");
+    handle();
+    window.localStorage.lastname += 6;
+    handle();
+
+    var data = {
+      name: 'xiecanyong',
+      sex: 'man',
+      hobby: 'program',
+      ddd:{
+        key1:"111",
+        key2:"222",
+      }
+    };
+    var ddd = JSON.stringify(data);
+    window.localStorage.setItem("data", ddd);
+    console.log(window.localStorage.data);
 
   });
 </script>

@@ -823,6 +823,64 @@ a:focus {
     padding-left: 20px;
     padding-right: 20px;
 }
+.p30 {
+    padding: 30px;
+}
+
+.pt30 {
+    padding-top: 30px;
+}
+
+.pr30 {
+    padding-right: 30px;
+}
+
+.pb30 {
+    padding-bottom: 30px;
+}
+
+.pl30 {
+    padding-left: 30px;
+}
+
+.pv30 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.ph30 {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.p40 {
+    padding: 40px;
+}
+
+.pt40 {
+    padding-top: 40px;
+}
+
+.pr40 {
+    padding-right: 40px;
+}
+
+.pb40 {
+    padding-bottom: 40px;
+}
+
+.pl40 {
+    padding-left: 40px;
+}
+
+.pv40 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.ph40 {
+    padding-left: 40px;
+    padding-right: 40px;
+}
 
 /*=E layout control*/
 /*=S text color*/
