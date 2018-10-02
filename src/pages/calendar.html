@@ -9,7 +9,7 @@
 </head>
 <style>
     .calendar-wrapper{position: relative;display: inline-block;}
-.d-calendar{position: absolute;top: 36px;left: 0;z-index: 2; padding: 10px;width: 600px;height: 360px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;}
+.d-calendar{position: absolute;top: 36px;left: 0;z-index: 2; padding: 10px;width: 600px;height: 360px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;outline: none;}
 .d-calendar .d-calendar-header{padding:5px 10px; text-align: center; font-size: 16px;font-weight: bold;}
 .d-calendar .d-calendar-box{position: relative;display:inline-block;*zoom:1;*display: inline; width: 280px;vertical-align: top;}
 .d-calendar .d-calendar-box.d-calendar-box01{margin-right: 10px;margin-bottom: 10px;}
@@ -87,6 +87,7 @@
                 }
                 _this.calendarBox = _this.datePicker[0].parentNode;
                 _this.calendarPop = _this.datePicker[0].parentNode.lastElementChild;
+                _this.calendarPop.setAttribute("tabindex", -1);
 
                 _this.calendarItem[0] = _this.datePicker[0].parentNode.lastElementChild.children[1]; //第1个 d-calendar-box
                 _this.calendarItem[1] = _this.datePicker[0].parentNode.lastElementChild.children[2]; //第2个 d-calendar-box
@@ -402,6 +403,7 @@
                     renderClass(_this.clickDate, "selected");
                     renderSelectedClass(_this.clickDate, "d-applicable");
                 }
+
                 function traversalBox(date_, classNames) {
                     // console.log(`date_ ：${ date_ }`);
                     // console.log(`classNames ：${ classNames }`);
@@ -705,11 +707,11 @@
                         removeClass(e_day_box, "selected");
                         addClass(e_day_box, "selected");
                         if (compareDate(dateClick, _this.clickDate[0]) === 0) {
-                            // continue;
+                            console.log(`点击的一样，算一次`);
                         } else {
                             _this.clickDate.push(dateClick);
+                            console.log(`第二次点击`);
                         }
-                        console.log(`第二次点击`);
                         console.log(`_this.clickDate ：${ _this.clickDate }`);
                     } else if (_this.clickDate.length > 1) {
                         selectClean("selected");
@@ -736,17 +738,21 @@
 
 
                 function showPop() {
+                    console.log(`触发focus6`);
                     if (_this.datePicker.length === 2) {
                         _this.clickDate[0] = _this.datePicker[0].value;
                         _this.clickDate[1] = _this.datePicker[1].value;
                     } else {
                         _this.clickDate[0] = _this.datePicker[0].value;
                     }
+                    _this.calendarPop.focus();
                     _this.render(_this.year, _this.month, _this.day);
                     _this.calendarPop.style.display = "block";
                 }
+
                 function hidePop(e) {
                     stopPropagation(e.target);
+                    console.log(`触发blur107`);
                     _this.calendarPop.style.display = "none";
                 }
 
@@ -754,10 +760,14 @@
                 if (_this.datePicker.length === 2) {
                     _this.datePicker[0].addEventListener("focus", showPop);
                     _this.datePicker[1].addEventListener("focus", showPop);
+                    // _this.datePicker[0].addEventListener("blur", hidePop);
+                    // _this.datePicker[1].addEventListener("blur", hidePop);
                 } else {
                     _this.datePicker[0].addEventListener("focus", showPop);
+                    // _this.datePicker[0].addEventListener("blur", hidePop);
                 }
-                _this.calendarBox.addEventListener("blur", hidePop);
+                // _this.calendarBox.addEventListener("focus", showPop);
+                // _this.calendarPop.addEventListener("blur", hidePop);
 
                 // 初始化
                 _this.render(_this.year, _this.month, _this.day);

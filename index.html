@@ -2,342 +2,344 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="./src/lib_ui/bootstrap-3.3.7-dist/css/bootstrap.css">
-  <link rel="stylesheet" href="./src/lib_ui/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
-  <link rel="stylesheet" href="./src/css/core.css">
-  <link rel="stylesheet" href="./src/css/pages/index.css">
-  <title>常用工具</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./src/lib_ui/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./src/lib_ui/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="./src/css/core.css">
+    <link rel="stylesheet" href="./src/css/pages/index.css">
+    <title>常用工具</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Leo-X</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav nav-pills fl" style="padding: 5px 0;">
+                    <li class="active" id="test"><a href="./index.html">首页</a></li>
+                    <li><a href="./src/pages/calendar.html" target="_blank">Calendar</a></li>
+                    <li><a href="./src/pages/demo.html" target="_blank">Demo</a></li>
+                    <li><a href="./tool.html" target="_blank">工具页</a></li>
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+                            其他 <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="dropdownMenu1">
+                            <li><a target="_blank" href="http://hfdoc.qa.nt.ctripcorp.com/docmapp/#/docs-list">项目文档管理</a></li>
+                            <li><a target="_blank" href="http://app.ares.fx.ctripcorp.com/portal#/croller/">图片发布</a></li>
+                            <li><a target="_blank" href="http://localhost:8080/">8080 端口</a></li>
+                            <!-- <li class="disabled"><a href="#">8080端口</a></li> -->
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Setting</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Setting
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
     <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Leo-X</a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav nav-pills fl" style="padding: 5px 0;">
-          <li class="active" id="test"><a href="./index.html">首页</a></li>
-          <li><a href="./src/pages/demo.html" target="_blank">Demo</a></li>
-          <li><a href="./tool.html" target="_blank">工具页</a></li>
-          <li>
-            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-              其他 <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" id="dropdownMenu1">
-              <li><a target="_blank" href="http://hfdoc.qa.nt.ctripcorp.com/docmapp/#/docs-list">项目文档管理</a></li>
-              <li><a target="_blank" href="http://app.ares.fx.ctripcorp.com/portal#/croller/">图片发布</a></li>
-              <li><a target="_blank" href="http://localhost:8080/">8080 端口</a></li>
-              <!-- <li class="disabled"><a href="#">8080端口</a></li> -->
-              <li role="separator" class="divider"></li>
-              <li><a href="#">link</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="navbar-form navbar-left">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Setting</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Setting
-              <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-
-  <div class="container">
-    <div class="f-16 d-gray">
-      <span class="mr10">快捷键:</span>
-      <span class="mr10">Alt + C</span>
-      <a href="./src/views/demo.html">Demo</a>
-    </div>
-
-    <div class="panel panel-primary mt20">
-      <div class="panel-heading">域名复制</div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-6 mb10">
-            <div class="input-group ">
-              <input type="text" class="form-control" value="http://localhost:9066">
-              <span class="input-group-btn">
-                <button class="btn btn-success btn-copy" type="button">Copy live domain</button>
-              </span>
-            </div>
-          </div>
-          <div class="col-md-6 mb10">
-            <div class="input-group ">
-              <input type="text" class="form-control" value="http://hfdoc.qa.nt.ctripcorp.com">
-              <span class="input-group-btn">
-                <button class="btn btn-success btn-copy" type="button">Copy online domain</button>
-              </span>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="input-group ">
-              <input type="text" class="form-control" value="http://localhost:3000">
-              <span class="input-group-btn">
-                <button class="btn btn-success btn-copy" type="button">Copy react domain</button>
-              </span>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="input-group ">
-              <input type="text" class="form-control" value="http://hfdoc.qa.lc.ctripcorp.com">
-              <span class="input-group-btn">
-                <button class="btn btn-success btn-copy" type="button">Copy local domain</button>
-              </span>
-            </div>
-          </div>
+        <div class="f-16 d-gray">
+            <span class="mr10">快捷键:</span>
+            <span class="mr10">Alt + C</span>
+            <a href="./src/views/demo.html">Demo</a>
         </div>
-      </div>
-      <div class="panel-footer">&nbsp;</div>
-    </div>
-    <div class="panel panel-primary">
-      <div class="panel-heading">分支操作</div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="input-group">
-              <input id="input_branch" type="text" class="form-control" placeholder="输入分支 : branchname">
-              <span class="input-group-btn ebk-branch-box">
-                <button id="ebk_branch" class="btn btn-primary" type="button">生成命令行</button>
-              </span>
-            </div>
-          </div>
 
-          <div class="col-md-6 mt20">
-            <div class="input-group ">
-              <input id="new_branch" type="text" class="form-control" placeholder="新建分支 : git checkout -b branchname release">
-              <span class="input-group-btn">
-                <button class="btn btn-success btn-copy" type="button">Copy</button>
-              </span>
+        <div class="panel panel-primary mt20">
+            <div class="panel-heading">域名复制</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6 mb10">
+                        <div class="input-group ">
+                            <input type="text" class="form-control" value="http://localhost:9066">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">Copy live domain</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb10">
+                        <div class="input-group ">
+                            <input type="text" class="form-control" value="http://hfdoc.qa.nt.ctripcorp.com">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">Copy online domain</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group ">
+                            <input type="text" class="form-control" value="http://localhost:3000">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">Copy react domain</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group ">
+                            <input type="text" class="form-control" value="http://hfdoc.qa.lc.ctripcorp.com">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">Copy local domain</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-6 mt20">
-            <div class="input-group ">
-              <input id="push_u_branch" type="text" class="form-control" placeholder="推送新分支到远程仓库 : git push -u origin branchname">
-              <span class="input-group-btn">
-                <button class="btn btn-success btn-copy" type="button">Copy</button>
-              </span>
-            </div>
-          </div>
-
-          <div class="col-md-6 mt20">
-            <div class="input-group">
-              <input id="text_push_refs" type="text" class="form-control" placeholder="push refs 推送分支">
-              <span class="input-group-btn">
-                <button class="btn btn-success btn-copy" type="button">Copy</button>
-              </span>
-            </div>
-          </div>
-          <div class="col-md-2 mt20">
-            <button onclick=" window.open('http://code.ctripcorp.com/#/','_blank'); " target="_blank" type="button"
-              class="btn btn-info">CodeReview &gt;&gt;</button>
-          </div>
-          <div class="col-md-4 mt20">
-            <div class="input-group">
-              <input id="text_push" type="text" class="form-control" placeholder="push">
-              <span class="input-group-btn">
-                <button class="btn btn-success btn-copy" type="button">Copy</button>
-              </span>
-            </div>
-          </div>
+            <div class="panel-footer">&nbsp;</div>
         </div>
-      </div>
-      <div class="panel-footer">&nbsp;</div>
-    </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">分支操作</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input id="input_branch" type="text" class="form-control" placeholder="输入分支 : branchname">
+                            <span class="input-group-btn ebk-branch-box">
+                                <button id="ebk_branch" class="btn btn-primary" type="button">生成命令行</button>
+                            </span>
+                        </div>
+                    </div>
 
-    <div class="panel panel-primary">
-      <!-- Default panel contents -->
-      <div class="panel-heading">Panel heading</div>
-      <div class="panel-body">
-        <div class="row f-16">
-          <div class="col-md-12">
-            <div class="form-inline">
-              <label class="mr20">rem=750px/40：</label>
-              <label>设计尺寸( px )&emsp;</label>
-              <div class="input-group mr20">
-                <input type="text" id="width_px" class="form-control" aria-label="Text input with checkbox">
-                <span class="input-group-addon bold">px</span>
-              </div>
-              <label class="d-red f-16"> =>Rem &emsp;</label>
-              <div class="input-group mr20">
-                <input type="text" class="form-control" id="width_rem">
-                <span class="input-group-btn">
-                  <button id="copy_rem" class="btn btn-success btn-copy" type="button">复制Rem</button>
-                </span>
-              </div>
+                    <div class="col-md-6 mt20">
+                        <div class="input-group ">
+                            <input id="new_branch" type="text" class="form-control" placeholder="新建分支 : git checkout -b branchname release">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">Copy</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt20">
+                        <div class="input-group ">
+                            <input id="push_u_branch" type="text" class="form-control" placeholder="推送新分支到远程仓库 : git push -u origin branchname">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">Copy</button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt20">
+                        <div class="input-group">
+                            <input id="text_push_refs" type="text" class="form-control" placeholder="push refs 推送分支">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">Copy</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mt20">
+                        <button onclick=" window.open('http://code.ctripcorp.com/#/','_blank'); " target="_blank" type="button"
+                            class="btn btn-info">CodeReview &gt;&gt;</button>
+                    </div>
+                    <div class="col-md-4 mt20">
+                        <div class="input-group">
+                            <input id="text_push" type="text" class="form-control" placeholder="push">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">Copy</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="panel-footer">&nbsp;</div>
         </div>
-      </div>
+
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+                <div class="row f-16">
+                    <div class="col-md-12">
+                        <div class="form-inline">
+                            <label class="mr20">rem=750px/40：</label>
+                            <label>设计尺寸( px )&emsp;</label>
+                            <div class="input-group mr20">
+                                <input type="text" id="width_px" class="form-control" aria-label="Text input with checkbox">
+                                <span class="input-group-addon bold">px</span>
+                            </div>
+                            <label class="d-red f-16"> =>Rem &emsp;</label>
+                            <div class="input-group mr20">
+                                <input type="text" class="form-control" id="width_rem">
+                                <span class="input-group-btn">
+                                    <button id="copy_rem" class="btn btn-success btn-copy" type="button">复制Rem</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
-
-  </div>
-
-  <script src="./src/js/libs/jquery.js"></script>
-  <!-- <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    <script src="./src/js/libs/jquery.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script> -->
-  <script src="./src/lib_ui/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-  <script src="./src/js/plugins/layer/layer.js">
-  </script>
-  <!-- <script src="./async.js"> -->
-  </script>
+    <script src="./src/lib_ui/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="./src/js/plugins/layer/layer.js">
+    </script>
+    <!-- <script src="./async.js"> -->
+    </script>
 </body>
 <script>
-  $(function () {
-    // 有 空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符，返回true
-    const hasWhiteSpace = (string) => {
-      let regex = /\s{1,}?/g;
-      return string.match(regex);
-    }
+    $(function () {
+        // 有 空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符，返回true
+        const hasWhiteSpace = (string) => {
+            let regex = /\s{1,}?/g;
+            return string.match(regex);
+        }
 
-    const creat_command_line = (e) => {
-      let text = $("#input_branch").val();
-      if (!text || hasWhiteSpace(text)) {
-        layer.msg("分支为空，或不符合格式要求", {
-          time: 2000
+        const creat_command_line = (e) => {
+            let text = $("#input_branch").val();
+            if (!text || hasWhiteSpace(text)) {
+                layer.msg("分支为空，或不符合格式要求", {
+                    time: 2000
+                });
+                return false;
+            }
+
+
+
+            let new_branch = `git checkout -b ${text} release`;
+            let push_u_branch = `git push -u origin ${text}`;
+            let text_push_refs = `git push origin ${text}:refs/for/${text}`;
+            let text_push = `git push origin ${text}`;
+            $("#push_u_branch").val(push_u_branch);
+            $("#new_branch").val(new_branch);
+            $("#text_push_refs").val(text_push_refs);
+            $("#text_push").val(text_push);
+            // layer.msg('命令行已生成，分支： ' + text, {
+            //   time: 3000
+            // });
+        };
+
+        // ctrlKey（metaKey）、altKey、shiftKey
+        // 绑定 输入框enter 键 输入框绑定
+        $("#input_branch").keyup(function (e) {
+            if (e.keyCode == 13) {
+                creat_command_line();
+            }
         });
-        return false;
-      }
-
-
-
-      let new_branch = `git checkout -b ${text} release`;
-      let push_u_branch = `git push -u origin ${text}`;
-      let text_push_refs = `git push origin ${text}:refs/for/${text}`;
-      let text_push = `git push origin ${text}`;
-      $("#push_u_branch").val(push_u_branch);
-      $("#new_branch").val(new_branch);
-      $("#text_push_refs").val(text_push_refs);
-      $("#text_push").val(text_push);
-      // layer.msg('命令行已生成，分支： ' + text, {
-      //   time: 3000
-      // });
-    };
-
-    // ctrlKey（metaKey）、altKey、shiftKey
-    // 绑定 输入框enter 键 输入框绑定
-    $("#input_branch").keyup(function (e) {
-      if (e.keyCode == 13) {
-        creat_command_line();
-      }
-    });
-    // 全局快捷键
-    $(document).keyup(function (e) {
-      if ((e.keyCode == 67) && e.altKey) {
-        creat_command_line();
-      }
-    });
-
-    $("#ebk_branch").click(creat_command_line);
-
-    $(".btn-copy").click(function (e) {
-      let text = $(this).parent().prev().val();
-      if (text && (text != '')) {
-        $(this).parent().prev().select();
-        document.execCommand("Copy");
-        layer.msg('复制成功，内容： ' + text, {
-          time: 3000
+        // 全局快捷键
+        $(document).keyup(function (e) {
+            if ((e.keyCode == 67) && e.altKey) {
+                creat_command_line();
+            }
         });
-      } else {
-        layer.msg('值为空，或内容格式不符合要求', {
-          time: 2000
+
+        $("#ebk_branch").click(creat_command_line);
+
+        $(".btn-copy").click(function (e) {
+            let text = $(this).parent().prev().val();
+            if (text && (text != '')) {
+                $(this).parent().prev().select();
+                document.execCommand("Copy");
+                layer.msg('复制成功，内容： ' + text, {
+                    time: 3000
+                });
+            } else {
+                layer.msg('值为空，或内容格式不符合要求', {
+                    time: 2000
+                });
+            }
         });
-      }
-    });
 
-    // 监控分支输入，直接生成命令
-    $('#input_branch').on('input', function () {
-      let v = $(this).val();
-      creat_command_line();
-    });
-
-
-    // 监控数值，计算rem
-    $('#width_px').on('input', function () {
-      let v = $(this).val();
-      if (isNaN(v)) {
-        layer.msg(v + ' 不是数值，请输入正确数值 ', {
-          time: 1500
+        // 监控分支输入，直接生成命令
+        $('#input_branch').on('input', function () {
+            let v = $(this).val();
+            creat_command_line();
         });
-        return false;
-      } else {
-        v = Math.floor(v / 40 * 1000) / 1000;
-        v = v.toFixed(3);
-        v = parseFloat(v);
-        $('#width_rem').val(v + "rem");
-      }
+
+
+        // 监控数值，计算rem
+        $('#width_px').on('input', function () {
+            let v = $(this).val();
+            if (isNaN(v)) {
+                layer.msg(v + ' 不是数值，请输入正确数值 ', {
+                    time: 1500
+                });
+                return false;
+            } else {
+                v = Math.floor(v / 40 * 1000) / 1000;
+                v = v.toFixed(3);
+                v = parseFloat(v);
+                $('#width_rem').val(v + "rem");
+            }
+        });
+        // 点击复制数值
+        $('#copy_rem').click(function (e) {
+            e.preventDefault();
+            $(this).prev().select();
+            document.execCommand("Copy");
+        });
+
+        $("#width_px").keyup(function (e) {
+            if (e.keyCode == 13) {
+                $('#copy_rem').click();
+            }
+        });
+
+        function getElement(id) {
+            let e = document.getElementById(id);
+            return e;
+        }
+        var dd = getElement('test');
+        dd.addEventListener('click', function () {
+            console.log(`1`);
+        }, false);
+        dd.addEventListener('mousemove', function () {
+            console.log(`2`);
+        }, false);
+
+        var cc = getElement('width_px');
+
+        function handle() {
+            console.log(`lastname ：${ window.localStorage.getItem("lastname")}`);
+
+        }
+        window.localStorage["lastname"] = "Smith";
+        // window.localStorage.setItem("lastname", "Smith");
+        window.localStorage.lastname += 6;
+        // window.localStorage.removeItem("lastname");
+        handle();
+        window.localStorage.lastname += 6;
+        handle();
+
+        var data = {
+            name: 'xiecanyong',
+            sex: 'man',
+            hobby: 'program',
+            ddd: {
+                key1: "111",
+                key2: "222",
+            }
+        };
+        var ddd = JSON.stringify(data);
+        window.localStorage.setItem("data", ddd);
+        console.log(window.localStorage.data);
+
     });
-    // 点击复制数值
-    $('#copy_rem').click(function (e) {
-      e.preventDefault();
-      $(this).prev().select();
-      document.execCommand("Copy");
-    });
-
-    $("#width_px").keyup(function (e) {
-      if (e.keyCode == 13) {
-        $('#copy_rem').click();
-      }
-    });
-
-    function getElement(id) {
-      let e = document.getElementById(id);
-      return e;
-    }
-    var dd = getElement('test');
-    dd.addEventListener('click', function () {
-      console.log(`1`);
-    }, false);
-    dd.addEventListener('mousemove', function () {
-      console.log(`2`);
-    }, false);
-
-    var cc = getElement('width_px');
-
-    function handle() {
-      console.log(`lastname ：${ window.localStorage.getItem("lastname")}`);
-
-    }
-    window.localStorage["lastname"] = "Smith";
-    // window.localStorage.setItem("lastname", "Smith");
-    window.localStorage.lastname += 6;
-    // window.localStorage.removeItem("lastname");
-    handle();
-    window.localStorage.lastname += 6;
-    handle();
-
-    var data = {
-      name: 'xiecanyong',
-      sex: 'man',
-      hobby: 'program',
-      ddd: {
-        key1: "111",
-        key2: "222",
-      }
-    };
-    var ddd = JSON.stringify(data);
-    window.localStorage.setItem("data", ddd);
-    console.log(window.localStorage.data);
-
-  });
 </script>
 
 </html>
