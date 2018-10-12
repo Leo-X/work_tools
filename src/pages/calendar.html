@@ -9,7 +9,7 @@
 </head>
 <style>
     .calendar-wrapper{position: relative;display: inline-block;}
-.d-calendar{position: absolute;top: 36px;left: 0;z-index: 2; padding: 10px;width: 600px;height: 360px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;outline: none;}
+.d-calendar{display: none; position: absolute;top: 36px;left: 0;z-index: 2; padding: 10px;width: 600px;height: 360px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;outline: none;}
 .d-calendar .d-calendar-header{padding:5px 10px; text-align: center; font-size: 16px;font-weight: bold;}
 .d-calendar .d-calendar-box{position: relative;display:inline-block;*zoom:1;*display: inline; width: 280px;vertical-align: top;}
 .d-calendar .d-calendar-box.d-calendar-box01{margin-right: 10px;margin-bottom: 10px;}
@@ -191,13 +191,13 @@
                     _this.curMonth = parseInt(dateArr[1]);
                     _this.curDay = parseInt(dateArr[2]);
                     _this.curDate = setting.today;
-                    console.log(`给定了当日日期:${_this.curDate}`);
+                    // console.log(`给定了当日日期:${_this.curDate}`);
                 } else {
                     _this.curYear = date_local.getFullYear();
                     _this.curMonth = date_local.getMonth() + 1; //中文状态的数字
                     _this.curDay = date_local.getDate();
                     _this.curDate = _this.curYear + "-" + _this.curMonth + "-" + _this.curDay;
-                    console.log(`本地当日日期:_this.curDate:${_this.curDate}`);
+                    // console.log(`本地当日日期:_this.curDate:${_this.curDate}`);
                 }
                 // 渲染显示的日期
                 _this.year = _this.curYear;
@@ -326,7 +326,7 @@
                         year_2 = year_;
                     }
                     _this.e_title.innerText = _this.title; //设置日历标题
-                    console.log(`重新渲染日期:${year_}-${month_} 至 ${year_2}-${month_2}`);
+                    // console.log(`重新渲染日期:${year_}-${month_} 至 ${year_2}-${month_2}`);
                     // 判断日期格式   默认yyyy-mm,  月年 "mm-yyyy"
                     if (_this.dateForm === "mm-yyyy") {
                         var dateText1 = _this.arrMonth[month_ - 1] + "\&nbsp\;" + year_;
@@ -645,15 +645,15 @@
                     if (_this.clickDate.length == 2) {
                         compareDate(_this.clickDate[0], _this.clickDate[1]);
                         _this.clickDate.splice(-1, 1);
-                        console.log(`哈哈哈，点了一样，去重后_this.clickDate ：${_this.clickDate}`);
+                        // console.log(`哈哈哈，点了一样，去重后_this.clickDate ：${_this.clickDate}`);
                     }
-                    console.log(`_this.clickDate ：${ _this.clickDate }`);
+                    // console.log(`_this.clickDate ：${ _this.clickDate }`);
                     return _this.clickDate;
                 }
 
                 function fillInDate(dateArr, idArr) {
                     if (dateArr.length !== 2) {
-                        console.log("无法填写，需要两个数值");
+                        // console.log("无法填写，需要两个数值");
                         return false;
                     }
                     var d1 = dateArr[0];
@@ -690,36 +690,36 @@
                     // var selectedNumberArr = _this.clickDate;
                     // var selectedNumber = selectedNumberArr.length; //读取已选selected数量
                     if (hasClass(e_day_box, "d-c-day")) {
-                        console.log(`未成功阻止冒泡`);
+                        // console.log(`未成功阻止冒泡`);
                         return false;
                     }
                     // console.log(`操作前e_day_box.className ：${ e_day_box.className }`);
                     if (hasClass(e_day_box, "disabled")) {
-                        console.log(`disable 按钮不可点击`);
+                        // console.log(`disable 按钮不可点击`);
                         return false;
                     } else if (_this.clickDate.length === 0) {
                         selectClean("selected");
                         addClass(e_day_box, "selected");
                         _this.clickDate.push(dateClick);
-                        console.log(`第一次点击`);
-                        console.log(`_this.clickDate ：${ _this.clickDate }`);
+                        // console.log(`第一次点击`);
+                        // console.log(`_this.clickDate ：${ _this.clickDate }`);
                     } else if (_this.clickDate.length === 1) {
                         removeClass(e_day_box, "selected");
                         addClass(e_day_box, "selected");
                         if (compareDate(dateClick, _this.clickDate[0]) === 0) {
-                            console.log(`点击的一样，算一次`);
+                            // console.log(`点击的一样，算一次`);
                         } else {
                             _this.clickDate.push(dateClick);
-                            console.log(`第二次点击`);
+                            // console.log(`第二次点击`);
                         }
-                        console.log(`_this.clickDate ：${ _this.clickDate }`);
+                        // console.log(`_this.clickDate ：${ _this.clickDate }`);
                     } else if (_this.clickDate.length > 1) {
                         selectClean("selected");
                         addClass(e_day_box, "selected");
                         _this.clickDate = []; //置空状态
                         _this.clickDate.push(dateClick);
-                        console.log(`新一次点击`);
-                        console.log(`_this.clickDate ：${ _this.clickDate }`);
+                        // console.log(`新一次点击`);
+                        // console.log(`_this.clickDate ：${ _this.clickDate }`);
                     }
                     // var arrSelected = searchSelected(); //操作完后读取已选selected 并传入数组
                     selectClean("d-applicable");
@@ -738,7 +738,7 @@
 
 
                 function showPop() {
-                    console.log(`触发focus6`);
+                    // console.log(`触发focus6`);
                     if (_this.datePicker.length === 2) {
                         _this.clickDate[0] = _this.datePicker[0].value;
                         _this.clickDate[1] = _this.datePicker[1].value;
@@ -752,7 +752,7 @@
 
                 function hidePop(e) {
                     stopPropagation(e.target);
-                    console.log(`触发blur107`);
+                    // console.log(`触发blur107`);
                     _this.calendarPop.style.display = "none";
                 }
 
