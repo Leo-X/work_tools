@@ -31,6 +31,9 @@ outline: none;
 .d-c-day .cur-day.disabled:hover{color:#8ec1e6;font-weight: bold;}
 .d-c-day .d-day-item.d-day-item-white{cursor: default;}
 .d-c-day .d-day-item.d-day-item-white:hover{background-color: #fff;}
+@media screen and (max-width: 768px) {
+    .d-calendar {width: 320px;}
+}
 </style>
 
 <body>
@@ -807,7 +810,7 @@ outline: none;
                 _this.calendarPop.addEventListener("mousedown", function (e) {
                     e.preventDefault();
                     _this.calendarPop.focus();
-                 });
+                });
 
 
 
