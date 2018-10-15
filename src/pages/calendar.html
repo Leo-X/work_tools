@@ -10,7 +10,7 @@
 <style>
     .calendar-wrapper{position: relative;display: inline-block;}
 .d-calendar{display: none; position: absolute;top: 36px;left: 0;z-index: 2; padding: 10px;width: 600px;height: 360px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;
-/* outline: none; */
+outline: none;
 }
 .d-calendar .d-calendar-header{padding:5px 10px; text-align: center; font-size: 16px;font-weight: bold;}
 .d-calendar .d-calendar-box{position: relative;display:inline-block;*zoom:1;*display: inline; width: 280px;vertical-align: top;}
@@ -92,7 +92,7 @@
                 _this.calendarBox = _this.datePicker[0].parentNode;
                 _this.calendarPop = _this.datePicker[0].parentNode.lastElementChild;
                 // _this.calendarPop.setAttribute("tabindex", 2);
-                _this.calendarPop.tabindex = 0;
+                // _this.calendarPop.tabindex = 0;
 
                 _this.calendarItem[0] = _this.datePicker[0].parentNode.lastElementChild.children[1]; //第1个 d-calendar-box
                 _this.calendarItem[1] = _this.datePicker[0].parentNode.lastElementChild.children[2]; //第2个 d-calendar-box
@@ -764,14 +764,16 @@
                     var e = event || window.event;
                     if (e.stopPropagation) { //W3C阻止冒泡方法
                         e.stopPropagation();
+                        // console.log("chrome阻止冒泡成功");
                     } else {
                         e.cancelBubble = true; //IE阻止冒泡方法
+                        // console.log("IE阻止冒泡成功");
                     }
                 }
 
 
                 function showPop(e) {
-                    stopPropagation(e.target);
+                    stopPropagation(e);
                     if (_this.datePicker.length === 2) {
                         _this.clickDate[0] = _this.datePicker[0].value;
                         _this.clickDate[1] = _this.datePicker[1].value;
@@ -785,23 +787,27 @@
 
                 function hidePop(e) {
                     stopPropagation(e.target);
-                    console.log("消失： " + e.target.className);
                     _this.calendarPop.style.display = "none";
-                    // console.log(`消失： classname ：${ e.target.className }`);
-                    // var times_ = setTimeout(hide_, 100);
                 }
 
                 // 绑定焦点事件
                 if (_this.datePicker.length === 2) {
                     _this.datePicker[0].addEventListener("focus", showPop);
                     _this.datePicker[1].addEventListener("focus", showPop);
-                    _this.datePicker[0].addEventListener("blur", function (e) {
-                        console.log("输入框失焦")
+                    _this.datePicker[0].addEventListener("blur", function () {
+                        // console.log("输入框1失焦")
+                    });
+                    _this.datePicker[1].addEventListener("blur", function () {
+                        // console.log("输入框2失焦")
                     });
                 } else {
                     _this.datePicker[0].addEventListener("focus", showPop);
                 }
                 _this.calendarPop.addEventListener("blur", hidePop);
+                _this.calendarPop.addEventListener("mousedown", function (e) {
+                    e.preventDefault();
+                    _this.calendarPop.focus();
+                 });
 
 
 
