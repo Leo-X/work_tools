@@ -10,7 +10,7 @@
 <style>
     .calendar-wrapper{position: relative;display: inline-block;}
 .d-calendar{display: none; position: absolute;top: 36px;left: 0;z-index: 2; padding: 10px;width: 600px;height: 360px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;
-outline: none;
+/* outline: none; */
 }
 .d-calendar .d-calendar-header{padding:5px 10px; text-align: center; font-size: 16px;font-weight: bold;}
 .d-calendar .d-calendar-box{position: relative;display:inline-block;*zoom:1;*display: inline; width: 280px;vertical-align: top;}
@@ -769,13 +769,50 @@ outline: none;
                     }
                 }
 
+
+                function showPop(e) {
+                    stopPropagation(e.target);
+                    if (_this.datePicker.length === 2) {
+                        _this.clickDate[0] = _this.datePicker[0].value;
+                        _this.clickDate[1] = _this.datePicker[1].value;
+                    } else {
+                        _this.clickDate[0] = _this.datePicker[0].value;
+                    }
+                    _this.render(_this.year, _this.month, _this.day);
+                    _this.calendarPop.style.display = "block";
+                    _this.calendarPop.focus();
+                }
+
+                function hidePop(e) {
+                    stopPropagation(e.target);
+                    console.log("消失： " + e.target.className);
+                    _this.calendarPop.style.display = "none";
+                    // console.log(`消失： classname ：${ e.target.className }`);
+                    // var times_ = setTimeout(hide_, 100);
+                }
+
+                // 绑定焦点事件
+                if (_this.datePicker.length === 2) {
+                    _this.datePicker[0].addEventListener("focus", showPop);
+                    _this.datePicker[1].addEventListener("focus", showPop);
+                    _this.datePicker[0].addEventListener("blur", function (e) {
+                        console.log("输入框失焦")
+                    });
+                } else {
+                    _this.datePicker[0].addEventListener("focus", showPop);
+                }
+                _this.calendarPop.addEventListener("blur", hidePop);
+
+
+
                 // 给日期绑定点击事件
                 function selectDate(e) {
-                    // stopPropagation(e);
+                    stopPropagation(e);
                     var e_day_box = e.target;
                     // var selectedNumberArr = _this.clickDate;
                     // var selectedNumber = selectedNumberArr.length; //读取已选selected数量
                     if (hasClass(e_day_box, "d-c-day")) {
+                        console.log("阻止冒泡失败");
                         return false;
                     }
                     if (hasClass(e_day_box, "disabled")) {
@@ -839,42 +876,6 @@ outline: none;
                 _this.dayBox[0].addEventListener("mouseover", hoverDate);
                 _this.dayBox[1].addEventListener("mouseover", hoverDate);
 
-
-                function showPop() {
-                    if (_this.datePicker.length === 2) {
-                        _this.clickDate[0] = _this.datePicker[0].value;
-                        _this.clickDate[1] = _this.datePicker[1].value;
-                    } else {
-                        _this.clickDate[0] = _this.datePicker[0].value;
-                    }
-                    _this.render(_this.year, _this.month, _this.day);
-                    _this.calendarPop.style.display = "block";
-                    _this.calendarPop.focus();
-                }
-
-                function hidePop(e) {
-                    // stopPropagation(e.target);
-                    var times_ = setTimeout(hide_, 300);
-                }
-
-                function hide_() {
-                    var hasFocus = document.hasFocus() && document.activeElement === _this.calendarPop;
-                    if (hasFocus) {
-                        console.log("已经聚焦");
-                        return false;
-                    }
-                    _this.calendarPop.style.display = "none";
-                }
-
-
-                // 绑定焦点事件
-                if (_this.datePicker.length === 2) {
-                    _this.datePicker[0].addEventListener("focus", showPop);
-                    _this.datePicker[1].addEventListener("focus", showPop);
-                } else {
-                    _this.datePicker[0].addEventListener("focus", showPop);
-                }
-                _this.calendarPop.addEventListener("blur", hidePop);
                 // 初始化
                 _this.render(_this.year, _this.month, _this.day);
             }
