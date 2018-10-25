@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<style>
+<!-- <style>
     .calendar-wrapper{position: relative;display: inline-block;}
 .d-calendar{display: none; position: absolute;top: 36px;left: 0;z-index: 2; padding: 10px;width: 600px;height: 360px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;
 outline: none;
@@ -36,12 +36,12 @@ outline: none;
 @media screen and (max-width: 768px) {
     .d-calendar {width: 320px;}
 }
-</style>
+</style> -->
 
 <body>
     <div class="calendar-wrapper">
         <input id="d-datepicker01" type="text" class="o-input d-datepicker" />
-        <div class="d-calendar" tabindex="0">
+        <!-- <div class="d-calendar" tabindex="0">
             <div class="d-calendar-header">入住日期</div>
             <div class="d-calendar-box d-calendar-box01">
                 <div class="d-calendar-date">
@@ -61,7 +61,7 @@ outline: none;
                 <div class="d-c-week"></div>
                 <div class="d-c-day d-c-day02"></div>
             </div>
-        </div>
+        </div> -->
     </div>
     至 <input id="d-datepicker02" type="text" class="o-input" />
 </body>
@@ -73,12 +73,89 @@ outline: none;
         ctrip.fn = ctrip.prototype = {
             constructor: ctrip,
             init: function (data) {},
+            createDom: function (setting, isIE) {
+
+                var isIE_ = (typeof (isIE) != "undefined") ? isIE : false;
+                var styleStr = "    .calendar-wrapper{position: relative;display: inline-block;}" +
+                    ".d-calendar{display: none; position: absolute;top: 36px;left: 0;z-index: 2; padding: 10px;width: 600px;height: 360px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:\"Microsoft YaHei\",\"微软雅黑\",arial,simhei;color: #333;" +
+                    "outline: none;" +
+                    "}" +
+                    ".visible{display: block;}" +
+                    ".hidden{display: none;}" +
+                    ".d-calendar .d-calendar-header{padding:5px 10px; text-align: center; font-size: 16px;font-weight: bold;}" +
+                    ".d-calendar .d-calendar-box{position: relative;display:inline-block;*zoom:1;*display: inline; width: 280px;vertical-align: top;}" +
+                    ".d-calendar .d-calendar-box.d-calendar-box01{margin-right: 10px;margin-bottom: 10px;}" +
+                    ".d-calendar-date{position: relative; padding: 0 24px 10px 24px; text-align: center; font-size: 16px;}" +
+                    ".d-calendar-box .btn-prev{position: absolute;top: 0;left: 0;  width: 24px;line-height: 24px;text-align: center;color:#06c;font-size: 20px;cursor: pointer;}" +
+                    ".d-calendar-box .btn-next{position: absolute;top: 0;right: 0; width: 24px;line-height: 24px;text-align: center;color:#06c;font-size: 20px;cursor: pointer;}" +
+                    ".d-c-week .d-week-item{position: relative;float: left; display:inline-block;*zoom:1;*display: inline;width: 40px;height: 40px;line-height: 40px;text-align: center; overflow: hidden;}" +
+                    ".d-c-day .d-day-item{position: relative;float: left; display:inline-block;*zoom:1;*display: inline;width: 40px;height: 40px; line-height: 40px;text-align: center; font-size: 14px; overflow: hidden;cursor: pointer;}" +
+                    ".d-c-day .d-day-item .special-day{position: absolute;top: 0;right: 0;color: #f52121;line-height: 1;font-size: 12px;}" +
+                    ".d-c-day .d-day-item.d-applicable{background-color: #eee;}" +
+                    ".d-c-day .d-day-item.disabled{color: #bdbdbd;}" +
+                    ".d-c-day .d-day-item.selected{background-color: #07c;color: #fff;}" +
+                    ".d-c-day .cur-day{color:#07c;font-weight: bold;}" +
+                    ".d-c-day .cur-day.disabled{color:#8ec1e6;font-weight: bold;}" +
+                    ".d-c-day .d-day-item:hover{background-color: #07c;color: #fff;}" +
+                    ".d-c-day .d-day-item.disabled:hover{background-color: #fff; color: #bdbdbd;cursor: default;}" +
+                    ".d-c-day .cur-day.disabled:hover{color:#8ec1e6;font-weight: bold;}" +
+                    ".d-c-day .d-day-item.d-day-item-white{cursor: default;}" +
+                    ".d-c-day .d-day-item.d-day-item-white:hover{background-color: #fff;}" +
+                    "@media screen and (max-width: 768px) {" +
+                    "    .d-calendar {width: 320px;}" +
+                    "}";
+                if (isIE_) {
+                    var styles = document.createElement("style");
+                    document.getElementsByTagName("head")[0].appendChild(styles);
+                    styles.setAttribute('type', 'text/css');
+                    styles.styleSheet.cssText = styleStr;
+                } else {
+                    var styles = document.createElement("style");
+                    styles.innerHTML = styleStr;
+                    document.getElementsByTagName("head")[0].appendChild(styles);
+                }
+                var calendaDom = "            <div class=\"d-calendar-header\">入住日期</div>" +
+                    "            <div class=\"d-calendar-box d-calendar-box01\">" +
+                    "                <div class=\"d-calendar-date\">" +
+                    "                    <div class=\"btn-prev\">&lt;</div>" +
+                    "                    <div class=\"btn-next\">&gt;</div>" +
+                    "                    <span class=\"d-date-bar\"></span>" +
+                    "                </div>" +
+                    "                <div class=\"d-c-week\"></div>" +
+                    "                <div class=\"d-c-day d-c-day01\"></div>" +
+                    "            </div>" +
+                    "            <div class=\"d-calendar-box\">" +
+                    "                <div class=\"d-calendar-date\">" +
+                    "                    <div class=\"btn-prev\">&lt;</div>" +
+                    "                    <div class=\"btn-next\">&gt;</div>" +
+                    "                    <span class=\"d-date-bar\"></span>" +
+                    "                </div>" +
+                    "                <div class=\"d-c-week\"></div>" +
+                    "                <div class=\"d-c-day d-c-day02\"></div>" +
+                    "            </div>";
+
+                var dCalendar = document.createElement("div");
+                dCalendar.className = "d-calendar";
+                dCalendar.setAttribute("tabindex", 0);
+                dCalendar.innerHTML = calendaDom;
+                document.getElementById(setting.id[0]).parentElement.appendChild(dCalendar);
+            },
             calendar2: function (setting) {
                 var _this = this;
                 _this.browser_ie8 = false;
+                // 兼容IE8  start
+                var browser_cur = navigator.appName;
+                var b_version = navigator.appVersion;
+                var version = b_version.split(";");
+                var trim_Version = version[1].replace(/[ ]/g, "");
+                if (browser_cur == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0") {
+                    _this.browser_ie8 = true;
+                    // console.log("现在是ie8");
+                }
+                //创建dom
+                _this.createDom(setting, _this.browser_ie8);
 
                 var addEvent = function (el, type, handler) {
-                    console.log(_this.browser_ie8);
                     if (_this.browser_ie8) {
                         return el.attachEvent('on' + type, handler);
                     } else {
@@ -87,15 +164,6 @@ outline: none;
                 }
                 // 兼容IE8  end
 
-
-                var browser_cur = navigator.appName
-                var b_version = navigator.appVersion
-                var version = b_version.split(";");
-                var trim_Version = version[1].replace(/[ ]/g, "");
-                if (browser_cur == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0") {
-                    _this.browser_ie8 = true;
-                    console.log("现在是ie8");
-                }
                 _this.calendarItem = [];
                 _this.datePicker = [];
                 _this.e_date_bar = [];
@@ -119,22 +187,15 @@ outline: none;
 
                 if (_this.browser_ie8) {
                     _this.calendarPop = _this.datePicker[0].parentNode.lastChild;
-                }else{
+                } else {
                     _this.calendarPop = _this.datePicker[0].parentNode.lastElementChild;
                 }
                 // _this.calendarPop.setAttribute("tabindex", 2);
                 // _this.calendarPop.tabindex = 0;
 
-                // if (_this.datePicker[0].parentNode.lastChild.previousSibling) {
-                //     console.log("ie8 支持 parentNode  lastChild previousSibling ");
-                // }else{
-                //     console.log("ie8  不 支持 lastChild parentNode previousSibling ");
-                // }
-
                 if (_this.browser_ie8) {
                     _this.calendarItem[0] = _this.datePicker[0].parentNode.lastChild.lastChild.previousSibling; //第1个 d-calendar-box
                     _this.calendarItem[1] = _this.datePicker[0].parentNode.lastChild.lastChild; //第2个 d-calendar-box
-                    console.log(_this.calendarItem[1].className);
                 } else {
                     _this.calendarItem[0] = _this.datePicker[0].parentNode.lastElementChild.children[1]; //第1个 d-calendar-box
                     _this.calendarItem[1] = _this.datePicker[0].parentNode.lastElementChild.children[2]; //第2个 d-calendar-box
@@ -188,10 +249,13 @@ outline: none;
                 // 定义日历标题
                 if (_this.browser_ie8) {
                     _this.e_title = _this.datePicker[0].parentNode.lastChild.children[0];
-                    console.log(_this.e_title.className);
+                    // console.log(_this.e_title.className);
                 } else {
                     _this.e_title = _this.datePicker[0].parentNode.lastElementChild.children[0];
                 }
+
+
+
 
                 // 定义月份名称数组
                 if (typeof (setting.arrMonth) != "undefined") {
@@ -212,11 +276,14 @@ outline: none;
                 _this.unitYear = (typeof (setting.unitYear) != "undefined") ? setting.unitYear : "";
                 _this.title = (typeof (setting.title) != "undefined") ? setting.title : '日历';
 
+
                 function addClass(obj, class_name) {
-                    var obj_class = obj.className, //获取 class 内容.
-                        blank = (obj_class != '') ? ' ' : ''; //判断获取到的 class 是否为空, 如果不为空在前面加个'空格'.
-                    added = obj_class + blank + class_name; //组合原来的 class 和需要添加的 class.
-                    obj.className = added; //替换原来的 class.
+                    var obj_class = obj.className; //获取 class 内容.
+                    var blank = (obj_class != '') ? ' ' : ''; //判断获取到的 class 是否为空, 如果不为空在前面加个'空格'.
+                    var added = obj_class + blank + class_name; //组合原来的 class 和需要添加的 class.
+                    obj.setAttribute("class", added);
+
+                    // obj.className = added; //替换原来的 class.
                 }
 
                 function hasClass(obj, class_name) {
@@ -646,7 +713,7 @@ outline: none;
                         }
                         if (_this.dayBox[0].children[i].childNodes.length > 1) {
                             dateRenderNow1 = year_ + '-' + month_ + '-' + _this.dayBox[0].children[i].childNodes[
-                                0];
+                                0].nodeValue;
                         } else {
                             dateRenderNow1 = year_ + '-' + month_ + '-' + _this.dayBox[0].children[i].innerText;
                         }
@@ -787,7 +854,6 @@ outline: none;
                             } else {
                                 _this.clickDate.push(str1);
                             }
-
                         }
                     }
                     for (var y = 0; y < k1; y++) {
@@ -830,8 +896,9 @@ outline: none;
                     return false;
                 }
 
-                function stopPropagation(event) {
-                    var e = event || window.event;
+                function stopPropagation(e) {
+                    // var e = event || window.event;
+                    var e = e || event;
                     if (e.stopPropagation) { //W3C阻止冒泡方法
                         e.stopPropagation();
                         // console.log("chrome阻止冒泡成功");
@@ -862,7 +929,8 @@ outline: none;
                 }
 
                 function hidePop(e) {
-                    stopPropagation(e.target);
+                    console.log("先blur;");
+                    stopPropagation(e);
                     _this.calendarPop.style.display = "none";
                 }
 
@@ -892,9 +960,16 @@ outline: none;
                 } else {
                     addEvent(_this.datePicker[0], "focus", showPop);
                 }
-                addEvent(_this.calendarPop, "blur", hidePop);
+
+                if (!_this.browser_ie8) {
+                    addEvent(_this.calendarPop, "blur", hidePop);
+                }
+
                 addEvent(_this.calendarPop, "mousedown", function (e) {
-                    e.preventDefault();
+                    stopPropagation(e);
+                    if (_this.browser_ie8) {
+                        // console.log('先按了');
+                    }
                     _this.calendarPop.focus();
                 });
 
@@ -902,11 +977,12 @@ outline: none;
                 // 给日期绑定点击事件
                 function selectDate(e) {
                     stopPropagation(e);
-                    var e_day_box = e.target;
+                    var e_day_box = e.target || e.srcElement;
+                    // var e_day_box = e.target;
                     // var selectedNumberArr = _this.clickDate;
                     // var selectedNumber = selectedNumberArr.length; //读取已选selected数量
                     if (hasClass(e_day_box, "d-c-day")) {
-                        console.log("阻止冒泡失败");
+                        // console.log("阻止冒泡失败");
                         return false;
                     }
                     if (hasClass(e_day_box, "disabled")) {
@@ -945,14 +1021,15 @@ outline: none;
                 // _this.dayBox[0].addEventListener("click", selectDate);
                 // _this.dayBox[1].addEventListener("click", selectDate);
 
-                  addEvent(_this.dayBox[0], "click", selectDate);
-                  addEvent(_this.dayBox[1], "click", selectDate);
+                addEvent(_this.dayBox[0], "click", selectDate);
+                addEvent(_this.dayBox[1], "click", selectDate);
 
 
 
                 function hoverDate(e) {
-                    // stopPropagation(e);
-                    var e_day_box = e.target;
+                    stopPropagation(e);
+                    var e_day_box = e.target || e.srcElement;
+
                     if (hasClass(e_day_box, "d-c-day")) {
                         return false;
                     }
