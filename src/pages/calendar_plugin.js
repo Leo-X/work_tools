@@ -1801,7 +1801,6 @@ var ctrip = (function(window) {
                 }
                 return false;
             }
-
             addEvent(_this.dayBox[0], "click", selectDate);
             addEvent(_this.dayBox[1], "click", selectDate);
             // 初始化
