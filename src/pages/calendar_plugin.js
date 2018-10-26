@@ -1044,8 +1044,11 @@ var ctrip = (function(window) {
             if (setting.id.length > 1) {
                 _this.datePicker[0] = document.getElementById(setting.id[0]); //第一个输入框
                 _this.datePicker[1] = document.getElementById(setting.id[1]); //第二个输入框
+                _this.datePicker[0].setAttribute("tabindex", 0);
+                _this.datePicker[1].setAttribute("tabindex", 0);
             } else {
                 _this.datePicker[0] = document.getElementById(setting.id[0]); //第一个输入框
+                _this.datePicker[0].setAttribute("tabindex", 0);
             }
             _this.calendarBox = _this.datePicker[0].parentNode;
             _this.calendarBox.style.position = "relative";
@@ -1698,9 +1701,11 @@ var ctrip = (function(window) {
                 // 转换成 yyyy-0m-0d 格式
                 idArr[0].setAttribute("data-date", d1);
                 d1 = dateForm1(d1);
-                idArr[0].value = d1;
-                // d2 = dateForm1(d2);
-                // return false;
+                if (idArr[0].tagName == "INPUT") {
+                    idArr[0].value = d1;
+                } else {
+                    idArr[0].innerHTML = d1;
+                }
             }
 
             function stopPropagation(e) {
