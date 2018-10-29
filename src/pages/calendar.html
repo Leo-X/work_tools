@@ -71,8 +71,8 @@ outline: none;
     var setting = {
         // title: "入住日期", // 日历标题
         // id: ["d-datepicker01"], //数组形式，必填
-        id: ["d-datepicker01", "d-datepicker02"], //数组形式，必填
-        // id: ["d-datepicker01"], //数组形式，必填
+        // id: ["d-datepicker01", "d-datepicker02"], //数组形式，必填
+        id: ["d-datepicker01"], //数组形式，必填
         // today: "2018-09-25",
         // date: '2018-09-27',
         limitDate: true, //限制日期则设置ture  默认不限制日期
@@ -105,7 +105,14 @@ outline: none;
         //     }
         // ]
 
-        // hyphen:"至"
+        // hyphen:"至",    //默认值  至
+        //默认   top 36px;left:0;right:auto;bottom:auto
+        position: {
+            top: "36px",
+            left: "0",
+            right: "auto",
+            bottom: "auto"
+        }
     }
 
     var setting2 = {
@@ -116,9 +123,9 @@ outline: none;
     }
     var tools = ctrip();
 
-//    ; //调用实例的calendar2方法
-    // tools.calendar2(setting); //调用实例的calendar2方法
-    tools.calendar1(setting2); //调用实例的calendar2方法
+    //    ; //调用实例的calendar2方法
+    tools.calendar2(setting); //调用实例的calendar2方法
+    // tools.calendar1(setting2); //调用实例的calendar2方法
 </script>
 
 </html>

@@ -9,7 +9,7 @@ var ctrip = (function(window) {
             var isIE_ = typeof isIE != "undefined" ? isIE : false;
             var styleStr =
                 "    .calendar-wrapper{position: relative;display: inline-block;}" +
-                '.d-calendar{display: none; position: absolute;top: 36px;left: 0;z-index: 2; padding: 20px 10px 0 10px;width: 620px;height: 340px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;' +
+                '.d-calendar{display: none; position: absolute;top: 36px;left: 0;z-index: 2; padding: 20px 10px 0 10px;width: 620px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;' +
                 "outline: none;" +
                 "}" +
                 ".visible{display: block;}" +
@@ -98,24 +98,26 @@ var ctrip = (function(window) {
             } else if (boxNum == 2) {
                 dCalendar.innerHTML = calendaDom2;
             }
-
             document.getElementById(domId).parentElement.appendChild(dCalendar);
         },
         calendar2: function(setting) {
             var _this = this;
             _this.browser_ie8 = false;
             // 兼容IE8  start
-            var browser_cur = navigator.appName;
-            var b_version = navigator.appVersion;
-            var version = b_version.split(";");
-            var trim_Version = version[1].replace(/[ ]/g, "");
-            if (browser_cur == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0") {
-                _this.browser_ie8 = true;
-                // console.log("现在是ie8");
+            if (navigator.userAgent.indexOf("Firefox") >= 0) {
+                _this.browser_ie8 = false;
+            } else {
+                var browser_cur = navigator.appName;
+                var b_version = navigator.appVersion;
+                var version = b_version.split(";");
+                var trim_Version = version[1].replace(/[ ]/g, "");
+                if (browser_cur == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0") {
+                    _this.browser_ie8 = true;
+                    // console.log("现在是ie8");
+                }
             }
             //创建dom
             _this.createDom(setting.id[0], _this.browser_ie8, 2);
-
             var addEvent = function(el, type, handler) {
                 if (_this.browser_ie8) {
                     return el.attachEvent("on" + type, handler);
@@ -152,6 +154,7 @@ var ctrip = (function(window) {
             }
             _this.calendarBox = _this.datePicker[0].parentNode;
             _this.calendarBox.style.position = "relative";
+            _this.calendarBox.style.overflow = "visible";
 
             if (_this.browser_ie8) {
                 _this.calendarPop = _this.datePicker[0].parentNode.lastChild;
@@ -159,7 +162,14 @@ var ctrip = (function(window) {
                 _this.calendarPop = _this.datePicker[0].parentNode.lastElementChild;
             }
 
-            // _this.calendarPop.setAttribute("tabindex", 2);
+            if (typeof setting.position != "undefined") {
+                //默认top 36px  left 0
+                _this.calendarPop.style.top = setting.position.top;
+                _this.calendarPop.style.left = setting.position.left;
+                _this.calendarPop.style.right = setting.position.right;
+                _this.calendarPop.style.bottom = setting.position.bottom;
+            }
+
             // _this.calendarPop.tabindex = 0;
 
             if (_this.browser_ie8) {
@@ -243,8 +253,6 @@ var ctrip = (function(window) {
                 var blank = obj_class != "" ? " " : ""; //判断获取到的 class 是否为空, 如果不为空在前面加个'空格'.
                 var added = obj_class + blank + class_name; //组合原来的 class 和需要添加的 class.
                 obj.setAttribute("class", added);
-
-                // obj.className = added; //替换原来的 class.
             }
 
             function hasClass(obj, class_name) {
@@ -809,7 +817,8 @@ var ctrip = (function(window) {
                     idArr[0].setAttribute("data-date1", d1);
                     idArr[1].setAttribute("data-date2", d2);
                 } else {
-                    idArr[0].setAttribute("data-date", d1);
+                    idArr[0].setAttribute("data-date1", d1);
+                    idArr[0].setAttribute("data-date2", d2);
                 }
                 // 转换成 yyyy-0m-0d 格式
                 d1 = dateForm1(d1);
@@ -1801,6 +1810,7 @@ var ctrip = (function(window) {
                 }
                 return false;
             }
+
             addEvent(_this.dayBox[0], "click", selectDate);
             addEvent(_this.dayBox[1], "click", selectDate);
             // 初始化
