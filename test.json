@@ -1,0 +1,29 @@
+{
+    "roomList": [{
+            "id": "001",
+            "imgUrl": "//dimg04.c-ctrip.com/images/200h0m000000dg752ABA3_R_300_225.jpg"
+        },
+        {
+            "id": "001",
+            "imgUrl": "//dimg04.c-ctrip.com/images/200h0m000000dg752ABA3_R_300_225.jpg",
+            "picNum": 3,
+            "roomTypes": ["Standard Double Room", "标准大床房"],
+            "tags": [{
+                "tageType": 1,
+                "tageText": "CHANGE DENIED"
+            }, {
+                "tageType": 1,
+                "tageText": "CHANGE DENIED"
+            }]
+
+        },
+        {
+            "name": "王武",
+            "sex": "男"
+        },
+        {
+            "name": "李梅",
+            "sex": "女"
+        }
+    ]
+}
