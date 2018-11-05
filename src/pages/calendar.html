@@ -9,61 +9,35 @@
 </head>
 <!-- <style>
     .calendar-wrapper{position: relative;display: inline-block;}
-.d-calendar{display: none; position: absolute;top: 36px;left: 0;z-index: 2; padding: 10px;width: 600px;height: 360px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;
-outline: none;
-}
-.visible{display: block;}
-.hidden{display: none;}
-.d-calendar .d-calendar-header{padding:5px 10px; text-align: center; font-size: 16px;font-weight: bold;}
-.d-calendar .d-calendar-box{position: relative;display:inline-block;*zoom:1;*display: inline; width: 280px;vertical-align: top;}
-.d-calendar .d-calendar-box.d-calendar-box01{margin-right: 10px;margin-bottom: 10px;}
-.d-calendar-date{position: relative; padding: 0 24px 10px 24px; text-align: center; font-size: 16px;}
-.d-calendar-box .btn-prev{position: absolute;top: 0;left: 0;  width: 24px;line-height: 24px;text-align: center;color:#06c;font-size: 20px;cursor: pointer;}
-.d-calendar-box .btn-next{position: absolute;top: 0;right: 0; width: 24px;line-height: 24px;text-align: center;color:#06c;font-size: 20px;cursor: pointer;}
-.d-c-week .d-week-item{position: relative;float: left; display:inline-block;*zoom:1;*display: inline;width: 40px;height: 40px;line-height: 40px;text-align: center; overflow: hidden;}
-.d-c-day .d-day-item{position: relative;float: left; display:inline-block;*zoom:1;*display: inline;width: 40px;height: 40px; line-height: 40px;text-align: center; font-size: 14px; overflow: hidden;cursor: pointer;}
-.d-c-day .d-day-item .special-day{position: absolute;top: 0;right: 0;color: #f52121;line-height: 1;font-size: 12px;}
-.d-c-day .d-day-item.d-applicable{background-color: #eee;}
-.d-c-day .d-day-item.disabled{color: #bdbdbd;}
-.d-c-day .d-day-item.selected{background-color: #07c;color: #fff;}
-.d-c-day .cur-day{color:#07c;font-weight: bold;}
-.d-c-day .cur-day.disabled{color:#8ec1e6;font-weight: bold;}
-.d-c-day .d-day-item:hover{background-color: #07c;color: #fff;}
-.d-c-day .d-day-item.disabled:hover{background-color: #fff; color: #bdbdbd;cursor: default;}
-.d-c-day .cur-day.disabled:hover{color:#8ec1e6;font-weight: bold;}
-.d-c-day .d-day-item.d-day-item-white{cursor: default;}
-.d-c-day .d-day-item.d-day-item-white:hover{background-color: #fff;}
-.clearfix::after{content: " ";clear: both;display: block;visibility: hidden;overflow: hidden;height: 0;*zoom:1}
-@media screen and (max-width: 768px) {
-    .d-calendar {width: 320px;}
-}
+    .d-calendar{display: none; position: absolute;top: 36px;left: 0;z-index: 2; padding: 20px 10px 0 10px;width: 550px;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;outline: none;}
+    .visible{display: block;}.hidden{display: none;}
+    .d-calendar .d-calendar-header{padding:5px 10px; text-align: center; font-size: 16px;font-weight: bold;}
+    .d-calendar .d-calendar-box{position: relative;display:inline-block;*zoom:1;*display: inline; width: 256px;vertical-align: top;}
+    .d-calendar .d-calendar-box.d-calendar-box01{margin-right: 10px;margin-bottom: 10px;}
+    .d-calendar-date{position: relative; padding: 0 24px 10px 24px; text-align: center; font-size: 16px;}
+    .d-calendar-box .btn-prev{position: absolute;top: 0;left: 0;  width: 24px;line-height: 24px;text-align: center;color:#06c;font-size: 20px;cursor: pointer;}
+    .d-calendar-box .btn-next{position: absolute;top: 0;right: 0; width: 24px;line-height: 24px;text-align: center;color:#06c;font-size: 20px;cursor: pointer;}
+    .d-c-week .d-week-item{position: relative;float: left; display:inline-block;*zoom:1;*display: inline;width: 36px;height: 36px;line-height: 36px;text-align: center; overflow: hidden;font-size:14px; z-index:2;}
+    .d-c-day .d-day-item{position: relative;float: left; display:inline-block;*zoom:1;*display: inline;width: 36px;height: 36px; line-height: 36px;text-align: center; font-size: 14px; overflow: hidden;cursor: pointer;}
+    .d-c-day .d-day-item .special-day{position: absolute;top: 0;right: 0;color: #f52121;line-height: 1;font-size: 12px;}
+    .d-c-day .d-day-item.d-applicable{background-color: #eee;}
+    .d-c-day .d-day-item.disabled{color: #bdbdbd;}
+    .d-c-day .d-day-item.selected{background-color: #07c;color: #fff;}
+    .d-c-day .cur-day{color:#07c;font-weight: bold;}
+    .d-c-day .cur-day.disabled{color:#8ec1e6;font-weight: bold;}
+    .d-c-day .d-day-item:hover{background-color: #07c;color: #fff;}
+    .d-c-day .d-day-item.disabled:hover{background-color: #fff; color: #bdbdbd;cursor: default;}
+    .d-c-day .cur-day.disabled:hover{color:#8ec1e6;font-weight: bold;}
+    .d-c-day .d-day-item.d-day-item-white{cursor: default;}
+    .d-c-day .d-day-item.d-day-item-white:hover{background-color: #fff;}
+    .clearfix::after{content: " ";clear: both;display: block;visibility: hidden;overflow: hidden;height: 0;*zoom:1}
+    @media screen and (max-width: 768px) {
+        .d-calendar {width: 286px;}
+        }
 </style> -->
 
 <body>
-    <div class="calendar-wrapper">
-        <input id="d-datepicker01" type="text" class="o-input d-datepicker" />
-        <!-- <div class="d-calendar" tabindex="0">
-            <div class="d-calendar-header">入住日期</div>
-            <div class="d-calendar-box d-calendar-box01">
-                <div class="d-calendar-date">
-                    <div class="btn-prev">&lt;</div>
-                    <div class="btn-next">&gt;</div>
-                    <span class="d-date-bar"></span>
-                </div>
-                <div class="d-c-week clearfix"></div>
-                <div class="d-c-day d-c-day01"></div>
-            </div>
-            <div class="d-calendar-box">
-                <div class="d-calendar-date">
-                    <div class="btn-prev">&lt;</div>
-                    <div class="btn-next">&gt;</div>
-                    <span class="d-date-bar"></span>
-                </div>
-                <div class="d-c-week"></div>
-                <div class="d-c-day d-c-day02"></div>
-            </div>
-        </div> -->
-    </div>
+    <input id="d-datepicker01" type="text" class="o-input d-datepicker" style="margin:235px 0 0 365px;" />
     至 <input id="d-datepicker02" type="text" class="o-input" />
 </body>
 <script src="./calendar_plugin.js"></script>
@@ -71,11 +45,11 @@ outline: none;
     var setting = {
         // title: "入住日期", // 日历标题
         // id: ["d-datepicker01"], //数组形式，必填
-        // id: ["d-datepicker01", "d-datepicker02"], //数组形式，必填
-        id: ["d-datepicker01"], //数组形式，必填
+        id: ["d-datepicker01", "d-datepicker02"], //数组形式，必填
+        // id: ["d-datepicker01"], //数组形式，必填
         // today: "2018-09-25",
         // date: '2018-09-27',
-        limitDate: true, //限制日期则设置ture  默认不限制日期
+        limitDate: false, //限制日期则设置ture  默认不限制日期
         // limitDate1: "2018-09-28", // 限定日期范围
         // limitDate2: "2019-2-2",
         unitYear: "年", //中文下给出单位：年
@@ -107,12 +81,12 @@ outline: none;
 
         // hyphen:"至",    //默认值  至
         //默认   top 36px;left:0;right:auto;bottom:auto
-        position: {
-            top: "36px",
-            left: "0",
-            right: "auto",
-            bottom: "auto"
-        }
+        // position: {
+        //     top: "76px",
+        //     left: "76px",
+        //     right: "auto",
+        //     bottom: "auto"
+        // }
     }
 
     var setting2 = {

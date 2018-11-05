@@ -160,47 +160,13 @@ var ctrip = (function(window) {
                 return canledarId;
             }
 
-            _this.datePicker = [];
-            // 定义输入框和对应的 d-calendar-box
-            if (setting.id.length > 1) {
-                _this.datePicker[0] = document.getElementById(setting.id[0]); //第一个输入框
-                _this.datePicker[1] = document.getElementById(setting.id[1]); //第二个输入框
-                _this.datePicker[0].setAttribute("tabindex", 0);
-                _this.datePicker[1].setAttribute("tabindex", 0);
-            } else {
-                _this.datePicker[0] = document.getElementById(setting.id[0]); //第一个输入框
-                _this.datePicker[0].setAttribute("tabindex", 0);
-            }
-
-            // 绑定点击事件
-            if (_this.datePicker.length === 2) {
-                addEvent(_this.datePicker[0], "click", function(e) {
-                    initials();
-
-                });
-                addEvent(_this.datePicker[1], "click", function() {
-                    initials();
-                });
-            } else if(_this.datePicker.length ===1) {
-                addEvent(_this.datePicker[0], "click", function(){
-                    initials();
-                });
-            }
-
-            var canledarId = RollId();
             function initials() {
-                if (document.getElementById(canledarId)) {
-                    var oldCalendar=document.getElementById(canledarId);
-                    oldCalendar.parentNode.removeChild(oldCalendar);
-                    canledarId = RollId();
-                    console.log(`执行了`);
-                }
-
+                var canledarId = RollId();
                 //创建dom
                 _this.createDom(setting.id[0], _this.browser_ie8, 2, canledarId);
                 // 兼容IE8  end
                 _this.calendarItem = [];
-
+                _this.datePicker = [];
                 _this.e_date_bar = [];
                 _this.btn_prev = [];
                 _this.btn_next = [];
@@ -214,8 +180,18 @@ var ctrip = (function(window) {
                 _this.hyphen = typeof setting.hyphen != "undefined" ? setting.hyphen : "至";
                 _this.outputForm = typeof setting.outputForm != "undefined" ? setting.outputForm : "yymmdd";
 
+                // 定义输入框和对应的 d-calendar-box
+                if (setting.id.length > 1) {
+                    _this.datePicker[0] = document.getElementById(setting.id[0]); //第一个输入框
+                    _this.datePicker[1] = document.getElementById(setting.id[1]); //第二个输入框
+                    _this.datePicker[0].setAttribute("tabindex", 0);
+                    _this.datePicker[1].setAttribute("tabindex", 0);
+                } else {
+                    _this.datePicker[0] = document.getElementById(setting.id[0]); //第一个输入框
+                    _this.datePicker[0].setAttribute("tabindex", 0);
+                }
                 _this.calendarBox = document.getElementById(canledarId);
-                _this.calendarBox.style.display = "block";
+                _this.calendarBox.style.position = "absolute";
                 _this.calendarPop = document.getElementById(canledarId).children[0];
                 _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + 5 + "px";
                 if (typeof setting.position != "undefined") {
@@ -344,65 +320,6 @@ var ctrip = (function(window) {
                     _this.limitDate1 = getDateBydays(_this.curDate, -3650);
                     _this.limitDate2 = getDateBydays(_this.curDate, 3650); //默认前后限制日期 10年
                 }
-
-                addEvent(_this.btn_prev[0], "click", function() {
-                    if (_this.month <= 1) {
-                        _this.month = 12;
-                        _this.year -= 1;
-                    } else {
-                        _this.month -= 1;
-                    }
-                    _this.render(_this.year, _this.month);
-                });
-
-                addEvent(_this.btn_next[0], "click", function() {
-                    //  12 进 1
-                    if (_this.month >= 12) {
-                        _this.month = 1;
-                        _this.year += 1;
-                    } else {
-                        _this.month += 1;
-                    }
-                    _this.render(_this.year, _this.month);
-                });
-                addEvent(_this.btn_next[1], "click", function() {
-                    //  12 进 1
-                    if (_this.month >= 12) {
-                        _this.month = 1;
-                        _this.year += 1;
-                    } else {
-                        _this.month += 1;
-                    }
-                    _this.render(_this.year, _this.month);
-                });
-
-                // 绑定焦点事件
-                if (_this.datePicker.length === 2) {
-                    addEvent(_this.datePicker[0], "focus", showPop);
-                    addEvent(_this.datePicker[1], "focus", showPop);
-                } else {
-                    // addEvent(_this.datePicker[0], "focus", showPop);
-                }
-
-                if (!_this.browser_ie8) {
-                    addEvent(_this.calendarBox, "blur", hidePop);
-                }
-
-                addEvent(_this.calendarBox, "mousedown", function(e) {
-                    stopPropagation(e);
-                    if (_this.browser_ie8) {
-
-                    } else {
-                        e.preventDefault();
-                    }
-                    _this.calendarBox.focus();
-                });
-                addEvent(_this.dayBox[0], "click", selectDate);
-                addEvent(_this.dayBox[1], "click", selectDate);
-                addEvent(_this.dayBox[0], "mouseover", hoverDate);
-                addEvent(_this.dayBox[1], "mouseover", hoverDate);
-                // _this.render(_this.year, _this.month, _this.day);
-                showPop();
             }
 
             function addClass(obj, class_name) {
@@ -533,6 +450,7 @@ var ctrip = (function(window) {
             }
             // 初始化数据
             _this.render = function(year_, month_, day_) {
+                initials();
                 var month_2 = 0;
                 var year_2 = 0;
                 if (month_ >= 12) {
@@ -834,6 +752,37 @@ var ctrip = (function(window) {
                 return false;
             }
 
+            addEvent(_this.btn_prev[0], "click", function() {
+                if (_this.month <= 1) {
+                    _this.month = 12;
+                    _this.year -= 1;
+                } else {
+                    _this.month -= 1;
+                }
+                _this.render(_this.year, _this.month);
+            });
+
+            addEvent(_this.btn_next[0], "click", function() {
+                //  12 进 1
+                if (_this.month >= 12) {
+                    _this.month = 1;
+                    _this.year += 1;
+                } else {
+                    _this.month += 1;
+                }
+                _this.render(_this.year, _this.month);
+            });
+            addEvent(_this.btn_next[1], "click", function() {
+                //  12 进 1
+                if (_this.month >= 12) {
+                    _this.month = 1;
+                    _this.year += 1;
+                } else {
+                    _this.month += 1;
+                }
+                _this.render(_this.year, _this.month);
+            });
+
             function getClickDate(element) {
                 var month_ = _this.month;
                 var year_ = _this.year;
@@ -955,8 +904,8 @@ var ctrip = (function(window) {
                 }
                 _this.render(_this.year, _this.month, _this.day);
                 _this.calendarBox.style.display = "block";
-
                 _this.calendarBox.focus();
+
                 // 用户未设置position，自适应
                 if (document.documentElement.clientHeight < 650) {
                     _this.calendarPop.style.height = "320px";
@@ -995,8 +944,33 @@ var ctrip = (function(window) {
             function hidePop(e) {
                 stopPropagation(e);
                 _this.calendarBox.style.display = "none";
-                _this.calendarBox.parentNode.removeChild(_this.calendarBox);
+                _this.calendarPop.parentNode.removeChild(_this.calendarPop);
             }
+
+            // 绑定焦点事件
+
+            if (_this.datePicker.length === 2) {
+                addEvent(_this.datePicker[0], "focus", showPop);
+                addEvent(_this.datePicker[1], "focus", showPop);
+            } else {
+                addEvent(_this.datePicker[0], "focus", showPop);
+            }
+
+            if (!_this.browser_ie8) {
+                addEvent(_this.calendarBox, "blur", hidePop);
+            }
+
+            addEvent(_this.calendarBox, "mousedown", function(e) {
+                stopPropagation(e);
+                if (_this.browser_ie8) {
+                    // var e = window.event;
+                    // e.returnValue = false;
+                } else {
+                    e.preventDefault();
+                }
+
+                _this.calendarBox.focus();
+            });
 
             // 给日期绑定点击事件
             function selectDate(e) {
@@ -1038,11 +1012,13 @@ var ctrip = (function(window) {
                 if (_this.clickDate.length === 2) {
                     renderSelectedClass(_this.clickDate, "d-applicable");
                     fillInDate(_this.clickDate, _this.datePicker);
-                    // _this.calendarBox.style.display = "none";
-                    hidePop();
+                    _this.calendarBox.style.display = "none";
                 }
                 return false;
             }
+
+            addEvent(_this.dayBox[0], "click", selectDate);
+            addEvent(_this.dayBox[1], "click", selectDate);
 
             function hoverDate(e) {
                 stopPropagation(e);
@@ -1066,6 +1042,8 @@ var ctrip = (function(window) {
                 return false;
             }
 
+            addEvent(_this.dayBox[0], "mouseover", hoverDate);
+            addEvent(_this.dayBox[1], "mouseover", hoverDate);
             // 初始化
             // _this.render(_this.year, _this.month, _this.day);
         }
