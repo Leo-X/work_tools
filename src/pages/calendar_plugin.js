@@ -10,7 +10,7 @@ var ctrip = (function(window) {
             var styleStr = "#" + styleID;
             var styleCont =
                 styleStr +
-                "{position: absolute;display: none;width: 550px;height:320px;z-index: 999;outline: none;}" +
+                "{position: absolute;display: none;width: 550px;height:320px;z-index: 1080;outline: none;}" +
                 styleStr +
                 ' .d-calendar{display: block;z-index: 2; padding: 20px 10px 0 10px;width: 530px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box; box-sizing:content-box;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;outline: none;' +
                 "}" +
@@ -52,6 +52,8 @@ var ctrip = (function(window) {
                 " .d-c-day .d-day-item.d-day-item-white{cursor: default;}" +
                 styleStr +
                 " .d-c-day .d-day-item.d-day-item-white:hover{background-color: #fff;}" +
+                styleStr +
+                " .d-calendar-layer{display:none; position:fixed;width:100%;height:100%;background-color: rgba(0, 0, 0, .5);left:0;right:0;top: 0;bottom:0;margin:auto;z-index: -1;}" +
                 styleStr +
                 " " +
                 '.clearfix::after{content: " ";clear: both;display: block;visibility: hidden;overflow: hidden;height: 0;*zoom:1}' +
@@ -107,6 +109,12 @@ var ctrip = (function(window) {
             dWrapper.setAttribute("tabindex", 0);
             dWrapper.setAttribute("id", styleID);
             dWrapper.appendChild(dCalendar);
+
+            // 添加蒙层
+            var calendarLayer = document.createElement("div");
+            calendarLayer.className = "d-calendar-layer";
+            dWrapper.appendChild(calendarLayer);
+
             var body_ = document.body;
             body_.insertBefore(dWrapper, body_.children[0]);
             // document.getElementById(domId).parentElement.appendChild(dCalendar);
@@ -198,15 +206,25 @@ var ctrip = (function(window) {
                 _this.outputForm = typeof setting.outputForm != "undefined" ? setting.outputForm : "yymmdd";
 
                 _this.calendarBox = document.getElementById(canledarId);
-                _this.calendarBox.style.display = "block";
-                _this.calendarPop = document.getElementById(canledarId).children[0];
+                _this.calendarPop = _this.calendarBox.children[0];
+                _this.calendarLayer = _this.calendarBox.children[1];
+
                 _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
-                if (typeof setting.position != "undefined") {
-                    //默认top 36px  left 0
-                    _this.calendarBox.style.top = setting.position.top;
-                    _this.calendarBox.style.left = setting.position.left;
-                    _this.calendarBox.style.right = setting.position.right;
-                    _this.calendarBox.style.bottom = setting.position.bottom;
+                var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+                if (isMobile && document.documentElement.clientWidth < 768) {
+                    _this.calendarBox.style.position = "fixed";
+                    _this.calendarBox.style.top = "0";
+                    _this.calendarBox.style.right = "0";
+                    _this.calendarBox.style.bottom = "0";
+                    _this.calendarBox.style.left = "0";
+                    _this.calendarBox.style.margin = "auto";
+                    _this.calendarBox.style.height = "570px";
+
+                    _this.calendarLayer.style.display = "block";
+                    addEvent(_this.calendarLayer, "mousedown", function(e) {
+                        stopPropagation(e);
+                        _this.calendarBox.style.display = "none";
+                    });
                 }
 
                 if (_this.browser_ie8) {
@@ -320,7 +338,9 @@ var ctrip = (function(window) {
                     // console.log(`给定了当日日期:${_this.curDate}`);
                 }
 
-                if (typeof setting.limitDate === true) {
+                _this.limitDate = typeof setting.limitDate != "undefined" ? setting.limitDate : _this.curDate;
+                // if (typeof setting.limitDate == true) {
+                if (_this.limitDate == true) {
                     _this.limitDate1 = typeof setting.limitDate1 != "undefined" ? setting.limitDate1 : _this.curDate;
                     _this.limitDate2 = typeof setting.limitDate2 != "undefined" ? setting.limitDate2 : getDateBydays(_this.curDate, 365);
                 } else {
@@ -967,32 +987,33 @@ var ctrip = (function(window) {
                     _this.render(_this.year, _this.month, _this.day);
                 }
                 _this.calendarBox.style.display = "block";
-
                 _this.calendarBox.focus();
-                // 用户未设置position，自适应
-                if (document.documentElement.clientHeight < 736) {
-                    _this.calendarPop.style.height = "320px";
-                }
                 adjustPosition();
             }
 
             function adjustPosition() {
                 var screenWidth = document.documentElement.clientWidth;
-                if (typeof setting.position == "undefined") {
+                var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+                // 用移动端且宽度< 768
+                if (isMobile && document.documentElement.clientWidth < 768) {
+                } else if (typeof setting.position == "undefined") {
+                    _this.calendarBox.style.position = "absolute";
                     _this.calendarBox.style.left = _this.datePicker[0].getBoundingClientRect().left + "px";
                     _this.calendarBox.style.right = "auto";
                     var x_right = _this.calendarBox.getBoundingClientRect().right;
-
-                    var x_left = _this.calendarBox.getBoundingClientRect().left;
                     var rightOut = x_right - screenWidth > 0 ? true : false;
                     if (rightOut) {
                         _this.calendarBox.style.left = _this.datePicker[0].getBoundingClientRect().left + screenWidth - x_right - 10 + "px";
                         _this.calendarBox.style.right = "auto";
                     }
                 }
+
                 // 设置top
                 if (typeof setting.position != "undefined") {
                     _this.calendarBox.style.top = setting.position.top;
+                    _this.calendarBox.style.left = setting.position.left;
+                    _this.calendarBox.style.right = setting.position.right;
+                    _this.calendarBox.style.bottom = setting.position.bottom;
                 }
 
                 if (screenWidth < 768) {
@@ -1144,13 +1165,30 @@ var ctrip = (function(window) {
                 _this.outputForm = typeof setting.outputForm != "undefined" ? setting.outputForm : "yymmdd";
 
                 _this.calendarBox = document.getElementById(canledarId);
-                _this.calendarBox.style.display = "block";
-                _this.calendarPop = document.getElementById(canledarId).children[0];
-                _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
+                _this.calendarPop = _this.calendarBox.children[0];
+                _this.calendarLayer = _this.calendarBox.children[1];
 
+                _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
+                var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+                if (isMobile && document.documentElement.clientWidth < 768) {
+                    _this.calendarBox.style.position = "fixed";
+                    _this.calendarBox.style.top = "0";
+                    _this.calendarBox.style.right = "0";
+                    _this.calendarBox.style.bottom = "0";
+                    _this.calendarBox.style.left = "0";
+                    _this.calendarBox.style.margin = "auto";
+                    _this.calendarBox.style.height = "270px";
+
+                    _this.calendarLayer.style.display = "block";
+                    addEvent(_this.calendarLayer, "mousedown", function(e) {
+                        stopPropagation(e);
+                        _this.calendarBox.style.display = "none";
+                    });
+                } else {
+                    _this.calendarBox.style.height = "auto";
+                }
+                _this.calendarPop.style.width = "266px";
                 _this.calendarBox.style.width = "280px";
-                _this.calendarBox.style.height = "auto";
-                _this.calendarPop.style.width = "260px";
 
                 if (typeof setting.position != "undefined") {
                     //默认top 36px  left 0
@@ -1262,7 +1300,8 @@ var ctrip = (function(window) {
                     // console.log(`给定了当日日期:${_this.curDate}`);
                 }
 
-                if (typeof setting.limitDate === true) {
+                _this.limitDate = typeof setting.limitDate != "undefined" ? setting.limitDate : _this.curDate;
+                if (_this.limitDate === true) {
                     _this.limitDate1 = typeof setting.limitDate1 != "undefined" ? setting.limitDate1 : _this.curDate;
                     _this.limitDate2 = typeof setting.limitDate2 != "undefined" ? setting.limitDate2 : getDateBydays(_this.curDate, 365);
                 } else {
@@ -1854,39 +1893,34 @@ var ctrip = (function(window) {
                 _this.calendarBox.style.display = "block";
 
                 _this.calendarBox.focus();
-                // 用户未设置position，自适应
-                // if (document.documentElement.clientHeight < 736) {
-                //     _this.calendarPop.style.height = "320px";
-                // }
+
                 adjustPosition();
             }
 
             function adjustPosition() {
                 var screenWidth = document.documentElement.clientWidth;
-                if (typeof setting.position == "undefined") {
+                var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+                // 用移动端且宽度< 768
+                if (isMobile && document.documentElement.clientWidth < 768) {
+                } else if (typeof setting.position == "undefined") {
+                    _this.calendarBox.style.position = "absolute";
                     _this.calendarBox.style.left = _this.datePicker[0].getBoundingClientRect().left + "px";
                     _this.calendarBox.style.right = "auto";
                     var x_right = _this.calendarBox.getBoundingClientRect().right;
-
-                    var x_left = _this.calendarBox.getBoundingClientRect().left;
                     var rightOut = x_right - screenWidth > 0 ? true : false;
                     if (rightOut) {
                         _this.calendarBox.style.left = _this.datePicker[0].getBoundingClientRect().left + screenWidth - x_right - 10 + "px";
                         _this.calendarBox.style.right = "auto";
                     }
                 }
+
                 // 设置top
                 if (typeof setting.position != "undefined") {
                     _this.calendarBox.style.top = setting.position.top;
+                    _this.calendarBox.style.left = setting.position.left;
+                    _this.calendarBox.style.right = setting.position.right;
+                    _this.calendarBox.style.bottom = setting.position.bottom;
                 }
-
-                // if (screenWidth < 768) {
-                //     _this.btn_next[0].style.display = "block";
-                //     _this.btn_next[1].style.display = "none";
-                // } else {
-                //     _this.btn_next[0].style.display = "none";
-                //     _this.btn_next[1].style.display = "block";
-                // }
             }
 
             function hidePop(e) {
