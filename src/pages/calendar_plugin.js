@@ -12,7 +12,7 @@ var ctrip = (function(window) {
                 styleStr +
                 "{position: absolute;display: none;width: 550px;height:320px;z-index: 1080;outline: none;}" +
                 styleStr +
-                ' .d-calendar{display: block;z-index: 2; padding: 20px 10px 0 10px;width: 530px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box; box-sizing:content-box;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;outline: none;' +
+                ' .d-calendar{display: block;z-index: 2; padding: 20px 10px 10px 10px;width: 530px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box; box-sizing:content-box;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;outline: none;' +
                 "}" +
                 styleStr +
                 " .d-calendar-header{padding:5px 10px; text-align: center; font-size: 16px;font-weight: bold;}" +
@@ -208,8 +208,20 @@ var ctrip = (function(window) {
                 _this.calendarBox = document.getElementById(canledarId);
                 _this.calendarPop = _this.calendarBox.children[0];
                 _this.calendarLayer = _this.calendarBox.children[1];
-
-                _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
+                var body_top = _this.datePicker[0].getBoundingClientRect().top;
+                var body_bottom = document.documentElement.clientHeight - _this.datePicker[0].getBoundingClientRect().bottom;
+                if (document.documentElement.clientWidth < 768 && body_top > 572 && body_bottom < 572) {
+                    _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().top + document.documentElement.scrollTop - 572 - 8 + "px";
+                    // console.log("572上方渲染");
+                } else if (document.documentElement.clientWidth >= 768 && body_top > 320 && body_bottom < 320) {
+                    _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().top + document.documentElement.scrollTop - 320 + "px";
+                    // console.log("320上方渲染");
+                } else {
+                    _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
+                    // console.log(`下方渲染`);
+                }
+                // 不用加上面的代码 不用上面出 就这样
+                // _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
                 var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
                 if (isMobile && document.documentElement.clientWidth < 768) {
                     _this.calendarBox.style.position = "fixed";
@@ -1168,7 +1180,17 @@ var ctrip = (function(window) {
                 _this.calendarPop = _this.calendarBox.children[0];
                 _this.calendarLayer = _this.calendarBox.children[1];
 
-                _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
+                var body_top = _this.datePicker[0].getBoundingClientRect().top;
+                var body_bottom = document.documentElement.clientHeight - _this.datePicker[0].getBoundingClientRect().bottom;
+                if (body_top > 314 && body_bottom < 314) {
+                    _this.calendarBox.style.top = body_top + document.documentElement.scrollTop - 314 + "px";
+                    // console.log("304上方渲染");
+                } else {
+                    _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
+                    // console.log(`下方渲染`);
+                }
+                // 不用加上面的代码 不用上面出 就这样
+                // _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
                 var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
                 if (isMobile && document.documentElement.clientWidth < 768) {
                     _this.calendarBox.style.position = "fixed";
