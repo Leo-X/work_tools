@@ -1984,8 +1984,8 @@ var ctrip = (function(window) {
                 }
                 selectClean("d-applicable");
                 if (_this.clickDate.length === 1) {
-                    renderSelectedC
-                    s.clickDate, _this.datePicker);
+                    renderSelectedClass(_this.clickDate, "d-applicable");
+                    fillInDate(_this.clickDate, _this.datePicker);
                     _this.calendarBox.style.display = "none";
                     if (_this.browser_ie8) {
                         hidePop();
