@@ -214,7 +214,7 @@ var ctrip = (function(window) {
                     _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().top + document.documentElement.scrollTop -572- 8 + "px";
                     // console.log("572上方渲染");
                 } else if (document.documentElement.clientWidth >= 768 && body_top > 320 && body_bottom < 320) {
-                    _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().top + document.documentElement.scrollTop -320 + "px";
+                    _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().top + document.documentElement.scrollTop -320-6 + "px";
                     // console.log("320上方渲染");
                 } else {
                     _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
