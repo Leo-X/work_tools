@@ -404,7 +404,7 @@ var ctrip = (function(window) {
                 }
 
                 if (!_this.browser_ie8) {
-                    // addEvent(_this.calendarBox, "blur", hidePop);
+                    addEvent(_this.calendarBox, "blur", hidePop);
                 }
 
                 addEvent(_this.calendarBox, "mousedown", function(e) {
@@ -616,7 +616,7 @@ var ctrip = (function(window) {
                     div_day.innerText = k;
                     // 当前渲染的单元格对应的日期为
                     var dateNow1 = year_ + "-" + month_ + "-" + k; //当前要渲染出的日期格子
-                    div_day.setAttribute("data-dateItem",dateNow1);
+                    div_day.setAttribute("data-dateitem", dateNow1);
                     var x1 = compareDate(_this.limitDate1, dateNow1);
                     var x2 = compareDate(_this.limitDate2, dateNow1);
                     addClass(div_day, "d-day-item");
@@ -634,7 +634,7 @@ var ctrip = (function(window) {
                     div_day.innerText = k2;
                     // 当前渲染的单元格对应的日期为
                     var dateNow2 = year_2 + "-" + month_2 + "-" + k2; //当前要渲染出的日期格子
-                    div_day.setAttribute("data-dateItem",dateNow2);
+                    div_day.setAttribute("data-dateitem", dateNow2);
                     var y1 = compareDate(_this.limitDate1, dateNow2);
                     var y2 = compareDate(_this.limitDate2, dateNow2);
                     addClass(div_day, "d-day-item");
@@ -668,43 +668,25 @@ var ctrip = (function(window) {
                 var k0 = _this.dayBox[0].children.length;
                 var k1 = _this.dayBox[1].children.length;
                 for (var i = 0; i < k0; i++) {
-                    if (hasClass(_this.dayBox[0].children[i], "d-day-item-white")) {
-                        continue;
-                    }
-                    if (hasClass(_this.dayBox[0].children[i], "disabled")) {
-                        continue;
-                    }
-
-                    if (_this.dayBox[0].children[i].childNodes.length > 1) {
-                        dateRenderNow1 = year_ + "-" + month_ + "-" + _this.dayBox[0].children[i].childNodes[0].nodeValue;
-                    } else {
-                        dateRenderNow1 = year_ + "-" + month_ + "-" + _this.dayBox[0].children[i].innerText;
-                    }
-                    if (compareDate(date_, dateRenderNow1) === 0) {
-                        addClass(_this.dayBox[0].children[i], classNames);
+                    if (_this.dayBox[0].children[i].getAttribute("data-dateitem")) {
+                        dateRenderNow1 = _this.dayBox[0].children[i].getAttribute("data-dateitem");
+                        if (compareDate(date_, dateRenderNow1) === 0) {
+                            addClass(_this.dayBox[0].children[i], classNames);
+                        }
                     }
                 }
                 for (var j = 0; j < k1; j++) {
-                    if (hasClass(_this.dayBox[1].children[j], "d-day-item-white")) {
-                        continue;
-                    }
-                    if (hasClass(_this.dayBox[1].children[j], "disabled")) {
-                        continue;
-                    }
-                    if (_this.dayBox[1].children[j].childNodes.length > 1) {
-                        dateRenderNow2 = year_2 + "-" + month_2 + "-" + _this.dayBox[1].children[j].childNodes[0].nodeValue;
-                    } else {
-                        dateRenderNow2 = year_2 + "-" + month_2 + "-" + _this.dayBox[1].children[j].innerText;
-                    }
-                    if (compareDate(date_, dateRenderNow2) === 0) {
-                        addClass(_this.dayBox[1].children[j], classNames);
+                    if (_this.dayBox[1].children[j].getAttribute("data-dateitem")) {
+                        dateRenderNow2 = _this.dayBox[1].children[j].getAttribute("data-dateitem");
+                        if (compareDate(date_, dateRenderNow2) === 0) {
+                            addClass(_this.dayBox[1].children[j], classNames);
+                        }
                     }
                 }
                 return false;
             }
 
             function traversalDateDom(findDate) {
-                // console.log(`寻找  ：${ findDate }`);
                 var year_ = _this.year;
                 var month_ = _this.month;
                 var month_2 = 0;
@@ -721,41 +703,21 @@ var ctrip = (function(window) {
                 var k0 = _this.dayBox[0].children.length;
                 var k1 = _this.dayBox[1].children.length;
                 for (var i = 0; i < k0; i++) {
-                    if (hasClass(_this.dayBox[0].children[i], "d-day-item-white")) {
-                        continue;
-                    }
-                    if (hasClass(_this.dayBox[0].children[i], "disabled")) {
-                        continue;
-                    }
-
-                    if (_this.dayBox[0].children[i].childNodes.length > 1) {
-                        dateRenderNow1 = year_ + "-" + month_ + "-" + _this.dayBox[0].children[i].childNodes[0];
-                    } else {
-                        dateRenderNow1 = year_ + "-" + month_ + "-" + _this.dayBox[0].children[i].innerText;
-                    }
-
-                    if (compareDate(findDate, dateRenderNow1) === 0) {
-                        // console.log(`找到 ：${ dateRenderNow1 }`);
-                        return _this.dayBox[0].children[i];
+                    if (_this.dayBox[0].children[i].getAttribute("data-dateitem")) {
+                        dateRenderNow1 = _this.dayBox[0].children[i].getAttribute("data-dateitem");
+                        if (compareDate(findDate, dateRenderNow1) === 0) {
+                            return _this.dayBox[0].children[i];
+                        }
                     }
                 }
                 for (var j = 0; j < k1; j++) {
-                    if (hasClass(_this.dayBox[1].children[j], "d-day-item-white")) {
-                        continue;
-                    }
-                    if (hasClass(_this.dayBox[1].children[j], "disabled")) {
-                        continue;
-                    }
-                    if (_this.dayBox[1].children[j].childNodes.length > 1) {
-                        dateRenderNow2 = year_2 + "-" + month_2 + "-" + _this.dayBox[1].children[j].childNodes[0].nodeValue;
-                    } else {
-                        dateRenderNow2 = year_2 + "-" + month_2 + "-" + _this.dayBox[1].children[j].innerText;
-                    }
-                    if (compareDate(findDate, dateRenderNow2) === 0) {
-                        return _this.dayBox[1].children[j];
+                    if (_this.dayBox[1].children[j].getAttribute("data-dateitem")) {
+                        dateRenderNow2 = _this.dayBox[1].children[j].getAttribute("data-dateitem");
+                        if (compareDate(findDate, dateRenderNow2) === 0) {
+                            return _this.dayBox[1].children[j];
+                        }
                     }
                 }
-                // console.log(`两边日历都没找到该日期`);
                 return false;
             }
 
@@ -1054,7 +1016,6 @@ var ctrip = (function(window) {
                 stopPropagation(e);
                 var e_day_box = e.target || e.srcElement;
                 if (hasClass(e_day_box, "d-c-day")) {
-                    // console.log("阻止冒泡失败");
                     return false;
                 }
                 if (hasClass(e_day_box, "disabled")) {
@@ -1576,7 +1537,7 @@ var ctrip = (function(window) {
                     div_day.innerText = k;
                     // 当前渲染的单元格对应的日期为
                     var dateNow1 = year_ + "-" + month_ + "-" + k; //当前要渲染出的日期格子
-                    div_day.setAttribute("data-dateItem",dateNow1);
+                    div_day.setAttribute("data-dateitem", dateNow1);
                     var x1 = compareDate(_this.limitDate1, dateNow1);
                     var x2 = compareDate(_this.limitDate2, dateNow1);
                     addClass(div_day, "d-day-item");
