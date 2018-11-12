@@ -31,7 +31,7 @@ var ctrip = (function(window) {
                 styleStr +
                 " .d-c-day .d-day-item{position: relative;float: left; display:inline-block;*zoom:1;*display: inline;width: 36px;height: 36px; line-height: 36px;text-align: center; font-size: 14px; overflow: hidden;cursor: pointer;}" +
                 styleStr +
-                " .d-c-day .d-day-item .special-day{position: absolute;top: 0;right: 0;color: #f52121;line-height: 1;font-size: 12px;}" +
+                " .d-c-day .d-day-item .special-day{position: absolute;top: 12px;right: 0;width:36px; text-align:center; color: #f52121;line-height: 1;font-size: 12px;}" +
                 styleStr +
                 " .d-c-day .d-day-item.d-applicable{background-color: #eee;}" +
                 styleStr +
@@ -404,7 +404,7 @@ var ctrip = (function(window) {
                 }
 
                 if (!_this.browser_ie8) {
-                    addEvent(_this.calendarBox, "blur", hidePop);
+                    // addEvent(_this.calendarBox, "blur", hidePop);
                 }
 
                 addEvent(_this.calendarBox, "mousedown", function(e) {
@@ -616,6 +616,7 @@ var ctrip = (function(window) {
                     div_day.innerText = k;
                     // 当前渲染的单元格对应的日期为
                     var dateNow1 = year_ + "-" + month_ + "-" + k; //当前要渲染出的日期格子
+                    div_day.setAttribute("data-dateItem",dateNow1);
                     var x1 = compareDate(_this.limitDate1, dateNow1);
                     var x2 = compareDate(_this.limitDate2, dateNow1);
                     addClass(div_day, "d-day-item");
@@ -633,6 +634,7 @@ var ctrip = (function(window) {
                     div_day.innerText = k2;
                     // 当前渲染的单元格对应的日期为
                     var dateNow2 = year_2 + "-" + month_2 + "-" + k2; //当前要渲染出的日期格子
+                    div_day.setAttribute("data-dateItem",dateNow2);
                     var y1 = compareDate(_this.limitDate1, dateNow2);
                     var y2 = compareDate(_this.limitDate2, dateNow2);
                     addClass(div_day, "d-day-item");
