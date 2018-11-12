@@ -1576,6 +1576,7 @@ var ctrip = (function(window) {
                     div_day.innerText = k;
                     // 当前渲染的单元格对应的日期为
                     var dateNow1 = year_ + "-" + month_ + "-" + k; //当前要渲染出的日期格子
+                    div_day.setAttribute("data-dateItem",dateNow1);
                     var x1 = compareDate(_this.limitDate1, dateNow1);
                     var x2 = compareDate(_this.limitDate2, dateNow1);
                     addClass(div_day, "d-day-item");
