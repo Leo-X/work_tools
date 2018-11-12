@@ -161,6 +161,10 @@ var ctrip = (function(window) {
 
             _this.datePicker = [];
             // 定义输入框和对应的 d-calendar-box
+            if (!document.getElementById(setting.id[0])) {
+                // 没有此元素时 方法终结
+                return false;
+            }
             if (setting.id.length > 1) {
                 _this.datePicker[0] = document.getElementById(setting.id[0]); //第一个输入框
                 _this.datePicker[1] = document.getElementById(setting.id[1]); //第二个输入框
@@ -208,13 +212,13 @@ var ctrip = (function(window) {
                 _this.calendarBox = document.getElementById(canledarId);
                 _this.calendarPop = _this.calendarBox.children[0];
                 _this.calendarLayer = _this.calendarBox.children[1];
-                var body_top =_this.datePicker[0].getBoundingClientRect().top;
+                var body_top = _this.datePicker[0].getBoundingClientRect().top;
                 var body_bottom = document.documentElement.clientHeight - _this.datePicker[0].getBoundingClientRect().bottom;
                 if (document.documentElement.clientWidth < 768 && body_top > 572 && body_bottom < 572) {
-                    _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().top + document.documentElement.scrollTop -572- 8 + "px";
+                    _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().top + document.documentElement.scrollTop - 572 - 8 + "px";
                     // console.log("572上方渲染");
                 } else if (document.documentElement.clientWidth >= 768 && body_top > 320 && body_bottom < 320) {
-                    _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().top + document.documentElement.scrollTop -320-6 + "px";
+                    _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().top + document.documentElement.scrollTop - 320 - 6 + "px";
                     // console.log("320上方渲染");
                 } else {
                     _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
@@ -1180,12 +1184,12 @@ var ctrip = (function(window) {
                 _this.calendarPop = _this.calendarBox.children[0];
                 _this.calendarLayer = _this.calendarBox.children[1];
 
-                var body_top =_this.datePicker[0].getBoundingClientRect().top;
+                var body_top = _this.datePicker[0].getBoundingClientRect().top;
                 var body_bottom = document.documentElement.clientHeight - _this.datePicker[0].getBoundingClientRect().bottom;
                 if (body_top > 314 && body_bottom < 314) {
-                    _this.calendarBox.style.top = body_top + document.documentElement.scrollTop -314 + "px";
+                    _this.calendarBox.style.top = body_top + document.documentElement.scrollTop - 314 + "px";
                     // console.log("304上方渲染");
-                }else {
+                } else {
                     _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
                     // console.log(`下方渲染`);
                 }
