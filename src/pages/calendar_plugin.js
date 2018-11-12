@@ -404,7 +404,7 @@ var ctrip = (function(window) {
                 }
 
                 if (!_this.browser_ie8) {
-                    addEvent(_this.calendarBox, "blur", hidePop);
+                    // addEvent(_this.calendarBox, "blur", hidePop);
                 }
 
                 addEvent(_this.calendarBox, "mousedown", function(e) {
@@ -775,41 +775,23 @@ var ctrip = (function(window) {
                 var k0 = _this.dayBox[0].children.length;
                 var k1 = _this.dayBox[1].children.length;
                 for (var i = 0; i < k0; i++) {
-                    if (hasClass(_this.dayBox[0].children[i], "d-day-item-white")) {
-                        continue;
-                    }
-                    if (hasClass(_this.dayBox[0].children[i], "disabled")) {
-                        continue;
-                    }
-                    if (_this.dayBox[0].children[i].childNodes.length > 1) {
-                        dateRenderNow1 = year_ + "-" + month_ + "-" + _this.dayBox[0].children[i].childNodes[0].nodeValue;
-                    } else {
-                        dateRenderNow1 = year_ + "-" + month_ + "-" + _this.dayBox[0].children[i].innerText;
-                    }
-                    if (compareDate(d1, dateRenderNow1) < 0 || compareDate(d2, dateRenderNow1) > 0) {
-                        continue;
-                    } else {
-                        addClass(_this.dayBox[0].children[i], classNames);
+                    if (_this.dayBox[0].children[i].getAttribute("data-dateitem")) {
+                        dateRenderNow1 = _this.dayBox[0].children[i].getAttribute("data-dateitem");
+                        if (compareDate(d1, dateRenderNow1) < 0 || compareDate(d2, dateRenderNow1) > 0) {
+                            continue;
+                        } else {
+                            addClass(_this.dayBox[0].children[i], classNames);
+                        }
                     }
                 }
                 for (var y = 0; y < k1; y++) {
-                    if (hasClass(_this.dayBox[1].children[y], "d-day-item-white")) {
-                        continue;
-                    }
-                    if (hasClass(_this.dayBox[1].children[y], "disabled")) {
-                        continue;
-                    }
-
-                    if (_this.dayBox[1].children[y].childNodes.length > 1) {
-                        dateRenderNow2 = year_2 + "-" + month_2 + "-" + _this.dayBox[1].children[y].childNodes[0].nodeValue;
-                    } else {
-                        dateRenderNow2 = year_2 + "-" + month_2 + "-" + _this.dayBox[1].children[y].innerText;
-                    }
-
-                    if (compareDate(d1, dateRenderNow2) < 0 || compareDate(d2, dateRenderNow2) > 0) {
-                        continue;
-                    } else {
-                        addClass(_this.dayBox[1].children[y], classNames);
+                    if (_this.dayBox[1].children[y].getAttribute("data-dateitem")) {
+                        dateRenderNow2 = _this.dayBox[1].children[y].getAttribute("data-dateitem");
+                        if (compareDate(d1, dateRenderNow2) < 0 || compareDate(d2, dateRenderNow2) > 0) {
+                            continue;
+                        } else {
+                            addClass(_this.dayBox[1].children[y], classNames);
+                        }
                     }
                 }
                 return false;
@@ -828,18 +810,9 @@ var ctrip = (function(window) {
                     month_2 = month_ + 1;
                     year_2 = year_;
                 }
-                if (hasClass(element.parentNode, "d-c-day01")) {
-                    if (element.childNodes.length > 1) {
-                        clickDate_ = year_ + "-" + month_ + "-" + element.childNodes[0].nodeValue;
-                    } else {
-                        clickDate_ = year_ + "-" + month_ + "-" + element.innerText;
-                    }
-                } else if (hasClass(element.parentNode, "d-c-day02")) {
-                    if (element.childNodes.length > 1) {
-                        clickDate_ = year_2 + "-" + month_2 + "-" + element.childNodes[0].nodeValue;
-                    } else {
-                        clickDate_ = year_2 + "-" + month_2 + "-" + element.innerText;
-                    }
+
+                if (element.getAttribute("data-dateitem")) {
+                    clickDate_ = element.getAttribute("data-dateitem");
                 }
                 return clickDate_;
             }
@@ -1069,6 +1042,7 @@ var ctrip = (function(window) {
                     return false;
                 }
                 var dateClick = getClickDate(e_day_box);
+
                 if (_this.clickDate.length === 1) {
                     var dateArr = [dateClick, _this.clickDate[0]];
                     selectClean("d-applicable");
@@ -1337,9 +1311,6 @@ var ctrip = (function(window) {
                     _this.calendarBox.focus();
                 });
                 addEvent(_this.dayBox[0], "click", selectDate);
-                // addEvent(_this.dayBox[1], "click", selectDate);
-                // addEvent(_this.dayBox[0], "mouseover", hoverDate);
-                // addEvent(_this.dayBox[1], "mouseover", hoverDate);
                 showPop();
             }
 
@@ -1550,7 +1521,6 @@ var ctrip = (function(window) {
                     _this.dayBox[0].appendChild(div_day);
                 }
                 renderClass(_this.clickDate, "selected");
-                renderSelectedClass(_this.clickDate, "d-applicable");
                 renderSpecialDays(_this.specialDays);
             };
 
@@ -1587,22 +1557,6 @@ var ctrip = (function(window) {
                         addClass(_this.dayBox[0].children[i], classNames);
                     }
                 }
-                // for (var j = 0; j < k1; j++) {
-                //     if (hasClass(_this.dayBox[1].children[j], "d-day-item-white")) {
-                //         continue;
-                //     }
-                //     if (hasClass(_this.dayBox[1].children[j], "disabled")) {
-                //         continue;
-                //     }
-                //     if (_this.dayBox[1].children[j].childNodes.length > 1) {
-                //         dateRenderNow2 = year_2 + "-" + month_2 + "-" + _this.dayBox[1].children[j].childNodes[0].nodeValue;
-                //     } else {
-                //         dateRenderNow2 = year_2 + "-" + month_2 + "-" + _this.dayBox[1].children[j].innerText;
-                //     }
-                //     if (compareDate(date_, dateRenderNow2) === 0) {
-                //         addClass(_this.dayBox[1].children[j], classNames);
-                //     }
-                // }
                 return false;
             }
 
@@ -1685,74 +1639,6 @@ var ctrip = (function(window) {
                 for (var z = 0; z < date_arr.length; z++) {
                     traversalBox(date_arr[z], classNames);
                 }
-                return false;
-            }
-
-            function renderSelectedClass(date_arr, classNames) {
-                if (date_arr.length !== 2) {
-                    return false;
-                }
-                selectClean("d-applicable");
-                var d1 = date_arr[0];
-                var d2 = date_arr[1];
-                if (compareDate(d1, d2) < 0) {
-                    var mid = d1;
-                    d1 = d2;
-                    d2 = mid;
-                }
-                var year_ = parseInt(_this.year);
-                var month_ = parseInt(_this.month);
-                var month_2 = 0;
-                var year_2 = 0;
-                if (month_ >= 12) {
-                    month_2 = 1;
-                    year_2 = year_ + 1;
-                } else {
-                    month_2 = month_ + 1;
-                    year_2 = year_;
-                }
-                var dateRenderNow1 = "";
-                var dateRenderNow2 = "";
-                var k0 = _this.dayBox[0].children.length;
-                // var k1 = _this.dayBox[1].children.length;
-                for (var i = 0; i < k0; i++) {
-                    if (hasClass(_this.dayBox[0].children[i], "d-day-item-white")) {
-                        continue;
-                    }
-                    if (hasClass(_this.dayBox[0].children[i], "disabled")) {
-                        continue;
-                    }
-                    if (_this.dayBox[0].children[i].childNodes.length > 1) {
-                        dateRenderNow1 = year_ + "-" + month_ + "-" + _this.dayBox[0].children[i].childNodes[0].nodeValue;
-                    } else {
-                        dateRenderNow1 = year_ + "-" + month_ + "-" + _this.dayBox[0].children[i].innerText;
-                    }
-                    if (compareDate(d1, dateRenderNow1) < 0 || compareDate(d2, dateRenderNow1) > 0) {
-                        continue;
-                    } else {
-                        addClass(_this.dayBox[0].children[i], classNames);
-                    }
-                }
-                // for (var y = 0; y < k1; y++) {
-                //     if (hasClass(_this.dayBox[1].children[y], "d-day-item-white")) {
-                //         continue;
-                //     }
-                //     if (hasClass(_this.dayBox[1].children[y], "disabled")) {
-                //         continue;
-                //     }
-
-                //     if (_this.dayBox[1].children[y].childNodes.length > 1) {
-                //         dateRenderNow2 = year_2 + "-" + month_2 + "-" + _this.dayBox[1].children[y].childNodes[0].nodeValue;
-                //     } else {
-                //         dateRenderNow2 = year_2 + "-" + month_2 + "-" + _this.dayBox[1].children[y].innerText;
-                //     }
-
-                //     if (compareDate(d1, dateRenderNow2) < 0 || compareDate(d2, dateRenderNow2) > 0) {
-                //         continue;
-                //     } else {
-                //         addClass(_this.dayBox[1].children[y], classNames);
-                //     }
-                // }
                 return false;
             }
 
@@ -1952,7 +1838,6 @@ var ctrip = (function(window) {
                 }
                 selectClean("d-applicable");
                 if (_this.clickDate.length === 1) {
-                    renderSelectedClass(_this.clickDate, "d-applicable");
                     fillInDate(_this.clickDate, _this.datePicker);
                     _this.calendarBox.style.display = "none";
                     if (_this.browser_ie8) {
