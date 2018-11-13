@@ -11,6 +11,12 @@
 <body>
     <input id="d-datepicker01" type="text" class="o-input d-datepicker" style="margin:235px 0 0 365px;" />
     至 <input id="d-datepicker02" type="text" class="o-input" />
+    <br>
+    <br>
+    <input id="d-datepicker03" type="text" class="o-input" placeholder="calendar1" />
+    <br>
+
+    <br>
 </body>
 <script src="./calendar_plugin.js"></script>
 <script>
@@ -33,55 +39,55 @@
         // arrMonth: ["January", "February", "March", "April", "May", "June", "July", "August",
         //     "September", "October", "November", "December"
         // ] // 月份名称，针对多语言
-        // specialDays: [{
-        //         date: "2019-01-01",
-        //         text: "元旦"
-        //     },
-        //     {
-        //         date: "2019-02-04",
-        //         text: "除夕"
-        //     },
-        //     {
-        //         date: "2019-02-05",
-        //         text: "春节"
-        //     },
-        //     {
-        //         date: "2019-03-08",
-        //         text: "妇女节"
-        //     },
-        //     {
-        //         date: "2019-04-05",
-        //         text: "清明"
-        //     },
-        //     {
-        //         date: "2019-05-01",
-        //         text: "劳动节"
-        //     },
-        //     {
-        //         date: "2019-05-04",
-        //         text: "青年节"
-        //     },
-        //     {
-        //         date: "2019-06-01",
-        //         text: "儿童节"
-        //     },
-        //     {
-        //         date: "2019-06-07",
-        //         text: "端午节"
-        //     },
-        //     {
-        //         date: "2019-09-10",
-        //         text: "教师节"
-        //     },
-        //     {
-        //         date: "2019-09-13",
-        //         text: "中秋节"
-        //     },
-        //     {
-        //         date: "2019-10-01",
-        //         text: "国庆节"
-        //     }
-        // ]
+        specialDays: [{
+                date: "2019-01-01",
+                text: "元旦"
+            },
+            {
+                date: "2019-02-04",
+                text: "除夕"
+            },
+            {
+                date: "2019-02-05",
+                text: "春节"
+            },
+            {
+                date: "2019-03-08",
+                text: "妇女节"
+            },
+            {
+                date: "2019-04-05",
+                text: "清明"
+            },
+            {
+                date: "2019-05-01",
+                text: "劳动节"
+            },
+            {
+                date: "2019-05-04",
+                text: "青年节"
+            },
+            {
+                date: "2019-06-01",
+                text: "儿童节"
+            },
+            {
+                date: "2019-06-07",
+                text: "端午节"
+            },
+            {
+                date: "2019-09-10",
+                text: "教师节"
+            },
+            {
+                date: "2019-09-13",
+                text: "中秋节"
+            },
+            {
+                date: "2019-10-01",
+                text: "国庆节"
+            }
+        ]
 
         // hyphen:"至",    //默认值  至
         //默认   top 36px;left:0;right:auto;bottom:auto
@@ -93,17 +99,78 @@
         // }
     }
 
+    var tools = ctrip();
+    tools.calendar2(setting);
+
+    //单个日历
     var setting2 = {
-        id: ["d-datepicker01"],
+        id: ["d-datepicker03"],
         unitYear: "年", //中文下给出单位：年
         dateForm: "yyyy-mm",
+        specialDays: [{
+                date: "2019-01-01",
+                text: "元旦"
+            },
+            {
+                date: "2019-02-04",
+                text: "除夕"
+            },
+            {
+                date: "2019-02-05",
+                text: "春节"
+            },
+            {
+                date: "2019-03-08",
+                text: "妇女节"
+            },
+            {
+                date: "2019-04-05",
+                text: "清明"
+            },
+            {
+                date: "2019-05-01",
+                text: "劳动节"
+            },
+            {
+                date: "2019-05-04",
+                text: "青年节"
+            },
+            {
+                date: "2019-06-01",
+                text: "儿童节"
+            },
+            {
+                date: "2019-06-07",
+                text: "端午节"
+            },
+            {
+                date: "2019-09-10",
+                text: "教师节"
+            },
+            {
+                date: "2019-09-13",
+                text: "中秋节"
+            },
+            {
+                date: "2019-10-01",
+                text: "国庆节"
+            }
+        ]
         // limitDate: true,
     }
-    var tools = ctrip();
+    var c1 = ctrip();
+    c1.calendar1(setting2);
 
-    //    ; //调用实例的calendar2方法
-    tools.calendar2(setting); //调用实例的calendar2方法
-    // tools.calendar1(setting2); //调用实例的calendar2方法
+    var setting4 = {
+        id: ["d-datepicker04"], //数组形式，必填
+        dateForm: "mm-yyyy", //两种二选一  年月 yyyy-mm（默认）,  月年 "mm-yyyy"
+        weekDayName: ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"], //星期单位无论语言按中文从周七到周一
+        arrMonth: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+            "November", "December"
+        ] // 月份名称，针对多语言
+    }
+    // var c4 = ctrip();
+    // c4.calendar1(setting4);
 </script>
 
 </html>
