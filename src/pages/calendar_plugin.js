@@ -693,7 +693,7 @@ var ctrip = (function(window) {
                     var specialDay = traversalDateDom(arr[i].date);
                     if (specialDay) {
                         addClass(specialDay, "special-day");
-                        specialDay.innerText=arr[i].text;
+                        specialDay.innerText = arr[i].text;
                     }
                 }
             }
@@ -1495,7 +1495,7 @@ var ctrip = (function(window) {
                     var specialDay = traversalDateDom(arr[i].date);
                     if (specialDay) {
                         addClass(specialDay, "special-day");
-                        specialDay.innerText=arr[i].text;
+                        specialDay.innerText = arr[i].text;
                     }
                 }
             }
