@@ -32,7 +32,7 @@ let myName: string = 'wangchuang';
 let myAge: number = 25;
 
 // 模板字符串
-let template: string = `My name is ${myName}. 
+let template: string = `My name is ${myName}.
 Now,
 I'm ${myAge} years old.`;
 console.log(`template ：${template}`);
@@ -407,7 +407,7 @@ function reverse(x: number | string): number | string {
 // 声明语句
 // 使用第三方库
 // declare var jQuery: (selector: string) => any;
-// jQuery('#foo'); 
+// jQuery('#foo');
 //jQuery('#foo');
 // declare 定义的类型只会用于编译时的检查，编译结果中会被删除。
 
@@ -494,3 +494,149 @@ let dog2 = new Animal2('dog2');
 //         console.log(this.name);
 //     }
 // }
+
+
+
+
+let body: HTMLElement = document.body;
+let allDiv: NodeList = document.querySelectorAll('div');
+document.addEventListener('click', function(e: MouseEvent) {
+  // Do something
+});
+
+
+Math.pow(10, '2');
+// index.ts(1,14): error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'.
+interface Math {
+    /**
+     * Returns the value of a base expression taken to a specified power.
+     * @param x The base value of the expression.
+     * @param y The exponent value of the expression.
+     */
+    pow(x: number, y: number): number;
+}
+
+
+
+document.addEventListener('click', function(e) {
+    let ele:HTMLElement = document.getElementById("id01");
+    console.log(e.targetCurrent);
+});
+
+// index.ts(2,17): error TS2339: Property 'targetCurrent' does not exist on type 'MouseEvent'.
+
+
+interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEvent {
+    addEventListener(type: string, listener: (ev: MouseEvent) => any, useCapture?: boolean): void;
+}
+
+document.getElementById("id01");
+interface DocumentFragment extends Node, NonElementParentNode, ParentNode {
+    getElementById(elementId: string): HTMLElement | null;
+}
+
+
+declare var jQuery: (selector: string) => any;
+
+jQuery('#foo');
+
+
+// jQuery.d.ts
+declare var jQuery: (string) => any;
+
+
+
+/// <reference path="./jQuery.d.ts" />
+
+jQuery('#foo');
+
+
+
+
+type Name = string;
+type NameResolver = () => string;
+type NameOrResolver = Name | NameResolver;
+function getName(n: NameOrResolver): Name {
+    if (typeof n === 'string') {
+        return n;
+    } else {
+        return n();
+    }
+}
+
+function reverse(x: number): number;
+function reverse(x: string): string;
+function reverse(x: number | string): number | string {
+    if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    } else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
+}
+
+interface Alarm {
+    price: number;
+}
+interface Alarm {
+    weight: number;
+}
+
+interface Alarm {
+    price: number;
+    weight: number;
+}
+
+
+interface Alarm {
+    price: number;
+}
+interface Alarm {
+    price: number;  // 虽然重复了，但是类型都是 `number`，所以不会报错
+    weight: number;
+}
+
+
+interface Alarm {
+    price: number;
+}
+interface Alarm {
+    price: string;  // 类型不一致，会报错
+    weight: number;
+}
+
+// index.ts(5,3): error TS2403: Subsequent variable declarations must have the same type.  Variable 'price' must be of type 'number', but here has type 'string'.
+
+
+
+
+interface Alarm {
+    price: number;
+    alert(s: string): string;
+}
+interface Alarm {
+    weight: number;
+    alert(s: string, n: number): string;
+}
+
+interface Alarm {
+    price: number;
+    weight: number;
+    alert(s: string): string;
+    alert(s: string, n: number): string;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
