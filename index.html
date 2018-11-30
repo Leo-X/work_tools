@@ -29,7 +29,8 @@
                             其他 <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" id="dropdownMenu1">
-                            <li><a target="_blank" href="http://hfdoc.qa.nt.ctripcorp.com/offline/ebk_v4/UI.php?r=release">ebk_v4 online</a></li>
+                            <li><a target="_blank" href="http://hfdoc.qa.nt.ctripcorp.com/offline/ebk_v4/UI.php?r=release">ebk_v4
+                                    online</a></li>
                             <li><a target="_blank" href="http://hfdoc.qa.nt.ctripcorp.com/docmapp/#/docs-list">项目文档管理</a></li>
                             <li><a target="_blank" href="http://app.ares.fx.ctripcorp.com/portal#/croller/">图片发布</a></li>
                             <li><a target="_blank" href="http://localhost:8080/">8080 端口</a></li>
@@ -150,12 +151,32 @@
                         </div>
                     </div>
                     <div class="col-md-2 mt20">
-                        <button onclick=" window.open('http://code.ctripcorp.com/#/','_blank'); " target="_blank" type="button"
-                            class="btn btn-info">CodeReview &gt;&gt;</button>
+                        <!-- 新的  -->
+                        <button onclick=" window.open('http://git.dev.sh.ctripcorp.com/eBooking/reshotelebooking/project_changes','_blank'); "
+                            target="_blank" type="button" class="btn btn-info">CodeReview &gt;&gt;</button>
+                        <!-- 老的 -->
+                        <!-- <button onclick=" window.open('http://code.ctripcorp.com/#/','_blank'); " target="_blank" type="button"
+                            class="btn btn-info">CodeReview &gt;&gt;</button> -->
                     </div>
                     <div class="col-md-4 mt20">
                         <div class="input-group">
                             <input id="text_push" type="text" class="form-control" placeholder="push">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">Copy</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt20">
+                        <div class="input-group">
+                            <input id="text_push" type="text" class="form-control" placeholder="Change ID">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">生成回退</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt20">
+                        <div class="input-group">
+                            <input id="text_push" type="text" class="form-control" placeholder="git reset --hard 40a9a83****15456">
                             <span class="input-group-btn">
                                 <button class="btn btn-success btn-copy" type="button">Copy</button>
                             </span>
@@ -191,8 +212,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <script src="./src/js/libs/jquery.js"></script>
@@ -220,9 +239,6 @@
                 });
                 return false;
             }
-
-
-
             let new_branch = `git checkout -b ${text} release`;
             let push_u_branch = `git push -u origin ${text}`;
             let text_push_refs = `git push origin ${text}:refs/for/${text}`;
@@ -235,6 +251,19 @@
             //   time: 3000
             // });
         };
+
+        const createReset = (e) => {
+            let text = $("#input_branch").val();
+            if (!text || hasWhiteSpace(text)) {
+                layer.msg("分支为空，或不符合格式要求", {
+                    time: 2000
+                });
+                return false;
+            }
+            let resetCommitID = `git reset --hard ${text}`;
+            $("#reset_hard").val(resetCommitID);
+        };
+
 
         // ctrlKey（metaKey）、altKey、shiftKey
         // 绑定 输入框enter 键 输入框绑定
@@ -272,6 +301,13 @@
             let v = $(this).val();
             creat_command_line();
         });
+
+
+
+
+
+
+
 
 
         // 监控数值，计算rem
@@ -340,6 +376,74 @@
         var ddd = JSON.stringify(data);
         window.localStorage.setItem("data", ddd);
         console.log(window.localStorage.data);
+
+
+        function runNian(_year) {
+            if (_year % 400 === 0 || (_year % 4 === 0 && _year % 100 !== 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //判断某年某月的1号是星期几
+        function getFirstDay(_year, _month) {
+            var allDay = 0,
+                y = _year - 1;
+            allDay = y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) + 1;
+            for (var i = 1; i < _month; i++) {
+                switch (i) {
+                    case 1:
+                        allDay += 31;
+                        break;
+                    case 2:
+                        if (runNian(_year)) {
+                            allDay += 29;
+                        } else {
+                            allDay += 28;
+                        }
+                        break;
+                    case 3:
+                        allDay += 31;
+                        break;
+                    case 4:
+                        allDay += 30;
+                        break;
+                    case 5:
+                        allDay += 31;
+                        break;
+                    case 6:
+                        allDay += 30;
+                        break;
+                    case 7:
+                        allDay += 31;
+                        break;
+                    case 8:
+                        allDay += 31;
+                        break;
+                    case 9:
+                        allDay += 30;
+                        break;
+                    case 10:
+                        allDay += 31;
+                        break;
+                    case 11:
+                        allDay += 30;
+                        break;
+                    case 12:
+                        allDay += 31;
+                        break;
+                }
+            }
+            return allDay % 7;
+        }
+        var curday = getFirstDay(2020, 11);
+        // console.log(`curday ：${ curday }`);
+
+
+
+
+
+
 
     });
 </script>

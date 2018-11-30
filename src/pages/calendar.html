@@ -7,16 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
-    <input id="d-datepicker01" type="text" class="o-input d-datepicker" style="margin:235px 0 0 365px;" />
-    至 <input id="d-datepicker02" type="text" class="o-input" />
-    <br>
-    <br>
-    <input id="d-datepicker03" type="text" class="o-input" placeholder="calendar1" />
-    <br>
 
-    <br>
+<body>
+    <div>
+        <input id="datepicker31" type="text" class="o-input d-datepicker" />
+        至 <input id="datepicker32" type="text" class="o-input" />
+    </div>
+
+    <div>
+        <input id="d-datepicker01" type="text" class="o-input d-datepicker" style="margin:235px 0 0 365px;" />
+        至 <input id="d-datepicker02" type="text" class="o-input" />
+    </div>
+
+    <div>
+        <input id="d-datepicker03" type="text" class="o-input" placeholder="calendar03" />
+    </div>
+    <div style="margin-top: 50px;">
+        <input id="d-datepicker04" type="text" class="o-input" placeholder="calendar04" />
+    </div>
+
+
 </body>
+<script src="../js/libs/jquery.js"></script>
 <script src="./calendar_plugin.js"></script>
 <script>
     var setting = {
@@ -26,7 +38,7 @@
         // id: ["d-datepicker01"], //数组形式，必填
         // today: "2018-09-25",
         // date: '2018-09-27',
-        limitDate: false, //限制日期则设置ture  默认不限制日期
+        limitDate: true, //限制日期则设置ture  默认不限制日期
         // limitDate1: "2018-09-28", // 限定日期范围
         // limitDate2: "2019-2-2",
         unitYear: "年", //中文下给出单位：年
@@ -38,56 +50,6 @@
         // arrMonth: ["January", "February", "March", "April", "May", "June", "July", "August",
         //     "September", "October", "November", "December"
         // ] // 月份名称，针对多语言
-        specialDays: [{
-
-                date: "2019-01-01",
-                text: "元旦"
-            },
-            {
-                date: "2019-02-04",
-                text: "除夕"
-            },
-            {
-                date: "2019-02-05",
-                text: "春节"
-            },
-            {
-                date: "2019-03-08",
-                text: "妇女节"
-            },
-            {
-                date: "2019-04-05",
-                text: "清明"
-            },
-            {
-                date: "2019-05-01",
-                text: "劳动节"
-            },
-            {
-                date: "2019-05-04",
-                text: "青年节"
-            },
-            {
-                date: "2019-06-01",
-                text: "儿童节"
-            },
-            {
-                date: "2019-06-07",
-                text: "端午节"
-            },
-            {
-                date: "2019-09-10",
-                text: "教师节"
-            },
-            {
-                date: "2019-09-13",
-                text: "中秋节"
-            },
-            {
-                date: "2019-10-01",
-                text: "国庆节"
-            }
-        ]
 
         // hyphen:"至",    //默认值  至
         //默认   top 36px;left:0;right:auto;bottom:auto
@@ -100,77 +62,65 @@
     }
 
     var tools = ctrip();
-    tools.calendar2(setting);
+    // tools.calendar2(setting);
+    // var specialDays_ = [
+    //     { date: "2019-01-01", text: "元旦" },
+    //     { date: "2019-02-04", text: "除夕" },
+    //     { date: "2019-02-05", text: "春节" },
+    //     { date: "2019-03-08", text: "妇女节" },
+    //     { date: "2019-04-05", text: "清明" },
+    //     { date: "2019-05-01", text: "劳动节" },
+    //     { date: "2019-05-04", text: "青年节" },
+    //     { date: "2019-06-01", text: "儿童节" },
+    //     { date: "2019-06-07", text: "端午节" },
+    //     { date: "2019-09-10", text: "教师节" },
+    //     { date: "2019-09-13", text: "中秋节" },
+    //     { date: "2019-10-01", text: "国庆节" }
+    // ];
 
-    //单个日历
-    var setting2 = {
-        id: ["d-datepicker03"],
-        unitYear: "年", //中文下给出单位：年
-        dateForm: "yyyy-mm",
-        specialDays: [{
-                date: "2019-01-01",
-                text: "元旦"
+    // 默认双日历，根据id个数，把值输出到对应容器
+    // 默认Chinese
+    var options = {
+        idList: [
+            ["d-datepicker01", "d-datepicker02"],
+            ["d-datepicker03"],
+            ["d-datepicker04"],
+            ["datepicker31", "datepicker32"]
+        ],
+        en: true,
+        setting: {
+
+        },
+        singleSetting: [{
+                id: ["d-datepicker03"],
+                // limitDate: true,
+                doubleCalendar: false,
             },
             {
-                date: "2019-02-04",
-                text: "除夕"
+                id: ["d-datepicker04"],
+                click01: true
             },
             {
-                date: "2019-02-05",
-                text: "春节"
+                id: ["d-datepicker01", "d-datepicker02"],
             },
             {
-                date: "2019-03-08",
-                text: "妇女节"
-            },
-            {
-                date: "2019-04-05",
-                text: "清明"
-            },
-            {
-                date: "2019-05-01",
-                text: "劳动节"
-            },
-            {
-                date: "2019-05-04",
-                text: "青年节"
-            },
-            {
-                date: "2019-06-01",
-                text: "儿童节"
-            },
-            {
-                date: "2019-06-07",
-                text: "端午节"
-            },
-            {
-                date: "2019-09-10",
-                text: "教师节"
-            },
-            {
-                date: "2019-09-13",
-                text: "中秋节"
-            },
-            {
-                date: "2019-10-01",
-                text: "国庆节"
+                id: ["datepicker31", "datepicker32"],
+                limitDate: true,
+                limitDate1: "2018-11-11", // 限定日期范围
+                limitDate2: "2019-2-2"
             }
-        ]
-        // limitDate: true,
-    }
-    var c1 = ctrip();
-    c1.calendar1(setting2);
-
-    var setting4 = {
-        id: ["d-datepicker04"], //数组形式，必填
-        dateForm: "mm-yyyy", //两种二选一  年月 yyyy-mm（默认）,  月年 "mm-yyyy"
-        weekDayName: ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"], //星期单位无论语言按中文从周七到周一
-        arrMonth: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
-            "November", "December"
-        ] // 月份名称，针对多语言
-    }
-    // var c4 = ctrip();
-    // c4.calendar1(setting4);
+        ],
+        // setting: {
+        //     weekDayName: ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"], //星期单位无论语言按中文从周七到周一
+        //     arrMonth: ["January", "February", "March", "April", "May", "June", "July", "August",
+        //         "September", "October", "November", "December"
+        //     ],
+        //     dateForm: "mm-yyyy",
+        //     weekStartDay: 1 //  1：周一开始   7：周日开始 默认值为7
+        // }
+    };
+    var c_calendar = ctrip();
+    c_calendar.renderCalendar(options);
 </script>
 
 </html>
