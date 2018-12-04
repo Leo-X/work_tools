@@ -448,7 +448,6 @@ var ctrip = (function(window) {
                 _this.limitDate = typeof setting.limitDate != "undefined" ? setting.limitDate : false;
                 _this.duringDays = typeof setting.duringDays != "undefined" ? setting.duringDays : undefined;
                 if (_this.limitDate == true && _this.duringDays != undefined) {
-                    console.log(`_this.duringDays ：${_this.duringDays}`);
                     _this.limitDate1 = typeof setting.limitDate1 != "undefined" ? setting.limitDate1 : _this.curDate;
                     _this.limitDate2 = getDateBydays(_this.limitDate1, _this.duringDays);
                 } else if (_this.limitDate === true) {
@@ -508,13 +507,22 @@ var ctrip = (function(window) {
                             _this.clickDate[0] = date_cur;
                             var d1 = dateForm2(_this.clickDate[0]);
                             show_date1 = dateForm1(d1); //标签上要显示的日期格式
-                            _this.datePicker[1].setAttribute("data-date2", "");
-                            if (_this.datePicker[1].tagName == "INPUT") {
-                                _this.datePicker[1].value = "";
-                            } else {
-                                _this.datePicker[1].innerHTML = "";
-                            }
+                            if ( _this.datePicker.length ===1) {
+                                _this.datePicker[0].setAttribute("data-date2", "");
+                                if (_this.datePicker[0].tagName == "INPUT") {
+                                    _this.datePicker[0].value = "";
+                                } else {
+                                    _this.datePicker[0].innerHTML = "";
+                                }
 
+                            }else if ( _this.datePicker.length ===2){
+                                _this.datePicker[1].setAttribute("data-date2", "");
+                                if (_this.datePicker[1].tagName == "INPUT") {
+                                    _this.datePicker[1].value = "";
+                                } else {
+                                    _this.datePicker[1].innerHTML = "";
+                                }
+                            }
                             fillInDate(_this.clickDate, _this.datePicker);
                         }
                         hidePop();
