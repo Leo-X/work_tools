@@ -28,7 +28,7 @@
 
 
 </body>
-<script src="../js/libs/jquery.js"></script>
+<!-- <script src="../js/libs/jquery.js"></script> -->
 <script src="./calendar_plugin.js"></script>
 <script>
     var setting = {
@@ -80,7 +80,7 @@
 
     // 默认双日历，根据id个数，把值输出到对应容器
     // 默认Chinese
-    var options = {
+    var config = {
         idList: [
             ["d-datepicker01", "d-datepicker02"],
             ["d-datepicker03"],
@@ -91,23 +91,27 @@
         setting: {
 
         },
-        singleSetting: [{
+        // 默认单id 单日历，双id双日历，其中双日历默认范围选取，singleDate配置其单选
+        options: [{
                 id: ["d-datepicker03"],
-                // limitDate: true,
-                doubleCalendar: false,
+                doubleCalendar: true,
+                singleDate: true,
+
             },
             {
-                id: ["d-datepicker04"],
-                click01: true
+                id: ["d-datepicker04"]
+
             },
             {
                 id: ["d-datepicker01", "d-datepicker02"],
+                // outputForm:"yymmdd"
             },
             {
                 id: ["datepicker31", "datepicker32"],
                 limitDate: true,
                 limitDate1: "2018-11-11", // 限定日期范围
-                limitDate2: "2019-2-2"
+                // duringDays:3,
+                // limitDate2: "2019-2-2"
             }
         ],
         // setting: {
@@ -120,7 +124,7 @@
         // }
     };
     var c_calendar = ctrip();
-    c_calendar.renderCalendar(options);
+    c_calendar.renderCalendar(config);
 </script>
 
 </html>
