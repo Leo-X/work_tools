@@ -9,27 +9,45 @@
 </head>
 
 <body>
-    <div>
-        <input id="datepicker31" type="text" class="o-input d-datepicker" />
-        至 <input id="datepicker32" type="text" class="o-input" />
+    <button id="add" style="cursor:pointer;margin-left: 400px;">添加</button>
+    <button id="reduce" style="cursor:pointer;margin-left: 20px;">减少</button>
+    <div class="lists">
+        <div class="item">
+            <input type="text" class="o-input d-datepicker" data-calendarName="d1" />
+            至 <input type="text" class="o-input" data-calendarName="d1" />
+        </div>
     </div>
 
     <div>
-        <input id="d-datepicker01" type="text" class="o-input d-datepicker" style="margin:235px 0 0 365px;" />
-        至 <input id="d-datepicker02" type="text" class="o-input" />
+        <input data-calendarName="d2" id="d-datepicker01" type="text" class="o-input d-datepicker" style="margin:235px 0 0 365px;" />
+        至 <input data-calendarName="d2" id="d-datepicker02" type="text" class="o-input" />
     </div>
 
     <div>
-        <input id="d-datepicker03" type="text" class="o-input" placeholder="calendar03" />
+        <input id="d-datepicker03" data-calendarName="d3" type="text" class="o-input" placeholder="calendar03" />
     </div>
     <div style="margin-top: 50px;">
-        <input id="d-datepicker04" type="text" class="o-input" placeholder="calendar04" />
+        <input id="d-datepicker04" data-calendarName="d4" type="text" class="o-input" placeholder="calendar04" />
     </div>
 
 
 </body>
-<!-- <script src="../js/libs/jquery.js"></script> -->
-<script src="./calendar_plugin.js"></script>
+<script src="../js/libs/jquery.js"></script>
+<script src="./calendar_plugin_v2.js"></script>
+<script>
+    var sum = 20;
+    $("#add").click(function (e) {
+        var list1 = $(".item:first").clone();
+        sum++;
+        var name = "d" + sum;
+        // var
+        list1.children("input").attr("data-calendarname", name);
+        $(".lists").append(list1);
+    });
+    $("#reduce").click(function (e) {
+        $(".lists .item:last").remove();
+    });
+</script>
 <script>
     var setting = {
         // title: "入住日期", // 日历标题
@@ -60,9 +78,6 @@
         //     bottom: "auto"
         // }
     }
-
-    var tools = ctrip();
-    // tools.calendar2(setting);
     // var specialDays_ = [
     //     { date: "2019-01-01", text: "元旦" },
     //     { date: "2019-02-04", text: "除夕" },
@@ -122,8 +137,19 @@
         //     weekStartDay: 1 //  1：周一开始   7：周日开始 默认值为7
         // }
     };
+
+      settingNew={
+            weekDayName: ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"], //星期单位无论语言按中文从周七到周一
+            arrMonth: ["January", "February", "March", "April", "May", "June", "July", "August",
+                "September", "October", "November", "December"
+            ],
+            dateForm: "mm-yyyy",
+            weekStartDay: 9, //  1：周一开始   7：周日开始 默认值为7
+            testtt:true
+        }
     var c_calendar = ctrip();
-    c_calendar.renderCalendar(config);
+    c_calendar.configCalendar(settingNew);
+    // c_calendar.renderCalendar(config);
 </script>
 
 </html>
