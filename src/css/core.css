@@ -928,7 +928,7 @@ a:focus {
     color: #666;
 }
 
-.d-gray {
+.d-gray1 {
     color: #ccc;
 }
 
@@ -940,6 +940,13 @@ a:focus {
 .d-gray3 {
     color: #eee;
 }
+
+.d-bg-white{background-color: #fff;color: #000;}
+.d-bg-black{background-color: #000;color:#fff;}
+.d-bg-green{background-color: #dff0d8;color: #3c763d;}
+.d-bg-blue{background-color: #d9edf7;color: #31708f;}
+.d-bg-yellow{background-color: #fcf8e3;color: #8a6d3b;}
+.d-bg-red{background-color: #f2dede;color: #a94442;}
 
 .d-underline {
     text-decoration: underline;
@@ -959,6 +966,9 @@ a:focus {
 
 .d-border{border: 1px solid #ccc;}
 .d-border-dashed{border: 1px dashed #ccc;}
+.d-bdr4{border-radius: 4px;}
+.d-bdr6{border-radius: 6px;}
+.d-bdr8{border-radius: 8px;}
 
 .d-money {
     font-family: "Microsoft YaHei", Arial, "Hiragino Sans GB", "STHeiti", sans-serif

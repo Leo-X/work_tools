@@ -4,38 +4,7 @@ var ctrip = (function (window) {
     };
     ctrip.fn = ctrip.prototype = {
         constructor: ctrip,
-        init: function (data) {
-            function stopPropagation (event) {
-                var e = arguments.callee.caller.arguments[0] || event;
-                if (e && e.stopPropagation) {
-                    e.stopPropagation();
-                } else if (window.event) {
-                    window.event.cancelBubble = true;
-                }
-            }
-            var _this = this;
-            var c_dom = [];
-
-            function bindCalendar(e) {
-                // var _this = this;
-                stopPropagation(e);
-                console.log(`e ：${ e.target.getAttribute("data-calendarname") }`);
-            }
-            function findCalendar(e) {
-                var calendars = document.querySelectorAll("body [data-calendarname]");
-                console.log(`body触发页面绑定`);
-                for (var i = 0; i < calendars.length; i++) {
-                    _this.addEvent(calendars[i], "click", bindCalendar);
-                    // c_dom[i] = calendars[i].getAttribute("data-calendarname");
-                }
-            }
-            findCalendar();
-            var ele_body = document.querySelector("body");
-            _this.addEvent(ele_body, "click", findCalendar);
-
-            // var arr1 = c_dom.slice()
-            // console.log(`calendars ：${c_dom}`);
-        },
+        init: function (data) {},
         deepCopy: function (p, c) {
             var c = c || {};
             var _this = this;
@@ -120,21 +89,6 @@ var ctrip = (function (window) {
                 }
             }
         },
-        addEvent: function (el, type, handler) {
-            var _this = this;
-            if (_this.isIE8()) {
-                return el.attachEvent("on" + type, handler);
-            } else {
-                return el.addEventListener(type, handler, false);
-            }
-        },
-        removeEvent: function (ele, event, fn) {
-            if (_this.isIE8()) {
-                ele.detachEvent('on' + event, fn.bind(ele));
-            } else {
-                ele.removeEventListener(event, fn, false);
-            }
-        },
         isIE8: function () {
             var isie8 = false;
             if (navigator.userAgent.indexOf("Firefox") >= 0) {
@@ -150,26 +104,14 @@ var ctrip = (function (window) {
             }
             return isie8;
         },
-
-        // stopPropagation: function (e) {
-        //     var e = e || event;
-        //     if (e.stopPropagation) {
-        //         //W3C阻止冒泡方法
-        //         e.stopPropagation();
-        //         // console.log("chrome阻止冒泡成功");
-        //     } else {
-        //         e.cancelBubble = true; //IE阻止冒泡方法
-        //         // console.log("IE阻止冒泡成功");
-        //     }
-        // },
         createDom: function (domId, isIE, boxNum, styleID) {
             var isIE_ = typeof isIE != "undefined" ? isIE : false;
             var styleStr = "#" + styleID;
             var styleCont =
                 styleStr +
-                "{position: absolute;display: none;width: 550px;height:320px;z-index: 1080;outline: none;}" +
+                "{position: absolute;display: none;width: 550px;height:320px;z-index: 1200;outline: none;}" +
                 styleStr +
-                ' .d-calendar{display: block;z-index: 2; padding: 20px 10px 10px 10px;width: 530px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box; box-sizing:content-box;overflow: auto; background-color: #fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;outline: none;' +
+                ' .d-calendar{display: block;z-index: 1100; padding: 20px 10px 10px 10px;width: 530px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box; box-sizing:content-box;overflow: auto; background-color: #fff;box-shadow:0 2px 20px 0 rgba(0,0,0,0.2);font-family:"Microsoft YaHei","微软雅黑",arial,simhei;color: #333;outline: none;' +
                 "}" +
                 styleStr +
                 " .d-calendar-header{padding:5px 10px; text-align: center; font-size: 16px;font-weight: bold;}" +
@@ -184,7 +126,7 @@ var ctrip = (function (window) {
                 styleStr +
                 " .d-calendar-box .btn-next{position: absolute;top: 0;right: 0; width: 24px;line-height: 24px;text-align: center;color:#06c;font-size: 20px;cursor: pointer;}" +
                 styleStr +
-                " .d-c-week .d-week-item{position: relative;float: left; display:inline-block;*zoom:1;*display: inline;width: 36px;height: 36px;line-height: 36px;text-align: center; overflow: hidden;font-size:14px; z-index:2;}" +
+                " .d-c-week .d-week-item{position: relative;float: left; display:inline-block;*zoom:1;*display: inline;width: 36px;height: 36px;line-height: 36px;text-align: center; overflow: hidden;font-size:14px; z-index:1100;}" +
                 styleStr +
                 " .d-c-day .d-day-item{position: relative;float: left; display:inline-block;*zoom:1;*display: inline;width: 36px;height: 36px; line-height: 36px;text-align: center; font-size: 14px; overflow: hidden;cursor: pointer;}" +
                 styleStr +
@@ -265,6 +207,7 @@ var ctrip = (function (window) {
             var dWrapper = document.createElement("div");
             dWrapper.setAttribute("tabindex", -1);
             dWrapper.setAttribute("id", styleID);
+            dWrapper.setAttribute("data-cname", "");
             dWrapper.appendChild(dCalendar);
 
             // 添加蒙层
@@ -288,13 +231,26 @@ var ctrip = (function (window) {
         calendar2: function (setting) {
             var _this = this;
             _this.browser_ie8 = _this.isIE8();
-            var addEvent = function (el, type, handler) {
-                if (_this.browser_ie8) {
-                    return el.attachEvent("on" + type, handler);
-                } else {
-                    return el.addEventListener(type, handler, false);
+            function addEvent(el, type, handler, useCapture) {
+                if (typeof useCapture == "undefined") {
+                    useCapture = false;
                 }
-            };
+                if (_this.browser_ie8) {
+                    return el.attachEvent("on" + type, handler, useCapture);
+                } else {
+                    return el.addEventListener(type, handler, useCapture);
+                }
+            }
+            function removeEvent(element, type, fn) {
+                //判断当前浏览器是否支持addEventListener方法
+                if (element.removeEventListener) {
+                    element.removeEventListener(type, fn);
+                } else if (element.detachEvent) {
+                    element.detachEvent("on"+type, fn);
+                } else {
+                    element["on" + type] = null; //相当于element.onclick=fn;
+                }
+            }
 
             function RollId() {
                 var canledarId = "canledar";
@@ -306,6 +262,7 @@ var ctrip = (function (window) {
 
             _this.datePicker = [];
             // 定义输入框和对应的 d-calendar-box
+
             if (!document.getElementById(setting.id[0])) {
                 // 没有此元素时 方法终结
                 return false;
@@ -332,19 +289,28 @@ var ctrip = (function (window) {
             // 绑定点击事件
             if (_this.datePicker.length === 2) {
                 addEvent(_this.datePicker[0], "click", function (e) {
+                    stopPropagation(e);
                     initials();
                 });
-                addEvent(_this.datePicker[1], "click", function () {
+                addEvent(_this.datePicker[1], "click", function (e) {
+                    stopPropagation(e);
                     initials();
                 });
             } else if (_this.datePicker.length === 1) {
-                addEvent(_this.datePicker[0], "click", function () {
+                addEvent(_this.datePicker[0], "click", function (e) {
+                    stopPropagation(e);
                     initials();
                 });
             }
 
+            // 初始化日历
             function initials() {
                 var canledarId = RollId();
+                var calendarNowDom = "body [data-calendarname]";
+                var oldDom=document.querySelector(calendarNowDom);
+                if (oldDom) {
+                    oldDom.parentNode.removeChild(oldDom);
+                }
                 //创建dom
                 _this.createDom(setting.id[0], _this.browser_ie8, 2, canledarId);
                 // 兼容IE8  end
@@ -378,8 +344,6 @@ var ctrip = (function (window) {
                     _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
                     // console.log(`下方渲染`);
                 }
-                // 不用加上面的代码 不用上面出 就这样
-                // _this.calendarBox.style.top = _this.datePicker[0].getBoundingClientRect().bottom + document.documentElement.scrollTop + 8 + "px";
                 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
                 if (isMobile && document.documentElement.clientWidth <= 768) {
                     _this.calendarBox.style.position = "fixed";
@@ -393,7 +357,7 @@ var ctrip = (function (window) {
                     _this.calendarLayer.style.display = "block";
                     addEvent(_this.calendarLayer, "mousedown", function (e) {
                         stopPropagation(e);
-                        _this.calendarBox.style.display = "none";
+                        // _this.calendarBox.style.display = "none";
                     });
                 }
 
@@ -523,7 +487,7 @@ var ctrip = (function (window) {
                     } else {
                         _this.month = _this.month - 1;
                     }
-                    _this.render(_this.year, _this.month);
+                    render(_this.year, _this.month);
                 });
 
                 addEvent(_this.btn_next[0], "click", function () {
@@ -534,7 +498,7 @@ var ctrip = (function (window) {
                     } else {
                         _this.month += 1;
                     }
-                    _this.render(_this.year, _this.month);
+                    render(_this.year, _this.month);
                 });
                 addEvent(_this.btn_next[1], "click", function () {
                     //  12 进 1
@@ -544,55 +508,7 @@ var ctrip = (function (window) {
                     } else {
                         _this.month += 1;
                     }
-                    _this.render(_this.year, _this.month);
-                });
-
-                // 绑定焦点事件
-                if (_this.datePicker.length === 2) {
-                    addEvent(_this.datePicker[0], "focus", showPop);
-                    addEvent(_this.datePicker[1], "focus", showPop);
-                } else {
-                    addEvent(_this.datePicker[0], "focus", showPop);
-                }
-
-                if (!_this.browser_ie8) {
-                    // if (true) {
-                    // addEvent(_this.calendarBox, "blur", hidePop);
-                    addEvent(_this.calendarBox, "blur", function () {
-                        if (_this.clickDate.length === 1 && _this.singleDate !== true) {
-                            var date_cur = _this.clickDate[0];
-                            _this.clickDate = [];
-                            _this.clickDate[0] = date_cur;
-                            var d1 = dateForm2(_this.clickDate[0]);
-                            show_date1 = dateForm1(d1); //标签上要显示的日期格式
-                            if (_this.datePicker.length === 1) {
-                                _this.datePicker[0].setAttribute("data-date2", "");
-                                if (_this.datePicker[0].tagName == "INPUT") {
-                                    _this.datePicker[0].value = "";
-                                } else {
-                                    _this.datePicker[0].innerHTML = "";
-                                }
-
-                            } else if (_this.datePicker.length === 2) {
-                                _this.datePicker[1].setAttribute("data-date2", "");
-                                if (_this.datePicker[1].tagName == "INPUT") {
-                                    _this.datePicker[1].value = "";
-                                } else {
-                                    _this.datePicker[1].innerHTML = "";
-                                }
-                            }
-                            fillInDate(_this.clickDate, _this.datePicker);
-                        }
-                        hidePop();
-                    });
-                }
-
-                addEvent(_this.calendarBox, "mousedown", function (e) {
-                    stopPropagation(e);
-                    if (_this.browser_ie8) {} else {
-                        e.preventDefault();
-                    }
-                    _this.calendarBox.focus();
+                    render(_this.year, _this.month);
                 });
                 addEvent(_this.dayBox[0], "click", selectDate);
                 addEvent(_this.dayBox[1], "click", selectDate);
@@ -601,7 +517,6 @@ var ctrip = (function (window) {
                     addEvent(_this.dayBox[0], "mouseover", hoverDate);
                     addEvent(_this.dayBox[1], "mouseover", hoverDate);
                 }
-
                 showPop();
             }
 
@@ -723,7 +638,7 @@ var ctrip = (function (window) {
                 return curMonthDays;
             }
             // 初始化数据
-            _this.render = function (year_1, month_1, day_1) {
+            function render(year_1, month_1, day_1) {
                 var year_ = parseInt(year_1);
                 var month_ = parseInt(month_1);
                 var day_ = parseInt(day_1);
@@ -823,7 +738,7 @@ var ctrip = (function (window) {
                 renderClass(_this.clickDate, "selected");
                 renderSelectedClass(_this.clickDate, "d-applicable");
                 renderSpecialDays(_this.specialDays);
-            };
+            }
 
             function traversalBox(date_, classNames) {
                 var dateRenderNow1 = "";
@@ -1103,6 +1018,18 @@ var ctrip = (function (window) {
                 }
             }
 
+            function stopDefault(e) {
+                if (e && e.preventDefault) {
+                    e.preventDefault(); //防止浏览器默认行为(W3C)
+                } else  {
+                    if ( !_this.browser_ie8) {
+                        window.event.returnValue = false; //IE中阻止浏览器行为
+                    }
+                }
+                return false;
+            }
+
+            // 显示回填信息
             function showPop(e) {
                 if (e) {
                     stopPropagation(e);
@@ -1123,9 +1050,9 @@ var ctrip = (function (window) {
                     _this.year = parseInt(t1[0]);
                     _this.month = parseInt(t1[1]);
                     _this.day = parseInt(t1[2]);
-                    _this.render(_this.year, _this.month);
+                    render(_this.year, _this.month);
                 } else {
-                    _this.render(_this.year, _this.month, _this.day);
+                    render(_this.year, _this.month, _this.day);
                 }
 
                 if (setting.id.length === 1 && _this.singleDate === true) {
@@ -1137,14 +1064,51 @@ var ctrip = (function (window) {
                     _this.year = parseInt(t1[0]);
                     _this.month = parseInt(t1[1]);
                     _this.day = parseInt(t1[2]);
-                    _this.render(_this.year, _this.month);
+                    render(_this.year, _this.month);
                 } else {
-                    _this.render(_this.year, _this.month, _this.day);
+                    render(_this.year, _this.month, _this.day);
                 }
-
                 _this.calendarBox.style.display = "block";
-                _this.calendarBox.focus();
                 adjustPosition();
+                addEvent(_this.calendarBox, "click", function (e) {
+                    stopPropagation(e);
+                    stopDefault(e);
+                });
+
+                var bodyDom = document.getElementsByTagName("body")[0];
+                addEvent(bodyDom, "click", function (e) {
+                    var calendarNowDomQuery = "body [data-calendarname]";
+                    var doms = document.querySelectorAll(calendarNowDomQuery);
+                    if (doms.length > 0) {
+                        _this.calendarBox.style.display = "none";
+                        console.log(`_this.clickDate.length ：${ _this.clickDate.length }`);
+                        console.log(`_this.clickDate ：${ _this.clickDate }`);
+                        if (_this.clickDate.length == 1 && _this.singleDate !== true) {
+                            var date_cur = _this.clickDate[0];
+                            _this.clickDate = [];
+                            _this.clickDate[0] = date_cur;
+                            var d1 = dateForm2(_this.clickDate[0]);
+                            show_date1 = dateForm1(d1); //标签上要显示的日期格式
+                            if (_this.datePicker.length === 1) {
+                                _this.datePicker[0].setAttribute("data-date2", "");
+                                if (_this.datePicker[0].tagName == "INPUT") {
+                                    _this.datePicker[0].value = "";
+                                } else {
+                                    _this.datePicker[0].innerHTML = "";
+                                }
+                            } else if (_this.datePicker.length === 2) {
+                                _this.datePicker[1].setAttribute("data-date2", "");
+                                if (_this.datePicker[1].tagName == "INPUT") {
+                                    _this.datePicker[1].value = "";
+                                } else {
+                                    _this.datePicker[1].innerHTML = "";
+                                }
+                            }
+                            fillInDate(_this.clickDate, _this.datePicker);
+                        }
+                        hidePop();
+                    }
+                });
             }
 
             function adjustPosition() {
@@ -1182,16 +1146,28 @@ var ctrip = (function (window) {
 
             function hidePop(e) {
                 stopPropagation(e);
-                _this.calendarBox.style.display = "none";
-                _this.calendarBox.parentNode.removeChild(_this.calendarBox);
+                var calendarNowDomQuery = "body [data-calendarname]";
+                var doms = document.querySelectorAll(calendarNowDomQuery);
+                console.log(`doms.length ：${ doms.length }`);
+
+                if (doms) {
+                    for (var i = 0; i < doms.length; i++) {
+                        doms[i].parentNode.removeChild(doms[i]);
+                    }
+                }
+                // if (_this.calendarBox.style.display=="block" || _this.calendarBox.style.display=="none") {
+                //     _this.calendarBox.style.display = "none";
+                //     _this.calendarBox.parentNode.removeChild(_this.calendarBox);
+                // }
                 return false;
             }
 
             // 给日期绑定点击事件
             function selectDate(e) {
-                // if ( !_this.browser_ie8) {
-                // }
-                stopPropagation(e);
+                // console.log(点击单元格);
+                if (!_this.browser_ie8) {
+                    stopPropagation(e);
+                }
                 var e_day_box = e.target || e.srcElement;
                 if (hasClass(e_day_box, "d-c-day")) {
                     return false;
@@ -1203,7 +1179,6 @@ var ctrip = (function (window) {
                     return false;
                 }
                 var dateClick = getClickDate(e_day_box);
-
                 if (_this.clickDate.length === 0) {
                     selectClean("selected");
                     addClass(e_day_box, "selected");
@@ -1248,7 +1223,6 @@ var ctrip = (function (window) {
                         hidePop();
                     }
                 }
-
                 return false;
             }
 
@@ -1274,9 +1248,6 @@ var ctrip = (function (window) {
                 }
                 return false;
             }
-
-            // 初始化
-            // _this.render(_this.year, _this.month, _this.day);
         },
         calendar1: function (setting) {
             var _this = this;
