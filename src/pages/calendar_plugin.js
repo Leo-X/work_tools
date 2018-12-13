@@ -207,7 +207,7 @@ var ctrip = (function (window) {
             var dWrapper = document.createElement("div");
             dWrapper.setAttribute("tabindex", -1);
             dWrapper.setAttribute("id", styleID);
-            dWrapper.setAttribute("data-cname", "");
+            dWrapper.setAttribute("data-calendarname", "");
             dWrapper.appendChild(dCalendar);
 
             // 添加蒙层
@@ -306,12 +306,14 @@ var ctrip = (function (window) {
             // 初始化日历
             function initials() {
                 var canledarId = RollId();
+                //创建dom
+                // dWrapper.setAttribute("data-calendarname", "");
                 var calendarNowDom = "body [data-calendarname]";
                 var oldDom=document.querySelector(calendarNowDom);
                 if (oldDom) {
                     oldDom.parentNode.removeChild(oldDom);
                 }
-                //创建dom
+
                 _this.createDom(setting.id[0], _this.browser_ie8, 2, canledarId);
                 // 兼容IE8  end
                 _this.calendarItem = [];
@@ -1073,6 +1075,7 @@ var ctrip = (function (window) {
                 addEvent(_this.calendarBox, "click", function (e) {
                     stopPropagation(e);
                     stopDefault(e);
+                    // e.preventDefault();
                 });
 
                 var bodyDom = document.getElementsByTagName("body")[0];
@@ -1081,8 +1084,8 @@ var ctrip = (function (window) {
                     var doms = document.querySelectorAll(calendarNowDomQuery);
                     if (doms.length > 0) {
                         _this.calendarBox.style.display = "none";
-                        console.log(`_this.clickDate.length ：${ _this.clickDate.length }`);
-                        console.log(`_this.clickDate ：${ _this.clickDate }`);
+                        // console.log(`_this.clickDate.length ：${ _this.clickDate.length }`);
+                        // console.log(`_this.clickDate ：${ _this.clickDate }`);
                         if (_this.clickDate.length == 1 && _this.singleDate !== true) {
                             var date_cur = _this.clickDate[0];
                             _this.clickDate = [];
@@ -1148,7 +1151,7 @@ var ctrip = (function (window) {
                 stopPropagation(e);
                 var calendarNowDomQuery = "body [data-calendarname]";
                 var doms = document.querySelectorAll(calendarNowDomQuery);
-                console.log(`doms.length ：${ doms.length }`);
+                // console.log(`doms.length ：${ doms.length }`);
 
                 if (doms) {
                     for (var i = 0; i < doms.length; i++) {

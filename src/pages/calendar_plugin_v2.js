@@ -4,52 +4,115 @@ var ctrip = (function(window) {
     };
     ctrip.fn = ctrip.prototype = {
         constructor: ctrip,
-        init: function(data) {
-            function stopPropagation(event) {
-                var e = arguments.callee.caller.arguments[0] || event;
-                if (e && e.stopPropagation) {
+        init: function() {},
+
+        startCalendar: function(setting) {
+            function stopPropagation(e) {
+                var e = e || event;
+                if (e.stopPropagation) {
                     e.stopPropagation();
-                } else if (window.event) {
-                    window.event.cancelBubble = true;
+                } else {
+                    e.cancelBubble = true; //IE阻止冒泡方法
                 }
             }
             var _this = this;
-            _this.defaultSetting = {
+            _this.defaultSettingEN = {
                 weekDayName: ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"],
                 arrMonth: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                 dateForm: "mm-yyyy",
                 weekStartDay: 7,
                 hyphen: "to"
             };
+            _this.defaultSettingCN = {
+                weekDayName: ["日", "一", "二", "三", "四", "五", "六"],
+                arrMonth: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+                dateForm: "yyyy-mm",
+                weekStartDay: 7,
+                hyphen: "至",
+                unitYear: "年",
+                specialDays: [
+                    { date: "2019-01-01", text: "元旦" },
+                    { date: "2019-02-04", text: "除夕" },
+                    { date: "2019-02-05", text: "春节" },
+                    { date: "2019-03-08", text: "妇女节" },
+                    { date: "2019-04-05", text: "清明" },
+                    { date: "2019-05-01", text: "劳动节" },
+                    { date: "2019-05-04", text: "青年节" },
+                    { date: "2019-06-01", text: "儿童节" },
+                    { date: "2019-06-07", text: "端午节" },
+                    { date: "2019-09-10", text: "教师节" },
+                    { date: "2019-09-13", text: "中秋节" },
+                    { date: "2019-10-01", text: "国庆节" }
+                ]
+            };
+            if (typeof setting !== "undefined") {
+                if (setting.language === "cn") {
+                    _this.calendarSetting = _this.defaultSettingCN;
+                } else if (setting.language === "en") {
+                    _this.calendarSetting = _this.defaultSettingEN;
+                } else {
+                    _this.calendarSetting = setting;
+                }
+            } else {
+                _this.calendarSetting = _this.defaultSettingEN; //默认英文
+            }
+            // _this.calendarSetting = typeof setting !== "undefined" ? setting : _this.defaultSetting;
+            function strToBoolean(str) {
+                if (str === "true") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
             function bindCalendar(e) {
                 stopPropagation(e);
-                var calendarNowName = e.target.getAttribute("data-calendarname");
+                var ele_target = e.target || e.srcElement; //兼容ie8 获取点击对象
+                var calendarNowName = ele_target.getAttribute("data-calendarname");
                 var calendarNowDomQuery = "body [data-calendarname='" + calendarNowName + "']";
                 // 逻辑，点击带有此属性名的dom  去获取所有同名dom变成一个dom 数组
                 var doms = document.querySelectorAll(calendarNowDomQuery);
                 // 然后读取第一个此名称dom 的属性参数配置，生成一个配置对象
                 _this.calendarSetting = typeof _this.calendarSetting !== "undefined" ? _this.calendarSetting : _this.defaultSetting;
                 var setting = new Object();
+
                 if (doms.length === 1 || doms.length === 2) {
                     // 接受公共配置参数
-                    setting.weekDayName = typeof _this.calendarSetting.weekDayName !== "undefined" ? _this.calendarSetting.weekDayName : _this.defaultSetting.weekDayName;
-                    setting.arrMonth = typeof _this.calendarSetting.arrMonth !== "undefined" ? _this.calendarSetting.arrMonth : _this.defaultSetting.arrMonth;
-                    setting.dateForm = typeof _this.calendarSetting.dateForm !== "undefined" ? _this.calendarSetting.dateForm : _this.defaultSetting.dateForm;
-                    setting.weekStartDay = typeof _this.calendarSetting.weekStartDay !== "undefined" ? _this.calendarSetting.weekStartDay : _this.defaultSetting.weekStartDay;
-                    setting.hyphen = typeof _this.calendarSetting.hyphen !== "undefined" ? _this.calendarSetting.hyphen : _this.defaultSetting.hyphen;
-                    setting.specialDays = typeof _this.calendarSetting.specialDays !== "undefined" ? _this.calendarSetting.specialDays : _this.defaultSetting.specialDays;
+                    setting.weekDayName = typeof _this.calendarSetting.weekDayName !== "undefined" ? _this.calendarSetting.weekDayName : _this.defaultSettingEN.weekDayName;
+                    setting.arrMonth = typeof _this.calendarSetting.arrMonth !== "undefined" ? _this.calendarSetting.arrMonth : _this.defaultSettingEN.arrMonth;
+                    setting.dateForm = typeof _this.calendarSetting.dateForm !== "undefined" ? _this.calendarSetting.dateForm : _this.defaultSettingEN.dateForm;
+                    setting.weekStartDay = typeof _this.calendarSetting.weekStartDay !== "undefined" ? _this.calendarSetting.weekStartDay : _this.defaultSettingEN.weekStartDay;
+                    setting.hyphen = typeof _this.calendarSetting.hyphen !== "undefined" ? _this.calendarSetting.hyphen : _this.defaultSettingEN.hyphen;
+                    setting.specialDays = typeof _this.calendarSetting.specialDays !== "undefined" ? _this.calendarSetting.specialDays : undefined;
                     // 获取个性化配置参数
-                    setting.doubleCalendar = doms[0].getAttribute("data-doubleCalendar");
-                    setting.singleDate = doms[0].getAttribute("data-singleDate");
+
+                    if (doms[0].getAttribute("data-doubleCalendar")) {
+                        setting.doubleCalendar = strToBoolean(doms[0].getAttribute("data-doubleCalendar"));
+                    }
+                    if (doms[0].getAttribute("data-singleDate")) {
+                        setting.singleDate = strToBoolean(doms[0].getAttribute("data-singleDate"));
+                    }
                     // setting.position = doms[0].getAttribute("data-position");
-                    setting.limitDate = doms[0].getAttribute("data-limitDate");
-                    setting.limitDate1 = doms[0].getAttribute("data-limitDate1");
-                    setting.limitDate2 = doms[0].getAttribute("data-limitDate2");
-                    setting.duringDays = doms[0].getAttribute("data-duringDays");
-                    setting.unitYear = doms[0].getAttribute("data-unitYear");
-                    setting.outputForm = doms[0].getAttribute("data-outputForm");
+                    if (doms[0].getAttribute("data-limitDate")) {
+                        setting.limitDate = strToBoolean(doms[0].getAttribute("data-limitDate"));
+                    }
+                    if (doms[0].getAttribute("data-limitDate1")) {
+                        setting.limitDate1 = doms[0].getAttribute("data-limitDate1");
+                    }
+                    if (doms[0].getAttribute("data-limitDate2")) {
+                        setting.limitDate2 = doms[0].getAttribute("data-limitDate2");
+                    }
+                    if (doms[0].getAttribute("data-duringDays")) {
+                        setting.duringDays = doms[0].getAttribute("data-duringDays");
+                    }
+                    if (doms[0].getAttribute("data-unitYear")) {
+                        setting.unitYear = doms[0].getAttribute("data-unitYear");
+                    }
+                    if (doms[0].getAttribute("data-outputForm")) {
+                        setting.outputForm = doms[0].getAttribute("data-outputForm");
+                    }
                     setting.calendarDdoms = doms;
                 }
+
                 // 根据读取到的配置属性来调用不同的日历显示方法
                 if (setting.calendarDdoms.length === 1) {
                     if (setting.doubleCalendar === true) {
@@ -72,11 +135,6 @@ var ctrip = (function(window) {
             _this.addEvent(ele_body, "click", findCalendar);
             findCalendar();
         },
-        configCalendar: function(setting) {
-            var _this = this;
-            _this.calendarSetting = typeof setting !== "undefined" ? setting : _this.defaultSetting;
-            return false;
-        },
         addEvent: function(el, type, handler) {
             var _this = this;
             if (_this.isIE8()) {
@@ -90,6 +148,96 @@ var ctrip = (function(window) {
                 ele.detachEvent("on" + event, fn.bind(ele));
             } else {
                 ele.removeEventListener(event, fn, false);
+            }
+        },
+        deepCopy: function(p, c) {
+            var c = c || {};
+            var _this = this;
+            for (var i in p) {
+                if (typeof p[i] === "object") {
+                    c[i] = p[i].constructor === Array ? [] : {};
+                    _this.deepCopy(p[i], c[i]);
+                } else {
+                    c[i] = p[i];
+                }
+            }
+            return c;
+        },
+        compareArray: function(aArray1, aArray2) {
+            if (this.isIE8()) {
+                if (aArray1 == aArray2) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if (aArray1.sort().toString() === aArray2.sort().toString()) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        renderCalendar: function(config) {
+            var _this = this;
+            var newSetting = {};
+            // 逻辑    setting 为总体设置
+            // 内置英文设置，中文设置，与setting平级，但优先于setting
+            // localSetting为局部设置，优先级最高
+            // 最终输出newSetting
+            var en = {
+                dateForm: "mm-yyyy", //两种二选一  年月 yyyy-mm（默认）,  月年 "mm-yyyy"
+                weekDayName: ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"], //星期单位无论语言按中文从周七到周一
+                arrMonth: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], // 月份名称，针对多语言
+                hyphen: "to" // 双日期单输入框时设置的语言连字符
+            };
+            // weekStartDay 中文下多个一周开始日可选配置 默认值 7，可接受1
+            // 还有个服务端参数： today，可选，默认为本地日期
+            if (config.en == true) {
+                newSetting = _this.deepCopy(config.setting);
+                newSetting.dateForm = en.dateForm;
+                newSetting.weekDayName = en.weekDayName;
+                newSetting.arrMonth = en.arrMonth;
+                newSetting.hyphen = en.hyphen;
+            } else if (typeof config.setting !== "undefined") {
+                newSetting = _this.deepCopy(config.setting);
+            }
+            // console.table(newSetting);
+            var calendarItem = config.idList;
+            var tools = [];
+            for (var i = 0; i < calendarItem.length; i++) {
+                tools[i] = ctrip();
+                var finalSetting = {};
+                finalSetting = _this.deepCopy(newSetting);
+                finalSetting.id = calendarItem[i];
+                // 此处遍历特殊设置处的 配置项目
+                if (config.options !== undefined) {
+                    for (var k = 0; k < config.options.length; k++) {
+                        if (_this.compareArray(finalSetting.id, config.options[k].id) === true) {
+                            finalSetting.doubleCalendar = config.options[k].doubleCalendar !== undefined ? config.options[k].doubleCalendar : false;
+                            finalSetting.singleDate = config.options[k].singleDate;
+                            finalSetting.position = config.options[k].position;
+                            finalSetting.limitDate = config.options[k].limitDate;
+                            finalSetting.limitDate1 = config.options[k].limitDate1;
+                            finalSetting.limitDate2 = config.options[k].limitDate2;
+                            finalSetting.duringDays = config.options[k].duringDays;
+                            finalSetting.unitYear = config.options[k].unitYear;
+                            finalSetting.outputForm = config.options[k].outputForm;
+                            finalSetting.specialDays = config.options[k].specialDays;
+                        }
+                    }
+                }
+                // 根据id 个数和额外参数配置调用不同方法
+                // 默认一个id用 calendar1，两个id用calendar2，其余情况加参数解决
+                // case1 一个id 一个日历 calendar1  默认 单次点击
+                // case2 两个id两个日历   双次点击支持单点
+                // 特殊 case   一个id 两个日历 单次点击  或者双次点击支持单点
+                if (finalSetting.id) {
+                    //这一行针对ie8
+                    if (finalSetting.id.length === 1) {
+                        finalSetting.doubleCalendar === true ? tools[i].calendar2(finalSetting) : tools[i].calendar1(finalSetting);
+                    } else if (finalSetting.id.length === 2) {
+                        tools[i].calendar2(finalSetting);
+                    }
+                }
             }
         },
         isIE8: function() {
@@ -106,6 +254,13 @@ var ctrip = (function(window) {
                 }
             }
             return isie8;
+        },
+        rollId: function() {
+            var canledarId = "canlendar";
+            for (var i = 0; i < 6; i++) {
+                canledarId += Math.floor(Math.random() * 10);
+            }
+            return canledarId;
         },
         createDom: function(isIE, boxNum, styleID) {
             var isIE_ = typeof isIE != "undefined" ? isIE : false;
@@ -233,13 +388,6 @@ var ctrip = (function(window) {
         calendar2: function(setting) {
             var _this = this;
             _this.browser_ie8 = _this.isIE8();
-            // function addEvent(el, type, handler) {
-            //     if (_this.browser_ie8) {
-            //         return el.attachEvent("on" + type, handler);
-            //     } else {
-            //         return el.addEventListener(type, handler, false);
-            //     }
-            // }
             function stopPropagation(e) {
                 var e = e || event;
                 if (e.stopPropagation) {
@@ -258,15 +406,6 @@ var ctrip = (function(window) {
                 }
                 return false;
             }
-
-            function RollId() {
-                var canledarId = "canledar";
-                for (var i = 0; i < 6; i++) {
-                    canledarId += Math.floor(Math.random() * 10);
-                }
-                return canledarId;
-            }
-
             _this.datePicker = [];
             // 定义输入框和对应的 d-calendar-box
             if (typeof setting.calendarDdoms != "undefined") {
@@ -297,12 +436,12 @@ var ctrip = (function(window) {
                         stopPropagation(e);
                         initials();
                     });
-                    _this.addEvent(_this.datePicker[1], "click", function() {
+                    _this.addEvent(_this.datePicker[1], "click", function(e) {
                         stopPropagation(e);
                         initials();
                     });
                 } else if (_this.datePicker.length === 1) {
-                    _this.addEvent(_this.datePicker[0], "click", function() {
+                    _this.addEvent(_this.datePicker[0], "click", function(e) {
                         stopPropagation(e);
                         initials();
                     });
@@ -315,7 +454,7 @@ var ctrip = (function(window) {
             // 只传入一个id
 
             function initials() {
-                var canledarId = RollId();
+                var canledarId = _this.rollId();
                 var calendarNowDom = "body [data-cname]";
                 var oldDom = document.querySelector(calendarNowDom);
                 if (oldDom) {
@@ -1283,21 +1422,6 @@ var ctrip = (function(window) {
             _this.browser_ie8 = false;
             // 兼容IE8  start
             _this.browser_ie8 = _this.isIE8();
-            console.log("调用calendar1");
-            // var addEvent = function(el, type, handler) {
-            //     if (_this.browser_ie8) {
-            //         return el.attachEvent("on" + type, handler);
-            //     } else {
-            //         return el.addEventListener(type, handler, false);
-            //     }
-            // };
-            function rollId() {
-                var canledarId = "canledar";
-                for (var i = 0; i < 6; i++) {
-                    canledarId += Math.floor(Math.random() * 10);
-                }
-                return canledarId;
-            }
             _this.datePicker = [];
 
             if (typeof setting.calendarDdoms != "undefined") {
@@ -1315,17 +1439,14 @@ var ctrip = (function(window) {
             });
 
             function initials() {
-                console.log("执行ini");
-                var canledarId = rollId();
-
+                var canledarId = _this.rollId();
                 var calendarNowDom = "body [data-cname]";
                 var oldDom = document.querySelector(calendarNowDom);
                 if (oldDom) {
-                    console.log("找到旧的");
                     oldDom.parentNode.removeChild(oldDom);
                 }
                 //创建dom
-                _this.createDom( _this.browser_ie8, 1, canledarId);
+                _this.createDom(_this.browser_ie8, 1, canledarId);
                 // 兼容IE8  end
                 _this.calendarItem = [];
 
@@ -1342,8 +1463,6 @@ var ctrip = (function(window) {
 
                 // _this.hyphen = typeof setting.hyphen != "undefined" ? setting.hyphen : "至";
                 _this.outputForm = typeof setting.outputForm != "undefined" ? setting.outputForm : "yymmdd";
-
-
 
                 _this.calendarBox = document.getElementById(canledarId);
                 _this.calendarPop = _this.calendarBox.children[0];
@@ -1518,12 +1637,11 @@ var ctrip = (function(window) {
                 });
 
                 _this.addEvent(_this.dayBox[0], "click", selectDate);
-                console.log("触发ini");
                 showPop();
             }
 
-             // 如果采用的是监听式方法
-             if (setting.calendarDdoms) {
+            // 如果采用的是监听式方法
+            if (setting.calendarDdoms) {
                 initials();
             }
 

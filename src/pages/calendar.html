@@ -13,7 +13,7 @@
     <button id="reduce" style="cursor:pointer;margin-left: 20px;">减少</button>
     <div class="lists">
         <div class="item">
-            <input type="text" class="o-input d-datepicker" data-calendarName="d1" />
+            <input type="text" class="o-input d-datepicker" data-calendarName="d1" data-limitDate="true" />
             至 <input type="text" class="o-input" data-calendarName="d1" />
         </div>
     </div>
@@ -24,10 +24,13 @@
     </div>
 
     <div>
-        <input id="d-datepicker03" data-calendarName="d3" type="text" class="o-input" placeholder="calendar03" />
+        <input id="d-datepicker03" data-calendarName="d3" data-doubleCalendar="true" data-singleDate="true" type="text" class="o-input" placeholder="calendar03" />
     </div>
     <div style="margin-top: 50px;">
         <input id="d-datepicker04" data-calendarName="d4" type="text" class="o-input" placeholder="calendar04" />
+    </div>
+    <div style="margin-top: 50px;">
+        <input id="d-datepicker05" data-calendarName="d5" data-doubleCalendar="true", type="text" class="o-input" placeholder="calendar05" />
     </div>
 
 
@@ -78,20 +81,20 @@
         //     bottom: "auto"
         // }
     }
-    // var specialDays_ = [
-    //     { date: "2019-01-01", text: "元旦" },
-    //     { date: "2019-02-04", text: "除夕" },
-    //     { date: "2019-02-05", text: "春节" },
-    //     { date: "2019-03-08", text: "妇女节" },
-    //     { date: "2019-04-05", text: "清明" },
-    //     { date: "2019-05-01", text: "劳动节" },
-    //     { date: "2019-05-04", text: "青年节" },
-    //     { date: "2019-06-01", text: "儿童节" },
-    //     { date: "2019-06-07", text: "端午节" },
-    //     { date: "2019-09-10", text: "教师节" },
-    //     { date: "2019-09-13", text: "中秋节" },
-    //     { date: "2019-10-01", text: "国庆节" }
-    // ];
+    var specialDays_ = [
+        { date: "2019-01-01", text: "元旦" },
+        { date: "2019-02-04", text: "除夕" },
+        { date: "2019-02-05", text: "春节" },
+        { date: "2019-03-08", text: "妇女节" },
+        { date: "2019-04-05", text: "清明" },
+        { date: "2019-05-01", text: "劳动节" },
+        { date: "2019-05-04", text: "青年节" },
+        { date: "2019-06-01", text: "儿童节" },
+        { date: "2019-06-07", text: "端午节" },
+        { date: "2019-09-10", text: "教师节" },
+        { date: "2019-09-13", text: "中秋节" },
+        { date: "2019-10-01", text: "国庆节" }
+    ];
 
     // 默认双日历，根据id个数，把值输出到对应容器
     // 默认Chinese
@@ -100,12 +103,10 @@
             ["d-datepicker01", "d-datepicker02"],
             ["d-datepicker03"],
             ["d-datepicker04"],
-            ["datepicker31", "datepicker32"]
+            ["d-datepicker05"],
+            // ["datepicker31", "datepicker32"]
         ],
         en: true,
-        setting: {
-
-        },
         // 默认单id 单日历，双id双日历，其中双日历默认范围选取，singleDate配置其单选
         options: [{
                 id: ["d-datepicker03"],
@@ -113,20 +114,16 @@
                 singleDate: true,
             },
             {
-                id: ["d-datepicker04"]
-
+                id: ["d-datepicker05"],
+                doubleCalendar: true,
             },
             {
                 id: ["d-datepicker01", "d-datepicker02"],
-                // outputForm:"yymmdd"
-            },
-            {
-                id: ["datepicker31", "datepicker32"],
                 limitDate: true,
-                limitDate1: "2018-11-11", // 限定日期范围
-                // duringDays:3,
-                // limitDate2: "2019-2-2"
+                limitDate1: "2018-12-12", // 限定日期范围
+                // outputForm:"yymmdd"
             }
+
         ],
         // setting: {
         //     weekDayName: ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"], //星期单位无论语言按中文从周七到周一
@@ -143,11 +140,14 @@
             arrMonth: ["January", "February", "March", "April", "May", "June", "July", "August",
                 "September", "October", "November", "December"
             ],
+            hyphen: "to",
             dateForm: "mm-yyyy",
-            weekStartDay: 1, //  1：周一开始   7：周日开始 默认值为7
+            language:"cn" //默认英文,此选项覆盖上面所有选项
+            // weekStartDay: 1, //  1：周一开始   7：周日开始 默认值为7
         }
     var c_calendar = ctrip();
-    c_calendar.configCalendar(settingNew);
+    // c_calendar.renderCalendar(config);
+    c_calendar.startCalendar(settingNew);
     // c_calendar.renderCalendar(config);
 </script>
 

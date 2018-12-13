@@ -96,6 +96,11 @@
     section {
         padding: 5px;
     }
+    .list-span span{display:inline-block;*zoom:1;*display: inline; width: 160px;}
+
+
+
+
 </style>
 </head>
 
@@ -211,36 +216,41 @@
     <blockquote title="txt">
         <section>
             <a href="javascript:;">link color</a>
-            <br />
-            <p class="d-red">文本示例 d-red</p>
-            <p class="d-orange">文本示例 d-yellow</p>
-            <p class="d-yellow">文本示例 d-yellow</p>
-            <p class="d-blue">文本示例 d-blue</p>
-            <p class="d-lightblue">文本示例 d-lightblue</p>
-            <p class="d-green">文本示例 d-green</p>
-            <p class="d-brown">文本示例 d-brown</p>
-            <p class="d-dark">文本示例 d-dark</p>
-            <p class="d-gray0">文本示例 d-gray0</p>
-            <p class="d-gray1">文本示例 d-gray1</p>
-            <p class="d-gray2">文本示例 d-gray2</p>
-            <p class="d-gray3">文本示例 d-gray3</p>
-            <br />
-            <p class="d-underline">文本示例 d-underline</p>
-            <p>
-                <span class="d-dash">文本示例 d-dash</span>
-            </p>
-            <p class="d-bold">文本示例 d-bold</p>
-            <p class="bold">文本示例 bold</p>
-            <p class="d-normal">d-normal (正常不加粗)</p>
-            <p class="d-money">&#165;&nbsp;&nbsp;&#38;&#35;165;&emsp;d-money</p>
-            <br>
-            <div class="d-ib mv5 p5 d-border d-bdr4">实线边框 d-border
-                <br>4px 圆角 d-bdr4</div>
-            <div class="d-ib ml20 mv5 p5 d-border-dashed d-bdr6">虚线边框 d-border-dashed
+            <div class="mv10 list-span">
+                <span class="d-red">文本示例 d-red</span>
+                <span class="d-orange">文本示例 d-yellow</span>
+                <span class="d-yellow">文本示例 d-yellow</span>
+                <span class="d-blue">文本示例 d-blue</span>
+                <span class="d-darkblue">文本示例 d-darkblue</span>
+                <span class="d-lightblue">文本示例 d-lightblue</span>
+                <span class="d-green">文本示例 d-green</span>
+                <span class="d-brown">文本示例 d-brown</span>
+                <span><span class="d-white d-bg-black ph5" style="width: auto;">文本示例 d-white</span>
+                </span>
+                <span class="d-black">文本示例 d-black</span>
+                <span class="d-dark">文本示例 d-dark</span>
+                <span class="d-gray0">文本示例 d-gray0</span>
+                <span class="d-gray1">文本示例 d-gray1</span>
+                <span class="d-gray2">文本示例 d-gray2</span>
+                <span class="d-gray3">文本示例 d-gray3</span>
+                <br />
+                <br />
+                <span class="d-underline">文本示例 d-underline</span>
+                <span>
+                    <span class="d-dash">文本示例 d-dash</span>
+                </span>
+                <span class="d-bold">文本示例 d-bold</span>
+                <span class="bold">文本示例 bold</span>
+                <span class="d-normal">d-normal (正常不加粗)</span>
+                <span class="d-money">&#165;&nbsp;&nbsp;&#38;&#35;165;&emsp;d-money</span>
+            </div>
+            <div class="d-ib mv5 p10 d-border d-bdr4 d-bg-green">实线边框：d-border
+                <br>4px 圆角： d-bdr4</div>
+            <div class="d-ib ml20 mv5 p10 d-border-dashed d-bdr6 d-bg-green">虚线边框： d-border-dashed
                 <br>
-                6px 圆角 d-bdr6</div>
-            <div class="d-ib ml20 mv5 p5 d-border d-bdr8">虚线边框 d-border-dashed
-                <br>8px 圆角 d-bdr8</div>
+                6px 圆角： d-bdr6</div>
+            <div class="d-ib ml20 mv5 p10 d-border-dashed d-bdr8 d-bg-green">虚线边框： d-border-dashed
+                <br>8px 圆角： d-bdr8</div>
 
             <div class="mt10">
                 <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-n">c-n</span>
@@ -259,12 +269,12 @@
             <p class="f-36">32文本示例 f-36</p>
             <br>
             <p>
-                <span class="d-ib pv5 ph20 d-bg-black d-bdr8 mr5">d-bg-black</span>
-                <span class="d-ib pv5 ph20 d-bg-white d-bdr8 mr5 d-border">d-bg-white</span>
-                <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5">d-bg-green</span>
-                <span class="d-ib pv5 ph20 d-bg-blue d-bdr8 mr5">d-bg-blue</span>
-                <span class="d-ib pv5 ph20 d-bg-yellow d-bdr8 mr5">d-bg-yellow</span>
-                <span class="d-ib pv5 ph20 d-bg-red d-bdr8 mr5">d-bg-red</span>
+                <span class="d-ib pv5 ph20 d-bg-black-c d-bdr8 mr5">d-bg-black</span>
+                <span class="d-ib pv5 ph20 d-bg-white-c d-bdr8 mr5 d-border">d-bg-white</span>
+                <span class="d-ib pv5 ph20 d-bg-green-c d-bdr8 mr5">d-bg-green</span>
+                <span class="d-ib pv5 ph20 d-bg-blue-c d-bdr8 mr5">d-bg-blue</span>
+                <span class="d-ib pv5 ph20 d-bg-yellow-c d-bdr8 mr5">d-bg-yellow</span>
+                <span class="d-ib pv5 ph20 d-bg-red-c d-bdr8 mr5">d-bg-red</span>
             </p>
         </section>
     </blockquote>
