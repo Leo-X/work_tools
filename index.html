@@ -166,17 +166,17 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-md-4 mt20">
+                    <div class="col-md-2 mt20">
                         <div class="input-group">
-                            <input id="text_push" type="text" class="form-control" placeholder="Change ID">
-                            <span class="input-group-btn">
+                            <input  type="text" class="form-control btn-git-reset" placeholder="Change ID">
+                            <!-- <span class="input-group-btn">
                                 <button class="btn btn-success btn-copy" type="button">生成回退</button>
-                            </span>
+                            </span> -->
                         </div>
                     </div>
                     <div class="col-md-4 mt20">
                         <div class="input-group">
-                            <input id="text_push" type="text" class="form-control" placeholder="git reset --hard 40a9a83****15456">
+                            <input id="command_reset" type="text" class="form-control" placeholder="git reset --hard 40a9a83****15456">
                             <span class="input-group-btn">
                                 <button class="btn btn-success btn-copy" type="button">Copy</button>
                             </span>
@@ -299,6 +299,19 @@
                     time: 2000
                 });
             }
+        });
+
+        // 生成回退
+        $(".btn-git-reset").on('input',function (e) {
+            let text = $(this).val();
+            if (!text || hasWhiteSpace(text)) {
+                layer.msg("change id为空，或不符合格式要求", {
+                    time: 2000
+                });
+                return false;
+            }
+            text=`git reset --hard ${text}`;
+            $("#command_reset").val(text);
         });
 
         // 监控分支输入，直接生成命令
