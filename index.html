@@ -168,7 +168,7 @@
                     </div>
                     <div class="col-md-2 mt20">
                         <div class="input-group">
-                            <input  type="text" class="form-control btn-git-reset" placeholder="Change ID">
+                            <input type="text" class="form-control btn-git-reset" placeholder="Change ID">
                             <!-- <span class="input-group-btn">
                                 <button class="btn btn-success btn-copy" type="button">生成回退</button>
                             </span> -->
@@ -302,7 +302,7 @@
         });
 
         // 生成回退
-        $(".btn-git-reset").on('input',function (e) {
+        $(".btn-git-reset").on('input', function (e) {
             let text = $(this).val();
             if (!text || hasWhiteSpace(text)) {
                 layer.msg("change id为空，或不符合格式要求", {
@@ -310,7 +310,7 @@
                 });
                 return false;
             }
-            text=`git reset --hard ${text}`;
+            text = `git reset --hard ${text}`;
             $("#command_reset").val(text);
         });
 
