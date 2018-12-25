@@ -1,32 +1,37 @@
-let obj = {
-    name: 'lyl',
-    cdc: '56',
-    ddd: {
-        "dd": 568
-    },
-    age: 18
+function (e) {
+    if (e.propertyName != 'value') {
+        return false;
+    };
+    console.log("e.target.value:");
+    var snippetCur = $(that).val().toString().toLowerCase();
+    var sName = $(that).attr('data-searchname');
+    var sNameStr = "[data-searchlistname=" + sName + "]";
+    // console.log(sNameStr + " [data-searchitemid]");
+    // $(sNameStr + " [data-searchitemid]").not("[data-selected=true]").each(
+    $(sNameStr + " [data-searchitemid]").each(
+        function (index, element) {
+            var arrStr = $(that).attr("data-searchmatch");
+            console.log("arrStr:")
+            console.log(arrStr)
+            var isMatch = false;
+            // 确保取值可用
+            if (arrStr) {
+                var arr = arrStr.toString().toLowerCase().split(','); //转数组
+                if (searchByRegExp(snippetCur, arr)) {
+                    $(that).css({
+                        "display": "block"
+                    });
+                } else {
+                    $(that).hide();
+                }
+            } else {
+                return true;
+            }
+        }
+    );
+    // 多选隐藏搜索后的已选项
+    if ($(that).attr("data-searchmulti") === "true") {
+        $(sNameStr + " [data-selected=true]").hide();
+    }
+    // $(that).trigger('input');
 }
-
-// let arr = [1, 3, 5, 7, 9];
-
-// let sum=(x,y)=>(x+y);
-// let cc=arr.reduce(sum);
-// console.log(cc); 
-
-
-
-let arr = [1, 2, 2, 3, 5, 4, 5]
-
-// our reducer function
-
-let items = [10, 120, 1000];
-console.log(`total ：${
-    items.reduce((x, y) => x + y)
-    }`);
-
-
-//利用set将数组arr转化成set数据,利用array from将set转化成数组类型
-// const changeReArr=(arr)=>Array.from(new Set(arr)) ;
-// console.log(`changeReArr ：${changeReArr(arr)}`);
-console.log(`changeReArr ：${arr.map(x => x * x)}`);
-

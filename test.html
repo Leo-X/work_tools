@@ -5,53 +5,38 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="./src//css/core.css">
+    <style>
+        *{
+                list-style: none;
+                padding:0;
+                margin:0;
+            }
+            div{
+                text-align: center;
+                padding-top:20px;
+            }
+            ul{
+                padding-top:20px;
+                width:30%;
+                margin:0 50% 0 35%;
+            }
+            li{
+                padding:3px;
+                border:1px solid silver;
+                box-shadow: 1px 1px;
+            }
+        </style>
 </head>
 
 <body>
     <div class="d-container">
-        <div id="pp" class="p20 ta-c d-border d-bg-blue" tabindex="-1">
-            <div class="p20 d-ib d-border mr20">父元素</div>
-            <div id="cc" class="p20 d-ib d-border-dashed d-bg-green" tabindex="-1">子元素</div>
+        <div>
+            <input type="text" class="ddd" >
         </div>
+        <script src="./src/js/libs/jquery.js"></script>
+        <script src="test.js"></script>
     </div>
-    <script type="text/javascript">
-     function isIE8() {
-            var isie8 = false;
-            if (navigator.userAgent.indexOf("Firefox") >= 0) {
-                isie8 = false;
-            } else {
-                var browser_cur = navigator.appName;
-                var b_version = navigator.appVersion;
-                var version = b_version.split(";");
-                var trim_Version = version[1].replace(/[ ]/g, "");
-                if (browser_cur == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0") {
-                    isie8 = true;
-                }
-            }
-            return isie8;
-        }
-        function addEvent(el, type, handler) {
-            // if ( isie88) {
-            //     return el.attachEvent("on" + type, handler,false);
-            // } else {
-            // }
-            return el.addEventListener(type, handler, true);
-        };
-        var isie88=isIE8();
-        // console.log(`isie88 ：${ isie88 }`);
 
-        var pp = document.getElementById("pp");
-        addEvent(pp,"focus",function (e) {
-            console.log("聚焦父元素了");
-        })
-        addEvent(pp,"blur",function (e) {
-            console.log("父元素失焦");
-        })
-        var cc = document.getElementById("pp");
-        addEvent(cc,"focus", function (e) {
-           console.log("聚焦子元素了");
-        })
-    </script>
 </body>
 
 </html>
