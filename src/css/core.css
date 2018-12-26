@@ -1,6 +1,17 @@
 @charset "utf-8";
 
 /* Normalize.css 初始化 start */
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
 
 hr {
     box-sizing: content-box;
@@ -514,7 +525,7 @@ a:focus {
 }
 
 /*E Global*/
-/**/
+.d-block{display: block;}
 .d-ib {
     display: inline-block;
     *display: inline;
@@ -965,6 +976,9 @@ a:focus {
 
 .d-bg-gray{background-color: #f5f5f5;}
 .d-bg-gray-c{background-color: #f5f5f5;color: #ababab;}
+
+.d-box-shadow01{box-shadow: 0 0 20px rgba(97,139,179,.2)}
+.d-box-shadow02{box-shadow: 0 5px 10px rgba(0, 0, 0, .2)}
 
 .d-underline {
     text-decoration: underline;
@@ -1987,9 +2001,62 @@ textarea.d-input {
 .d-hover:hover .d-hover-cont {
     display: block;
 }
-
-
 /*=E modify bootstrap*/
+
+/*Start scroll */
+/* .scroll{overflow-y: auto;height: -moz-calc(100% - 46px); height: -webkit-calc(100% - 46px); height: calc(100% - 46px);} */
+.scroll{overflow-y: auto;height: 100%;}
+.scroll::-webkit-scrollbar-thumb {background-color: #595e62;outline-offset: -2px;outline: 2px solid #cad2d6;border-radius: 8px;border: 1px solid #333c4e;}
+.scroll::-webkit-scrollbar-thumb:hover {background-color: #747a80;border-radius: 8px;}
+.scroll::-webkit-scrollbar {width: 10px;height: 8px;}
+.scroll::-webkit-scrollbar-track-piece {background-color: transparent;border-radius: 0;}
+/*End scroll */
+
+/* Start flex */
+.flex-layer{display: flex;flex-flow: row nowrap;position: relative;}
+.flex-layer-col{display: flex;flex-flow: column nowrap;}
+
+.flex-row{display: flex;flex-direction: row;}
+.flex-col{display: flex;flex-direction: column;}
+.flex-wrap{flex-wrap: wrap !important;}
+.flex-nowrap{flex-wrap: nowrap !important;}
+/* 主轴 */
+.flex-j-c{justify-content: center;}
+.flex-j-sb{justify-content: space-between;}
+.flex-j-sa{justify-content: space-around;}
+.flex-j-fs{justify-content: flex-start;}
+.flex-j-fe{justify-content: flex-end;}
+/* 交叉轴 */
+.flex-a-c{align-items: center;}
+.flex-a-s{align-items: stretch;}
+.flex-a-fs{align-items: flex-start;}
+.flex-a-fe{align-items: flex-end;}
+.flex-a-bs{align-items: baseline;}
+
+/* 项目属性  在主轴上伸缩 0 1 auto*/
+.flex-auto{flex: auto;}
+/* 等价于 flex: 1 1 auto; */
+.flex-none{flex: none;}
+/* 等价于 flex: 0 0 auto; */
+.flex-11{flex-grow: 1;flex-shrink: 1;flex-basis:auto;}
+.flex-00{flex-grow: 0;flex-shrink: 0;flex-basis:auto;}
+
+.flex-10{flex-grow: 1;flex-shrink: 0;flex-basis:auto;}
+.flex-01{flex-grow: 0;flex-shrink: 1;flex-basis:auto;}
+.flex-grow1{flex-grow: 1;}
+.flex-grow0{flex-grow: 0;}
+.flex-shrink0{flex-shrink: 0;}
+.flex-shrink1{flex-shrink: 1;}
+/* 交叉轴 align-self 对齐方式*/
+.flex-self-fs{align-self: flex-start;}
+.flex-self-fe{align-self: flex-end;}
+.flex-self-center{align-self: center;}
+.flex-self-baseline{align-self: baseline;}
+.flex-self-stretch{align-self: stretch;}
+/* End flex */
+
+
+
 .header {
     width: 100%;
 }

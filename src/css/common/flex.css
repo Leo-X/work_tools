@@ -1,0 +1,46 @@
+.flex-layer{display: flex;flex-flow: row nowrap;position: relative;}
+.flex-layer-col{display: flex;flex-flow: column nowrap;}
+
+.flex-row{display: flex;flex-direction: row;}
+.flex-col{display: flex;flex-direction: column;}
+.flex-wrap{flex-wrap: wrap !important;}
+.flex-nowrap{flex-wrap: nowrap !important;}
+/* 主轴 */
+.flex-j-c{justify-content: center;}
+.flex-j-sb{justify-content: space-between;}
+.flex-j-sa{justify-content: space-around;}
+.flex-j-fs{justify-content: flex-start;}
+.flex-j-fe{justify-content: flex-end;}
+/* 交叉轴 */
+.flex-a-c{align-items: center;}
+.flex-a-s{align-items: stretch;}
+.flex-a-fs{align-items: flex-start;}
+.flex-a-fe{align-items: flex-end;}
+.flex-a-bs{align-items: baseline;}
+
+/* 项目属性  在主轴上伸缩 0 1 auto*/
+.flex-auto{flex: auto;}
+/* 等价于 flex: 1 1 auto; */
+.flex-none{flex: none;}
+/* 等价于 flex: 0 0 auto; */
+.flex-11{flex-grow: 1;flex-shrink: 1;flex-basis:auto;}
+.flex-00{flex-grow: 0;flex-shrink: 0;flex-basis:auto;}
+
+.flex-10{flex-grow: 1;flex-shrink: 0;flex-basis:auto;}
+.flex-01{flex-grow: 0;flex-shrink: 1;flex-basis:auto;}
+.flex-grow1{flex-grow: 1;}
+.flex-grow0{flex-grow: 0;}
+.flex-shrink0{flex-shrink: 0;}
+.flex-shrink1{flex-shrink: 1;}
+/* 交叉轴 align-self 对齐方式*/
+.flex-self-fs{align-self: flex-start;}
+.flex-self-fe{align-self: flex-end;}
+.flex-self-center{align-self: center;}
+.flex-self-baseline{align-self: baseline;}
+.flex-self-stretch{align-self: stretch;}
+
+
+
+
+
+
