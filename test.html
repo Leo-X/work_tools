@@ -6,43 +6,66 @@
     <title></title>
     <link rel="stylesheet" href="./src//css/core.css">
     <style>
-        *{
-                list-style: none;
-                padding:0;
-                margin:0;
-            }
-            div{
-                text-align: center;
-                padding-top:20px;
-            }
-            ul{
-                padding-top:20px;
-                width:30%;
-                margin:0 50% 0 35%;
-            }
-            li{
-                padding:3px;
-                border:1px solid silver;
-                box-shadow: 1px 1px;
-            }
-        </style>
+        * {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        ul {
+            padding-top: 20px;
+            width: 30%;
+            margin: 0 50% 0 35%;
+        }
+
+        li {
+            padding: 3px;
+            border: 1px solid silver;
+            box-shadow: 1px 1px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="d-container">
-        <div class="m20 d-bg-gray p20" style="width: 600px;" >
+        <div class="m20 d-bg-gray p20" style="width: 600px;">
             <div class="item">1</div>
             <div class="item">1</div>
-            <div class="item">1</div>
+            <div class="item">
+
+
+
+
+
+            </div>
             <div class="item">1</div>
             <div class="item">1</div>
             <div class="item">1</div>
             <div class="item">1</div>
         </div>
         <script src="./src/js/libs/jquery.js"></script>
-        <script src="test.js"></script>
+        <!-- <script src="test.js"></script> -->
     </div>
-
 </body>
+<script>
+    // async function f() {
+    //     return 1;
+    // }
+    //加上async意味着：函数将返回一个Promise
+    //编译器会自动将其转换成一个Promise
+    // f().then(
+    //     function (data) {
+    //         console.log(`f ：${ data }`);
+    //     }
+    // ); // 1
+    const f = () => console.log('now');
+    Promise.try(f);
+    console.log('next');
+</script>
 
 </html>
