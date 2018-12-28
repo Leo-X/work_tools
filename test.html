@@ -63,9 +63,26 @@
     //         console.log(`f ：${ data }`);
     //     }
     // ); // 1
-    const f = () => console.log('now');
-    Promise.try(f);
-    console.log('next');
+
+
+    async function foo() {
+        let promise = new Promise((resolve, reject) => {
+            setTimeout(() => resolve("done!"), 1000)
+        });
+        let result = await promise;
+        console.log(`step01: ${ result }`);
+        return result
+        // return 2
+    }
+    const back01 = (data) => {
+        console.log(`step02: ${ data }`);
+    };
+    const catch_err = (data) => {
+        console.log(`catch_err: ${ data }`);
+    };
+
+    foo().then(back01)
+        .catch(catch_err);
 </script>
 
 </html>

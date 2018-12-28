@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>layout</title>
     <!-- <link rel="stylesheet" href="../lib_ui/bootstrap-3.3.7-dist/css/bootstrap.css"> -->
@@ -20,7 +20,7 @@
                     <div class="d-white ta-c">side-logo</div>
                 </div>
                 <!-- <ul class="layui-nav layui-nav-tree " lay-filter="test" lay-shrink="all" lay-unselect> -->
-                <ul class="layui-nav layui-nav-tree " lay-filter="test" lay-filter="test" lay-shrink="all">
+                <ul class="layui-nav layui-nav-tree scroll" lay-filter="test" lay-filter="test" lay-shrink="all">
                     <li class="layui-nav-item">
                         <a class="" href="javascript:void(0);">EBK<span class="layui-nav-more"></span></a>
                         <dl class="layui-nav-child">
@@ -76,11 +76,18 @@
                 </div> -->
             </div>
             <div class="flex-layer-col flex-auto d-bg-gray min-h100vh">
-                <div class="page-header1">
+                <div class="page-header01">
                     <div class="ta-c">我是header</div>
                 </div>
                 <div class="page-content">
-                    <div class="cont-wrapper">我是占位</div>
+                    <div class="cont-wrapper">header :
+                        <ol>
+                            <li>1. header-fixed 控制是否固定(已实现)</li>
+                            <li>2. 768px 下左侧导航收缩到左上角，展开后原宽，主体内容100%宽度，header部分因为是固定的，所以要自适应为100%</li>
+                            <li>3. 587px 下左侧导航100%宽度，主体内容100%宽度</li>
+                            <li>4. 主体内容最小宽度320px</li>
+                        </ol>
+                    </div>
                     <div class="cont-wrapper">我是占位</div>
                     <div class="cont-wrapper">我是占位</div>
                     <div class="cont-wrapper">我是占位</div>

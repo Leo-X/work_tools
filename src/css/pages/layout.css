@@ -2,19 +2,22 @@
 .min-h100vh{min-height: 100vh;}
 .side-nav{ width: 250px;max-width: 250px;min-width: 250px;min-height: 100vh;background-color: #001529;}
 .side-nav-fixed{position: fixed; width: 250px;max-width: 250px;min-width: 250px;min-height: 100vh;background-color: #001529;}
-.page-header1{width: 100%;height: 60px;line-height: 60px;background-color: #fff;box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);}
+.page-header01{width: 100%;height: 60px;line-height: 60px;background-color: #fff;box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);}
 .page-content{flex: auto;padding: 20px;}
+.page-content01{flex: auto;padding: 0;}
 .page-footer{flex: none;padding: 20px;}
-.cont-wrapper{margin-bottom: 20px;padding: 20px; height: 50px;background: #fff;}
+.cont-wrapper{margin-bottom: 20px;padding: 20px; min-height: 50px;background: #fff;}
 .cont-wrapper2{margin-bottom: 20px;padding: 20px; height: 500px;}
-.header-fixed .page-header1{position: fixed;top: 0;right: 0; z-index: 10;width: calc(100% - 250px);}
+.header-fixed .page-header01{position: fixed;top: 0;right: 0; z-index: 10;width: calc(100% - 250px);}
+/* 两种content 一种边框20  一种无边框 */
 .header-fixed .page-content{padding-top: 80px;}
+.header-fixed .page-content01{padding-top: 80px;}
 .nav-fixed .side-nav{position: fixed;top: 0;left: 0;z-index: 20;height: 100vh;}
 .nav-fixed .flex-layer-col{padding-left: 250px;}
 
-.side-menu.scroll{overflow-y: auto;height: -moz-calc(100% - 60px); height: -webkit-calc(100% - 60px); height: calc(100% - 60px);}
+.side-nav .scroll{overflow-y: auto;height: -moz-calc(100% - 60px); height: -webkit-calc(100% - 60px); height: calc(100% - 60px);}
 .side-logo{height: 60px;line-height: 60px;background-color: #002140;}
-.side-menu{padding: 20px 0;}
+/* .side-menu{padding: 20px 0;} */
 
 
 
