@@ -65,24 +65,20 @@
     // ); // 1
 
 
-    async function foo() {
-        let promise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve("done!"), 1000)
-        });
-        let result = await promise;
-        console.log(`step01: ${ result }`);
-        return result
-        // return 2
+    async function foo(data) {
+       await const result=back01();
+        return  result
     }
     const back01 = (data) => {
-        console.log(`step02: ${ data }`);
+        console.log(`step01: ${ data }`);
     };
     const catch_err = (data) => {
         console.log(`catch_err: ${ data }`);
     };
+    foo("123").then(back01,catch_err)
+    // foo().then(back01)
+    //     .catch(catch_err);
 
-    foo().then(back01)
-        .catch(catch_err);
 </script>
 
 </html>
