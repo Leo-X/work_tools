@@ -60,21 +60,46 @@
     //     }
     // ); // 1
 
-    const back01 = (data) => {
-        console.log(`step01: ${ data }`);
-    };
-
-    async function foo() {
-        const result= await back01("ddd");
-        return  result;
+    class Point {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        toString() {
+            console.log(`this.x: ${this.x}`);
+        }
     }
-    const catch_err = (data) => {
-        console.log(`catch_err: ${ data }`);
-    };
-    // foo("123").then(back01,catch_err)
-    foo().then(back01)
-        .catch(catch_err);
+    let foo = new Point('cc', 'dd');
 
+    class Point_child extends Point {
+        constructor(x, y, color) {
+            super(x, y);
+            this.color = color;
+            this.x = 3;
+        }
+
+    }
+    let v1 = new Point_child('aa', 'bb', 'red');
+    v1.toString()
+    console.log(`v1.x: ${ v1.x }`);
+    console.log(`v1.color: ${ v1.color }`);
+
+    console.log(`Point_child.prototype.__proto__ === Point: ${ Point_child.prototype.__proto__ === Point.prototype }`);
+
+
+    let obj = {
+        name: '二月',
+        age: {
+            c: 12
+        }
+    }
+    let age = {
+        c: 88
+    }
+    let o1 = {...obj, age}
+    console.dir(o1);
+    // console.log(`v1.__proto__ === Point_child.prototype: ${ v1.__proto__ === Point_child.prototype }`);
+    // v1.constructor === Point.prototype.constructor ===Point
 </script>
 
 </html>
