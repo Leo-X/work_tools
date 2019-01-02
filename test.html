@@ -38,10 +38,6 @@
             <div class="item">1</div>
             <div class="item">
 
-
-
-
-
             </div>
             <div class="item">1</div>
             <div class="item">1</div>
@@ -64,20 +60,20 @@
     //     }
     // ); // 1
 
-
-    async function foo(data) {
-       await const result=back01();
-        return  result
-    }
     const back01 = (data) => {
         console.log(`step01: ${ data }`);
     };
+
+    async function foo() {
+        const result= await back01("ddd");
+        return  result;
+    }
     const catch_err = (data) => {
         console.log(`catch_err: ${ data }`);
     };
-    foo("123").then(back01,catch_err)
-    // foo().then(back01)
-    //     .catch(catch_err);
+    // foo("123").then(back01,catch_err)
+    foo().then(back01)
+        .catch(catch_err);
 
 </script>
 
