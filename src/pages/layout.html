@@ -20,9 +20,9 @@
                     <div class="d-white ta-c">side-logo</div>
                 </div>
                 <!-- <ul class="layui-nav layui-nav-tree " lay-filter="test" lay-shrink="all" lay-unselect> -->
-                <ul class="layui-nav layui-nav-tree scroll" lay-filter="test" lay-filter="test" lay-shrink="all">
+                <ul class="layui-nav layui-nav-tree scroll" lay-filter="test1" lay-shrink="all">
                     <li class="layui-nav-item">
-                        <a class="" href="javascript:void(0);">EBK<span class="layui-nav-more"></span></a>
+                        <a class="" href="javascript:void(0);">CCC<span class="layui-nav-more"></span></a>
                         <dl class="layui-nav-child">
                             <dd>
                                 <a href="javascript:void(0);">UI-Demo</a>
@@ -69,11 +69,8 @@
                     </li>
                     <span class="layui-nav-bar" style="top: 22.5px; height: 0px; opacity: 0;"></span>
                 </ul>
-                <!-- <div class="side-menu scroll">
-                    <div class="cont-wrapper2 d-white ta-c">我是left</div>
-                    <div class="cont-wrapper2 d-white ta-c">我是left</div>
-                    <div class="cont-wrapper2 d-white ta-c">我是left</div>
-                </div> -->
+
+
             </div>
             <div class="flex-layer-col flex-auto d-bg-gray min-h100vh">
                 <div class="page-header01">
@@ -102,5 +99,16 @@
 
 <script src="../js/libs/jquery.js"></script>
 <script src="../lib_ui/layui_2.3/layui.all.js"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element(); //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+        //监听导航点击
+        element.on('nav(demo)', function (elem) {
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+</script>
 
 </html>

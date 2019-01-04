@@ -7,7 +7,8 @@
 .page-content01{flex: auto;padding: 0;}
 .page-footer{flex: none;padding: 20px;}
 .cont-wrapper{margin-bottom: 20px;padding: 20px; min-height: 50px;background: #fff;}
-.cont-wrapper2{margin-bottom: 20px;padding: 20px; height: 500px;}
+.cont-wrapper-nobg{margin-bottom: 20px;padding: 20px; min-height: 50px;}
+.cont-wrapper-pd0{margin-bottom: 20px;padding: 0;min-height: 50px;}
 .header-fixed .page-header01{position: fixed;top: 0;right: 0; z-index: 10;width: calc(100% - 250px);}
 /* 两种content 一种边框20  一种无边框 */
 .header-fixed .page-content{padding-top: 80px;}
@@ -22,9 +23,9 @@
 
 
 /* Start layui nav */
-.layui-nav {position: relative;padding: 20px 0;background-color: #001529;color: #fff;border-radius: 2px;box-sizing: border-box;}
+.layui-nav {position: relative;margin-bottom: 20px;background-color: #001529;color: #fff;border-radius: 2px;box-sizing: border-box;}
 .layui-nav .layui-nav-item {position: relative;display: block;width: 100%;line-height: 45px}
-.layui-nav .layui-nav-item a {display: block;padding: 0 20px;color: #fff;color: rgba(255, 255, 255, .7);transition: all .3s;-webkit-transition: all .3s;text-decoration: none;}
+.layui-nav .layui-nav-item a {display: block;padding: 0 20px;color: #fff;color: rgba(255, 255, 255, .7);transition: all 0.1s;-webkit-transition: all 0.1s;text-decoration: none;}
 .layui-nav .layui-this:after,
 .layui-nav-bar,
 .layui-nav-tree .layui-nav-itemed:after {position: absolute;left: 0;top: 0;width: 0;height: 5px;background-color: #5FB878;transition: all .2s;-webkit-transition: all .2s}
@@ -70,9 +71,8 @@
 .layui-bg-blue .layui-nav-itemed>a,
 .layui-nav-tree.layui-bg-blue .layui-nav-title a,
 .layui-nav-tree.layui-bg-blue .layui-nav-title a:hover {background-color: #007DDB !important}
+
+
 /* End layui nav */
-
-
-
 
 

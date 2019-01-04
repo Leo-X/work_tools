@@ -3,103 +3,109 @@
 
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="./src//css/core.css">
-    <style>
-        * {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        div {
-            text-align: center;
-            padding-top: 20px;
-        }
-
-        ul {
-            padding-top: 20px;
-            width: 30%;
-            margin: 0 50% 0 35%;
-        }
-
-        li {
-            padding: 3px;
-            border: 1px solid silver;
-            box-shadow: 1px 1px;
-        }
-    </style>
+    <title>导航与面包屑</title>
+    <link rel="stylesheet" href="./src/lib_ui/layui_2.3/css/layui.css">
 </head>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    li {
+        list-style: none
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    #nav {
+        position: fixed;
+        *left: 90px;
+        top: 100px;
+    }
+
+    #nav li {
+        margin-bottom: 2px;
+        width: 130px;
+        height: 41px;
+        line-height: 41px;
+    }
+
+    #nav a {
+        background: #B18282;
+        color: #fff;
+        display: block;
+        text-transform: uppercase;
+        -ms-text-overflow: ellipsis;
+        padding: 0 5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    #nav a:hover {
+        background: #00d420;
+        color: #fff;
+    }
+
+    #nav .current a {
+        background: #00d420;
+        color: #fff;
+    }
+
+    .head {
+        margin: 0 auto;
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+        background: #efedec;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .main {
+        width: 800px;
+        margin: 0 auto;
+    }
+
+    .box {
+        width: 600px;
+        border: 1px solid #ddd;
+        margin-left: 140px;
+    }
+</style>
 
 <body>
-    <div class="d-container">
-        <div class="m20 d-bg-gray p20" style="width: 600px;">
-            <div class="item">1</div>
-            <div class="item">1</div>
-            <div class="item">
-
-            </div>
-            <div class="item">1</div>
-            <div class="item">1</div>
-            <div class="item">1</div>
-            <div class="item">1</div>
+    <div class="head">导航</div>
+    <div class="main">
+        <ul id="nav">
+            <li><a href="#a0">花卉详情</a></li>
+            <li><a href="#a1">介绍</a></li>
+            <li><a href="#a2">形态特征</a></li>
+            <li><a href="#a3">生长习性</a></li>
+            <li><a href="#a4">栽培技术</a></li>
+            <li><a href="#a5">主要价值</a></li>
+        </ul>
+        <div class="box">
+            <div id="a0" style="height: 300px;border:1px solid #ddd;">花卉详情</div>
+            <div id="a1" style="height: 300px;border:1px solid #ddd;">介绍</div>
+            <div id="a2" style="height: 300px;border:1px solid #ddd;">形态特征</div>
+            <div id="a3" style="height: 300px;border:1px solid #ddd;">生长习性</div>
+            <div id="a4" style="height: 300px;border:1px solid #ddd;">栽培技术</div>
+            <div id="a5" style="height: 300px;border:1px solid #ddd;">主要价值</div>
         </div>
-        <script src="./src/js/libs/jquery.js"></script>
-        <!-- <script src="test.js"></script> -->
     </div>
+    <script src="./src/js/libs/jquery.js"></script>
+
+    <script src="./test.js"></script>
+    <!-- <script src="./src/lib_ui/layui_2.3/layui.all.js" charset="utf-8"></script> -->
+    <script>
+        $(function() {
+        $('#nav').onePageNav();
+    });
+    </script>
 </body>
-<script>
-    // async function f() {
-    //     return 1;
-    // }
-    //加上async意味着：函数将返回一个Promise
-    //编译器会自动将其转换成一个Promise
-    // f().then(
-    //     function (data) {
-    //         console.log(`f ：${ data }`);
-    //     }
-    // ); // 1
-
-    class Point {
-        constructor(x, y) {
-            this.x = x;
-            this.y = y;
-        }
-        toString() {
-            console.log(`this.x: ${this.x}`);
-        }
-    }
-    let foo = new Point('cc', 'dd');
-
-    class Point_child extends Point {
-        constructor(x, y, color) {
-            super(x, y);
-            this.color = color;
-            this.x = 3;
-        }
-
-    }
-    let v1 = new Point_child('aa', 'bb', 'red');
-    v1.toString()
-    console.log(`v1.x: ${ v1.x }`);
-    console.log(`v1.color: ${ v1.color }`);
-
-    console.log(`Point_child.prototype.__proto__ === Point: ${ Point_child.prototype.__proto__ === Point.prototype }`);
-
-
-    let obj = {
-        name: '二月',
-        age: {
-            c: 12
-        }
-    }
-    let age = {
-        c: 88
-    }
-    let o1 = {...obj, age}
-    console.dir(o1);
-    // console.log(`v1.__proto__ === Point_child.prototype: ${ v1.__proto__ === Point_child.prototype }`);
-    // v1.constructor === Point.prototype.constructor ===Point
-</script>
 
 </html>
