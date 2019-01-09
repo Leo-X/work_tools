@@ -8,315 +8,174 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/core.css">
 </head>
-
-
 <style>
-    body {
-        background-color: #e9ebed;
-        counter-reset: chapter;
-    }
-
-    html {
-        counter-reset: section;
-    }
-
-    .title {
-        width: 1200px;
-        margin: 40px auto;
-    }
-
-    .title h2:before {
-        content: counter(section)'. ';
-        counter-increment: section;
-    }
-
-    blockquote {
-        width: 1280px;
-        margin: 40px auto;
-        padding: 20px;
-        background-color: #fff;
-        /* text-transform: capitalize; */
-        box-shadow: 8px 8px 15px rgba(0, 0, 0, .2);
-    }
-
-    blockquote::before {
-        content: counter(chapter)'. ' attr(title);
-        counter-increment: chapter;
-        display: block;
-        position: absolute;
-        margin-top: -35px;
-        padding: 0 10px;
-        font-size: 18px;
-        color: #fff;
-        background-color: #0a78c4;
-    }
-
-    div.head {
-        background-color:#0a78c4 ;
-    }
-
-    .head h1 {
-        color: #fff;
-        text-align: center;
-        font-size: 48px;
-        padding: 25px 10px;
-        font-family: 'microsoft yahei'
-    }
-
-    .head h1 i {
-        position: absolute;
-        padding: 0 8px 0 5px;
-        margin: 0;
-        background-color: #fff;
-        color: #f00;
-        font-size: 12px;
-        vertical-align: top;
-        border-radius: 10px 10px 10px 0;
-    }
-
-    .head h1 strong {
-        margin: 0 20px;
-        font-family: 'Showcard Gothic';
-    }
-
-    .head h1 small {
-        margin: 0 20px;
-        font-size: 24px;
-        font-weight: normal;
-        color: #fff;
-    }
-
-    .o-container {
-        width: 100%;
-        padding: 0;
-        border-bottom: 1px solid #ddd;
-        background-color: #f7f7f7;
-    }
-
-    section {
-        padding: 5px;
-    }
-    .list-span span{display:inline-block;*zoom:1;*display: inline; width: 160px;}
-
-
-
-
+    body::after { content: ''; position: fixed; top: 5px; bottom: 0; width: 100%; z-index: -1;
+background: #fff; }
+body {
+    background-image: linear-gradient(to right top, #0089f2 50%, rgba(245, 240, 240, 0.192) 50%);
+    background-size: 100% calc(100% - 100vh + 5px);
+    background-repeat: no-repeat;
+}
+.list-span span{display:inline-block;*zoom:1;*display: inline; width: 160px;}
+.layout [class*="d-col"]{background-color: #d9edf7;border-radius: 4px;}
 </style>
 </head>
 
 <body>
-    <div class="head">
-        <h1>
-            Demo
-            <!-- <i>V1</i> -->
-            <!-- <small>@hotel StyleGuide</small> -->
-        </h1>
-    </div>
-
-
-    <div class="title">
-        <h2 class="d-36">Layout</h2>
-    </div>
-    <blockquote title="layout">
-        <style>
-            blockquote[title="layout"] section {
-                background-color: azure;
-                counter-reset: count;
-                padding: 10px;
-                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUAQMAAAC3R49OAAAABlBMVEX/////5eUYM/bNAAAAFElEQVQI12P4f4CBgRjMYP+BGAwABZEdTUAK3/AAAAAASUVORK5CYII=);
-            }
-
-            blockquote[title="layout"] .d-container {
-                background: #fff;
-            }
-
-            .d-container [class*="d-col"] {
-                background-color: #c8e1ef;
-                height: 60px;
-            }
-
-            .d-container [class*="d-col"]::before {
-                content: counter(count)': ' attr(class);
-                counter-increment: count;
-                display: block;
-                text-align: center;
-                color: #fff;
-                background-color: #0a78c4;
-            }
-        </style>
-        <section>
-            <div class="d-container">
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-                <div class="d-col1"></div>
-            </div>
-        </section>
-        <section>
-            <div class="d-container">
-                <div class="d-col1"></div>
-                <div class="d-col2"></div>
-                <div class="d-col3"></div>
-                <div class="d-col4"></div>
-                <div class="d-col2"></div>
-            </div>
-        </section>
-        <section>
-            <div class="d-container">
-                <div class="d-col1"></div>
-                <div class="d-col5"></div>
-                <div class="d-col6"></div>
-            </div>
-        </section>
-        <section>
-            <div class="d-container">
-                <div class="d-col3"></div>
-                <div class="d-col3"></div>
-                <div class="d-col3"></div>
-                <div class="d-col3"></div>
-            </div>
-        </section>
-        <section>
-            <div class="d-container">
-                <div class="d-col4"></div>
-                <div class="d-col4"></div>
-                <div class="d-col4"></div>
-            </div>
-        </section>
-        <section>
-            <div class="d-container">
-                <div class="d-col6"></div>
-                <div class="d-col6"></div>
-            </div>
-        </section>
-    </blockquote>
-
-    <blockquote title="layout control style">
-        <section>
-            <div>
-                <table class="d-table d-table-style01">
-                    <thead>
-                        <tr>
-                            <th>margin:提供 5，10，20，30，40 边界单位</th>
-                            <th>padding:提供 5，10，20，30，40 边界单位</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>mt40 mr40 mb40 ml40 mh40 mv40</td>
-                            <td>pt40 pr40 pb40 pl40 ph40 pv40</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </blockquote>
-
-
-    <div class="title">
-        <h2 class="d-36">elements</h2>
-    </div>
-    <blockquote title="txt">
-        <section>
-            <a href="javascript:;">link color</a>
-            <div class="mv10 list-span">
-                <span class="d-red">文本示例 d-red</span>
-                <span class="d-orange">文本示例 d-yellow</span>
-                <span class="d-yellow">文本示例 d-yellow</span>
-                <span class="d-blue">文本示例 d-blue</span>
-                <span class="d-darkblue">文本示例 d-darkblue</span>
-                <span class="d-lightblue">文本示例 d-lightblue</span>
-                <span class="d-green">文本示例 d-green</span>
-                <span class="d-brown">文本示例 d-brown</span>
-                <span><span class="d-white d-bg-black ph5" style="width: auto;">文本示例 d-white</span>
-                </span>
-                <span class="d-black">文本示例 d-black</span>
-                <span class="d-dark">文本示例 d-dark</span>
-                <span class="d-gray0">文本示例 d-gray0</span>
-                <span class="d-gray1">文本示例 d-gray1</span>
-                <span class="d-gray2">文本示例 d-gray2</span>
-                <span class="d-gray3">文本示例 d-gray3</span>
-                <br />
-                <br />
-                <span class="d-underline">文本示例 d-underline</span>
-                <span>
-                    <span class="d-dash">文本示例 d-dash</span>
-                </span>
-                <span class="d-bold">文本示例 d-bold</span>
-                <span class="bold">文本示例 bold</span>
-                <span class="d-normal">d-normal (正常不加粗)</span>
-                <span class="d-money">&#165;&nbsp;&nbsp;&#38;&#35;165;&emsp;d-money</span>
-            </div>
-            <div class="d-ib mv5 p10 d-border d-bdr4 d-bg-green">实线边框：d-border
-                <br>4px 圆角： d-bdr4</div>
-            <div class="d-ib ml20 mv5 p10 d-border-dashed d-bdr6 d-bg-green">虚线边框： d-border-dashed
-                <br>
-                6px 圆角： d-bdr6</div>
-            <div class="d-ib ml20 mv5 p10 d-border-dashed d-bdr8 d-bg-green">虚线边框： d-border-dashed
-                <br>8px 圆角： d-bdr8</div>
-
-            <div class="mt10">
-                <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-n">c-n</span>
-                <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-d">c-d</span>
-                <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-p">c-p</span>
-                <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-h">c-h</span>
-                <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-m">c-m</span>
-            </div>
-
-            <p class="f-12 mt10">12文本示例 f-12</p>
-            <p class="f-14">14文本示例 f-14</p>
-            <p class="f-16">16文本示例 f-16</p>
-            <p class="f-18">18文本示例 f-18</p>
-            <p class="f-21">21文本示例 f-21</p>
-            <p class="f-28">18文本示例 f-28</p>
-            <p class="f-36">32文本示例 f-36</p>
-            <br>
-            <p>
-                <span class="d-ib pv5 ph20 d-bg-black-c d-bdr8 mr5">d-bg-black</span>
-                <span class="d-ib pv5 ph20 d-bg-white-c d-bdr8 mr5 d-border">d-bg-white</span>
-                <span class="d-ib pv5 ph20 d-bg-green-c d-bdr8 mr5">d-bg-green</span>
-                <span class="d-ib pv5 ph20 d-bg-blue-c d-bdr8 mr5">d-bg-blue</span>
-                <span class="d-ib pv5 ph20 d-bg-yellow-c d-bdr8 mr5">d-bg-yellow</span>
-                <span class="d-ib pv5 ph20 d-bg-red-c d-bdr8 mr5">d-bg-red</span>
-                <span class="d-ib pv5 ph20 d-bg-gray-c d-bdr8 mr5">d-bg-gray</span>
-            </p>
-            <div class="mv10 p20 d-bg-gray" >
-                <span class="d-ib pv5 ph20 d-bg-white-c d-bdr8 mr5 d-box-shadow01">d-box-shadow01</span>
-                <span class="d-ib pv5 ph20 d-bg-white-c d-bdr8 mr5 d-box-shadow02">d-box-shadow02</span>
-            </div>
-        </section>
-    </blockquote>
-
-    <blockquote title="tag">
-        <div>
-            <span class="d-ico-state d-ico-red">标签1</span>
-            <span class="d-ico-state d-ico-violet">标签1</span>
-            <span class="d-ico-state d-ico-orange">标签2</span>
-            <span class="d-ico-state d-ico-blue">标签2</span>
-            <span class="d-ico-state d-ico-green">标签2</span>
-            <span class="d-ico-state d-ico-gray">标签2</span>
-            <span class="d-ico-state d-ico-cyan">标签2</span>
-            <span class="d-ico-state d-ico-smalt">标签2</span>
-            <span class="d-ico-state d-ico-vip">VIP</span>
-            <br />
-            <span class="d-ico-lucency-tag d-ico-lucency-orange">标签8</span>
-            <span class="d-ico-lucency-tag d-ico-lucency-blue">标签9</span>
-            <span class="d-ico-lucency-tag d-ico-lucency-green">标签10</span>
-            <span class="d-ico-lucency-tag d-ico-complex-yellow">标签11</span>
-            <br />
+    <!-- <div class="mb20 ta-c f24 d-bg-blue">UI</div> -->
+    <div class="d-container f24">Layout</div>
+    <div class="d-container layout ta-c">
+        <div class="mb10 clearfix">
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
+            <div class="d-col1">1</div>
         </div>
-    </blockquote>
+        <div class="mb10 clearfix">
+            <div class="d-col1">1</div>
+            <div class="d-col2">2</div>
+            <div class="d-col3">3</div>
+            <div class="d-col4">4</div>
+            <div class="d-col2">2</div>
+        </div>
+        <div class="mb10 clearfix">
+            <div class="d-col3">3</div>
+            <div class="d-col3">3</div>
+            <div class="d-col3">3</div>
+            <div class="d-col3">3</div>
+        </div>
+        <div class="mb10 clearfix">
+            <div class="d-col4">4</div>
+            <div class="d-col4">4</div>
+            <div class="d-col4">4</div>
+        </div>
+        <div class="mb10 clearfix">
+            <div class="d-col1">1</div>
+            <div class="d-col5">5</div>
+            <div class="d-col6">6</div>
+        </div>
+        <div class="mb10 clearfix">
+            <div class="d-col6">6</div>
+            <div class="d-col6">6</div>
+        </div>
 
-    <blockquote title="table style">
-        <section>
+    </div>
+
+    <div class="d-container mt20 f24">layout control style</div>
+    <div class="d-container">
+        <table class="d-table d-table-style01">
+            <thead>
+                <tr>
+                    <th>margin:提供 5，10，20，30，40 边界单位</th>
+                    <th>padding:提供 5，10，20，30，40 边界单位</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>mt40 mr40 mb40 ml40 mh40 mv40</td>
+                    <td>pt40 pr40 pb40 pl40 ph40 pv40</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-container mt20 f24">elements</div>
+    <div class="d-container">
+        <a href="javascript:void(0);">link color</a>
+        <div class="list-span">
+            <span class="d-red">文本示例 d-red</span>
+            <span class="d-orange">文本示例 d-yellow</span>
+            <span class="d-yellow">文本示例 d-yellow</span>
+            <span class="d-blue">文本示例 d-blue</span>
+            <span class="d-darkblue">文本示例 d-darkblue</span>
+            <span class="d-lightblue">文本示例 d-lightblue</span>
+            <span class="d-green">文本示例 d-green</span>
+            <span class="d-brown">文本示例 d-brown</span>
+            <span><span class="d-white d-bg-black ph5" style="width: auto;">文本示例 d-white</span>
+            </span>
+            <span class="d-black">文本示例 d-black</span>
+            <span class="d-dark">文本示例 d-dark</span>
+            <span class="d-gray0">文本示例 d-gray0</span>
+            <span class="d-gray1">文本示例 d-gray1</span>
+            <span class="d-gray2">文本示例 d-gray2</span>
+            <span class="d-gray3">文本示例 d-gray3</span>
+            <br />
+            <br />
+            <span class="d-underline">文本示例 d-underline</span>
+            <span>
+                <span class="d-dash">文本示例 d-dash</span>
+            </span>
+            <span class="d-bold">文本示例 d-bold</span>
+            <span class="bold">文本示例 bold</span>
+            <span class="d-normal">d-normal (正常不加粗)</span>
+            <span class="d-money" data-name="&#38;&#35;165;">&#165;&nbsp;&nbsp;&#38;&#35;165;&emsp;d-money</span>
+        </div>
+        <div class="d-ib mv5 p10 d-border d-bdr4 d-bg-green">实线边框：d-border
+            <br>4px 圆角： d-bdr4</div>
+        <div class="d-ib ml20 mv5 p10 d-border-dashed d-bdr6 d-bg-green">虚线边框： d-border-dashed
+            <br>
+            6px 圆角： d-bdr6</div>
+        <div class="d-ib ml20 mv5 p10 d-border-dashed d-bdr8 d-bg-green">虚线边框： d-border-dashed
+            <br>8px 圆角： d-bdr8</div>
+
+        <div class="mt10">
+            <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-n">c-n</span>
+            <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-d">c-d</span>
+            <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-p">c-p</span>
+            <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-h">c-h</span>
+            <span class="d-ib pv5 ph20 d-bg-green d-bdr8 mr5 c-m">c-m</span>
+        </div>
+
+        <p class="f12 mt10">12文本示例 f12</p>
+        <p class="f14">14文本示例 f14</p>
+        <p class="f16">16文本示例 f16</p>
+        <p class="f18">18文本示例 f18</p>
+        <p class="f21">21文本示例 f21</p>
+        <p class="f28">18文本示例 f28</p>
+        <p class="f36">32文本示例 f36</p>
+        <br>
+        <p>
+            <span class="d-ib pv5 ph20 d-bg-black-c d-bdr8 mr5">d-bg-black</span>
+            <span class="d-ib pv5 ph20 d-bg-white-c d-bdr8 mr5 d-border">d-bg-white</span>
+            <span class="d-ib pv5 ph20 d-bg-green-c d-bdr8 mr5">d-bg-green</span>
+            <span class="d-ib pv5 ph20 d-bg-blue-c d-bdr8 mr5">d-bg-blue</span>
+            <span class="d-ib pv5 ph20 d-bg-yellow-c d-bdr8 mr5">d-bg-yellow</span>
+            <span class="d-ib pv5 ph20 d-bg-red-c d-bdr8 mr5">d-bg-red</span>
+            <span class="d-ib pv5 ph20 d-bg-gray-c d-bdr8 mr5">d-bg-gray</span>
+        </p>
+        <div class="mv10 p20 d-bg-gray">
+            <span class="d-ib pv5 ph20 d-bg-white-c d-bdr8 mr5 d-box-shadow01">d-box-shadow01</span>
+            <span class="d-ib pv5 ph20 d-bg-white-c d-bdr8 mr5 d-box-shadow02">d-box-shadow02</span>
+        </div>
+    </div>
+    <div class="d-container mt20 f24">tag</div>
+    <div class="d-container">
+        <span class="d-ico-state d-ico-red">标签1</span>
+        <span class="d-ico-state d-ico-violet">标签1</span>
+        <span class="d-ico-state d-ico-orange">标签2</span>
+        <span class="d-ico-state d-ico-blue">标签2</span>
+        <span class="d-ico-state d-ico-green">标签2</span>
+        <span class="d-ico-state d-ico-gray">标签2</span>
+        <span class="d-ico-state d-ico-cyan">标签2</span>
+        <span class="d-ico-state d-ico-smalt">标签2</span>
+        <span class="d-ico-state d-ico-vip">VIP</span>
+        <span class="p10"></span>
+        <span class="d-ico-lucency-tag d-ico-lucency-orange">标签8</span>
+        <span class="d-ico-lucency-tag d-ico-lucency-blue">标签9</span>
+        <span class="d-ico-lucency-tag d-ico-lucency-green">标签10</span>
+        <span class="d-ico-lucency-tag d-ico-complex-yellow">标签11</span>
+    </div>
+    <div class="d-container mt20">
+        <div class="mb10 f24">table style</div>
+        <div class="d-col6">
             <table class="d-table">
                 <tbody>
                     <tr>
@@ -348,9 +207,8 @@
                     </tr>
                 </tbody>
             </table>
-        </section>
-
-        <section>
+        </div>
+        <div class="d-col6">
             <table class="d-table d-table-style01">
                 <tbody>
                     <tr>
@@ -382,10 +240,8 @@
                     </tr>
                 </tbody>
             </table>
-        </section>
-
-
-        <section>
+        </div>
+        <div class="d-col6">
             <table class="d-table d-table-style01">
                 <thead>
                     <tr>
@@ -426,77 +282,72 @@
                     <td>1314</td>
                 </tr>
             </table>
-        </section>
-    </blockquote>
-
-    <blockquote title="button">
-        <section>
-            <input type="button" class="d-btn" value="默认按钮" />
-            <input type="button" class="d-btn d-btn-level1" value="一级按钮" />
-            <input type="button" class="d-btn d-btn-level2" value="二级按钮" />
-            <input type="button" class="d-btn d-btn-level3" value="三级按钮" />
-        </section>
-
-        <section>
-            <button type="button" class="d-btn d-btn-level0">默认按钮</button>
-            <button type="button" class="d-btn d-btn-level1">一级按钮</button>
-            <button type="button" class="d-btn d-btn-level2">二级按钮</button>
-            <button type="button" class="d-btn d-btn-level3">三级按钮</button>
-        </section>
-
-        <section>
-            <a href="javascript:" class="d-btn d-btn-level">默认按钮</a>
-            <a href="javascript:" class="d-btn d-btn-level1">一级按钮</a>
-            <a href="javascript:" class="d-btn d-btn-level2">二级按钮</a>
-            <a href="javascript:" class="d-btn d-btn-level3">三级按钮</a>
-        </section>
-
-        <section>
-            <a href="javascript:" class="d-btn d-btn-level1">默认按钮</a>
-            <a href="javascript:" class="d-btn d-btn-level1 d-btn-lg">一级按钮</a>
-            <a href="javascript:" class="d-btn d-btn-level1 d-btn-sm">二级按钮</a>
-            <a href="javascript:" class="d-btn d-btn-level1 d-btn-xs">三级按钮</a>
-        </section>
-
-        <section>
-            <button type="button" class="d-btn d-btn-disabled">默认按钮</button>
-            <a href="javascript:" class="d-btn d-btn-link-disabled" title="超链接">超链接</a>
-        </section>
-
-        <section>
-            <a href="javascript:" class="d-close">&times;</a>
-            <button type="button" class="d-close">&times;</button>
-        </section>
-    </blockquote>
-
-    <blockquote title="form element">
-        <section>
+        </div>
+    </div>
+    <div class="d-container mt20">
+        <div class="mb10 f24">Button</div>
+        <div class="clearfix">
+            <div class="d-col3">
+                <input type="button" class="d-btn d-btn-blue" value="d-btn-blue" />
+                <input type="button" class="d-btn" value="默认按钮" />
+            </div>
+            <div class="d-col3">
+                <button type="button" class="d-btn d-btn-blue">d-btn-blue</button>
+                <button type="button" class="d-btn">d-btn</button>
+            </div>
+            <div class="d-col3">
+                <a href="javascript:" class="d-btn d-btn-blue">d-btn-blue</a>
+                <a href="javascript:" class="d-btn">d-btn</a>
+            </div>
+        </div>
+        <div class="mv10 clearfix">
+            <div class="d-col3">
+                <a href="javascript:" class="d-btn d-btn-blue d-btn-lg">d-btn-lg</a>
+                <a href="javascript:" class="d-btn d-btn-lg">d-btn-lg</a>
+            </div>
+            <div class="d-col3">
+                <a href="javascript:" class="d-btn d-btn-blue">d-btn-blue</a>
+                <a href="javascript:" class="d-btn">d-btn</a>
+            </div>
+            <div class="d-col3">
+                <a href="javascript:" class="d-btn d-btn-blue d-btn-sm">d-btn-sm</a>
+                <a href="javascript:" class="d-btn d-btn-sm">d-btn-sm</a>
+            </div>
+            <div class="d-col3">
+                <a href="javascript:" class="d-btn d-btn-blue d-btn-xs">d-btn-xs</a>
+                <a href="javascript:" class="d-btn d-btn-xs">d-btn-xs</a>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="d-col3">
+                <button type="button" class="d-btn d-btn-disabled">默认按钮</button>
+                <a href="javascript:" class="d-btn d-btn-link-disabled" title="超链接">超链接</a>
+            </div>
+            <div class="d-col3">
+                <a href="javascript:" class="d-close">&times;</a>
+                <button type="button" class="d-close">&times;</button>
+            </div>
+        </div>
+    </div>
+    <div class="d-container mt20">
+        <div class="mb10 f24">form element</div>
+        <div class="d-col2">
             <input class="d-input" type="text" placeholder="填写内容" value="" />
-            <br />
-            <br />
-            <input class="d-input d-input-err" type="text" value="" />
-            <br />
-            <br />
-            <input disabled="disabled" type="text" class="d-input" value="" />
-            <br />
-            <br />
+        </div>
+        <div class="d-col2"> <input class="d-input d-input-err" type="text" value="" /></div>
+        <div class="d-col2"><input disabled="disabled" type="text" class="d-input" value="" /></div>
+        <div class="d-col2">
             <select class="d-select">
                 <option value="">请选择</option>
             </select>
-            <br />
-            <br />
-            <textarea style="width:400px;height:100px;" class="d-input" placeholder="填写内容"></textarea>
-            <br />
-            <br />
+        </div>
+        <div class="d-col2">
             <label class="d-label">
                 <input type="radio" id="" name="r1" />单选</label>
             <label class="d-label">
                 <input type="checkbox" id="" />多选</label>
-            <br />
-            <br />
-
-        </section>
-        <section>
+        </div>
+        <div class="d-col6">
             <div class="d-form">
                 <label class="d-form-label">标签名称</label>
                 <div class="d-form-cont">
@@ -563,172 +414,165 @@
                     <div class="d-form-label">单项选择3</div>
                 </div>
             </div>
-        </section>
-    </blockquote>
-
-    <blockquote title="icon">
-        <section>
-            <i class="d-ico d-ico-succeed32"></i>
-            <i class="d-ico d-ico-warn32"></i>
-            <br />
-            <i class="d-ico d-ico-succeed16"></i>
-            <i class="d-ico d-ico-warn16"></i>
-            <br />
-            <i class="d-ico d-ico-arrow-up16"></i>
-            <i class="d-ico d-ico-arrow-down16"></i>
-            <br />
-            <i class="d-ico d-ico-info14"></i>
-            <i class="d-ico d-ico-right14"></i>
-            <i class="d-ico d-ico-edit14"></i>
-            <br /> 这是文本
-            <i class="d-arr d-ib d-arr-top"></i>
-            <i class="d-arr d-ib d-arr-right"></i>
-            <i class="d-arr d-ib d-arr-bottom"></i>
-            <i class="d-arr d-ib d-arr-left"></i>
-            <br />
-            <span>展开
-                <i class="d-arr d-ib d-arr-top"></i>
-            </span>
-            &emsp;
-            <span>收起
-                <i class="d-arr d-ib d-arr-bottom"></i>
-            </span>
-            <br />
-            <i class="d-arr d-arr-ll d-ib" style="border-width: 16px 8px;"></i>
-            <i class="d-arr d-arr-lr d-ib" style="border-width: 16px 8px;"></i>
-        </section>
-    </blockquote>
-
-    <div class="title">
-        <h2 class="d-36">commponent</h2>
+        </div>
+        <div class="d-col6 mv10"><textarea style="width:400px;height:100px;" class="d-input" placeholder="填写内容"></textarea></div>
     </div>
 
-    <blockquote title="float layer">
-        <section>
+    <div class="d-container">
+        <div class="mb10 f24">icon</div>
+        <i class="d-ico d-ico-succeed32"></i>
+        <i class="d-ico d-ico-warn32"></i>
+        <span class="d-ib p10"></span>
+        <i class="d-ico d-ico-succeed16"></i>
+        <i class="d-ico d-ico-warn16"></i>
+        <span class="d-ib p10"></span>
+        <i class="d-ico d-ico-arrow-up16"></i>
+        <i class="d-ico d-ico-arrow-down16"></i>
+        <span class="d-ib p10"></span>
+        <i class="d-ico d-ico-info14"></i>
+        <i class="d-ico d-ico-right14"></i>
+        <i class="d-ico d-ico-edit14"></i>
+        <span class="d-ib p10"></span>
+        这是文本
+        <i class="d-arr d-ib d-arr-top"></i>
+        <i class="d-arr d-ib d-arr-right"></i>
+        <i class="d-arr d-ib d-arr-bottom"></i>
+        <i class="d-arr d-ib d-arr-left"></i>
+        <span class="d-ib p10"></span>
+        <span>展开
+            <i class="d-arr d-ib d-arr-top"></i>
+        </span>
+        &emsp;
+        <span>收起
+            <i class="d-arr d-ib d-arr-bottom"></i>
+        </span>
+        <span class="d-ib p10"></span>
+        <i class="d-arr d-arr-ll d-ib" style="border-width: 16px 8px;"></i>
+        <i class="d-arr d-arr-lr d-ib" style="border-width: 16px 8px;"></i>
+    </div>
+    <div class="d-container mt20">
+        <div class="mb10 f24">layer 浮层</div>
+        <div class="d-col6">
             <div class="d-layer">
                 <div>
                     请在此处加载具体内容...
                     <br /> 经双方合同约定，携程国际旅游（香港）有限公司现提供信用卡支付给（海外测试酒店（请勿预定，后果自负）
                 </div>
             </div>
-        </section>
-
-        <section>
-            <div class="d-col5 d-ib">
-                <div class="d-layer">
-                    <table class="d-table d-table-style01">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <div class="d-sort isSort">EID</div>
-                                </th>
-                                <th>
-                                    <div>组别</div>
-                                </th>
-                                <th>
-                                    <div class="d-sort isReverse">上限</div>
-                                </th>
-                                <th>
-                                    <div>在岗状态</div>
-                                </th>
-                                <th>
-                                    <div class="d-sort">任务数</div>
-                                </th>
-                        </thead>
+        </div>
+        <div class="d-col6">
+            <div class="d-layer">
+                <table class="d-table d-table-style01">
+                    <thead>
                         <tr>
-                            <td>E586956</td>
-                            <td>12</td>
-                            <td>100</td>
-                            <td>在线</td>
-                            <td>1314</td>
+                            <th>
+                                <div class="d-sort isSort">EID</div>
+                            </th>
+                            <th>
+                                <div>组别</div>
+                            </th>
+                            <th>
+                                <div class="d-sort isReverse">上限</div>
+                            </th>
+                            <th>
+                                <div>在岗状态</div>
+                            </th>
+                            <th>
+                                <div class="d-sort">任务数</div>
+                            </th>
+                    </thead>
+                    <tr>
+                        <td>E586956</td>
+                        <td>12</td>
+                        <td>100</td>
+                        <td>在线</td>
+                        <td>1314</td>
+                    </tr>
+                    <tr>
+                        <td>E586956</td>
+                        <td>12</td>
+                        <td>100</td>
+                        <td>在线</td>
+                        <td>1314</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="d-col6 mv10">
+            <div class="d-layer" style="width: 520px;">
+                <table class="d-table d-table-style02 ">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px;">房型</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>房价</th>
+                            <th>保留时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div>套房(限时促销)(最多2人)</div>
+                            </td>
+                            <td>9.09</td>
+                            <td>9.09</td>
+                            <td>RMB 920</td>
+                            <td>——</td>
                         </tr>
                         <tr>
-                            <td>E586956</td>
-                            <td>12</td>
-                            <td>100</td>
-                            <td>在线</td>
-                            <td>1314</td>
+                            <td>
+                                <div>套房(限时促销)(最多2人)</div>
+                            </td>
+                            <td>9.09</td>
+                            <td>9.09</td>
+                            <td>RMB 920</td>
+                            <td>——</td>
                         </tr>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
-            <div class="d-col6 d-ib">
-                <div class="d-layer" style="width: 520px;">
-                    <table class="d-table d-table-style02 ">
-                        <thead>
-                            <tr>
-                                <th style="width: 100px;">房型</th>
-                                <th>开始时间</th>
-                                <th>结束时间</th>
-                                <th>房价</th>
-                                <th>保留时间</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div>套房(限时促销)(最多2人)</div>
-                                </td>
-                                <td>9.09</td>
-                                <td>9.09</td>
-                                <td>RMB 920</td>
-                                <td>——</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>套房(限时促销)(最多2人)</div>
-                                </td>
-                                <td>9.09</td>
-                                <td>9.09</td>
-                                <td>RMB 920</td>
-                                <td>——</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        </div>
+        <div class="d-col6 mv10">
+            <div class="d-layer f12">
+                <table class="d-table d-table-style02 ">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px;">房型</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>房价</th>
+                            <th>保留时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div>套房(限时促销)(最多2人)</div>
+                            </td>
+                            <td>9.09</td>
+                            <td>9.09</td>
+                            <td>RMB 920</td>
+                            <td>——</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>套房(限时促销)(最多2人)</div>
+                            </td>
+                            <td>9.09</td>
+                            <td>9.09</td>
+                            <td>RMB 920</td>
+                            <td>——</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="d-col5 d-ib">
-                <div class="d-layer f-12">
-                    <table class="d-table d-table-style02 ">
-                        <thead>
-                            <tr>
-                                <th style="width: 100px;">房型</th>
-                                <th>开始时间</th>
-                                <th>结束时间</th>
-                                <th>房价</th>
-                                <th>保留时间</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div>套房(限时促销)(最多2人)</div>
-                                </td>
-                                <td>9.09</td>
-                                <td>9.09</td>
-                                <td>RMB 920</td>
-                                <td>——</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>套房(限时促销)(最多2人)</div>
-                                </td>
-                                <td>9.09</td>
-                                <td>9.09</td>
-                                <td>RMB 920</td>
-                                <td>——</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-
-    </blockquote>
-
-    <blockquote title="mask layer">
-        <section>
+        </div>
+    </div>
+    <div class="d-container">
+        <div class="mb10 f24">mask layer</div>
+        <div class="mb10 f24"></div>
+        <div class="d-col6">
             <div class="d-modal" style="display:block">
                 <div class="modal-header">
                     <h4 class="modal-title">模态框-标题</h4>
@@ -740,9 +584,8 @@
                 </div>
                 <a href="javascript:" class="d-close">×</a>
             </div>
-        </section>
-
-        <section>
+        </div>
+        <div class="d-col6">
             <div class="d-modal" style="display:block">
                 <div class="modal-header">
                     <h4 class="modal-title">模态框-标题</h4>
@@ -763,21 +606,19 @@
                 </div>
                 <a href="javascript:" class="d-close">×</a>
             </div>
-        </section>
-    </blockquote>
-
-    <blockquote title="breadcrumb">
-        <section>
-            <div class="d-bread">
-                <a href="javascript:" class="d-bread-item">上一级标题</a>
-                <span class="d-bread-conn">&gt;</span>
-                <span class="d-bread-item-cur">当前标题</span>
-            </div>
-        </section>
-    </blockquote>
-
-    <blockquote title="tabs">
-        <section>
+        </div>
+    </div>
+    <div class="d-container mt20">
+        <div class="mb10 f24">breadcrumb</div>
+        <div class="d-bread">
+            <a href="javascript:" class="d-bread-item">上一级标题</a>
+            <span class="d-bread-conn">&gt;</span>
+            <span class="d-bread-item-cur">当前标题</span>
+        </div>
+    </div>
+    <div class="d-container mt20">
+        <div class="mb10 f24">tabs</div>
+        <div class="d-col6">
             <ul class="d-tabs clearfix">
                 <li class="d-tab">
                     <a href="">tab1</a>
@@ -789,12 +630,9 @@
                     <a href="">tab3</a>
                 </li>
             </ul>
-
-        </section>
-    </blockquote>
-
-    <blockquote title="pages">
-        <section>
+        </div>
+        <div class="d-col6">
+            <!-- ta-l ta-c ta-r 控制位置 -->
             <div class="ta-l">
                 <div class="d-paging">
                     <a href="javascript:;" class="d-btn d-btn-xs btn-prev disable">
@@ -816,78 +654,22 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section>
-            <div class="ta-c">
-                <div class="d-paging">
-                    <a href="javascript:;" class="d-btn d-btn-xs btn-prev disable">
-                        <i class="ico-prev"></i>
-                    </a>
-                    <a href="javascript:;" class="d-btn d-btn-xs current">1</a>
-                    <a href="javascript:;" class="d-btn d-btn-xs">2</a>
-                    <a href="javascript:;" class="d-btn d-btn-xs">3</a>
-                    <a href="javascript:;" class="d-btn d-btn-xs">4</a>
-                    <a href="javascript:;" class="d-btn d-btn-xs">5</a>
-                    <span class="ellipsis">...</span>
-                    <a href="javascript:;" class="d-btn d-btn-xs">115</a>
-                    <a href="javascript:;" class="d-btn d-btn-xs btn-next">
-                        <i class="ico-next"></i>
-                    </a>
-                    <div class="paging-tool">到第
-                        <input type="text" name="value" class="input-text" /> 页
-                        <input type="button" class="d-btn d-btn-xs" value="确定" />
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="ta-r">
-                <div class="d-paging">
-                    <a href="javascript:;" class="d-btn d-btn-xs btn-prev disable">
-                        <i class="ico-prev"></i>
-                    </a>
-                    <a href="javascript:;" class="d-btn d-btn-xs current">1</a>
-                    <a href="javascript:;" class="d-btn d-btn-xs">2</a>
-                    <a href="javascript:;" class="d-btn d-btn-xs">3</a>
-                    <a href="javascript:;" class="d-btn d-btn-xs">4</a>
-                    <a href="javascript:;" class="d-btn d-btn-xs">5</a>
-                    <span class="ellipsis">...</span>
-                    <a href="javascript:;" class="d-btn d-btn-xs">115</a>
-                    <a href="javascript:;" class="d-btn d-btn-xs btn-next">
-                        <i class="ico-next"></i>
-                    </a>
-                    <div class="paging-tool">到第
-                        <input type="text" name="value" class="input-text" /> 页
-                        <input type="button" class="d-btn d-btn-xs" value="确定" />
-                    </div>
-                </div>
-            </div>
-        </section>
-    </blockquote>
+        </div>
+    </div>
 
-    <blockquote title="hover">
-        <section>
-            普通文字普通文字普通文字
-            <div class="d-hover">
-                <a href="javascript:void(0);">显示的内容</a>
-                <div class="d-hover-cont" style="top: 21px;left: 0;width: 180px;">hover内部内容内部内容dddddddddddddddddd</div>
-            </div>
-        </section>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <section>
-
-
-        </section>
-    </blockquote>
+    <div class="d-container mt20">
+        <div class="mb10 f24">hover</div>
+        普通文字普通文字普通文字
+        <div class="d-hover">
+            <a href="javascript:void(0);">显示的内容</a>
+            <div class="d-hover-cont" style="top: 21px;left: 0;width: 180px;">hover内部内容内部内容dddddddddddddddddd</div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>
 
 </html>
