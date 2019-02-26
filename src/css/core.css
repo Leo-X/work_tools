@@ -458,6 +458,8 @@ a:focus {
 }
 
 /*=E  */
+
+
 /* Special style*/
 .invisible {
     visibility: hidden;
@@ -469,6 +471,22 @@ a:focus {
 
 .hidden {
     display: none;
+}
+
+.show {
+    display: block;
+}
+
+.show-inline {
+    display: inline-block;
+}
+
+.d-relative {
+    position: relative;
+}
+
+.d-absolute {
+    position: absolute;
 }
 
 .ellipsis {
@@ -535,7 +553,7 @@ a:focus {
 /*E Normal text style*/
 /*=S Grids*/
 .d-container {
-    margin: 0 auto 10px;
+    margin: 0 auto 20px;
     padding: 0 20px;
     width: 1240px;
 }
@@ -1412,6 +1430,7 @@ a:focus {
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
     *zoom: 1;
 }
+
 .d-btn:hover {
     background-color: #f4fbff;
     text-decoration: none;
@@ -2092,147 +2111,206 @@ textarea.d-input {
 .flex-layer {
     position: relative;
     display: flex;
-    flex-flow: row nowrap;
 }
 
-.flex-layer-col {
+.d-flex {
     display: flex;
-    flex-flow: column nowrap;
 }
 
-.flex-row {
+.d-flex-inline {
+    display: inline-flex !important;
+}
+
+.d-flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+.d-flex-nowrap {
+    flex-wrap: nowrap !important;
+}
+
+.d-row {
     display: flex;
     flex-direction: row;
 }
 
-.flex-col {
+.d-row-reverse {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
 }
 
-.flex-wrap {
-    flex-wrap: wrap !important;
+.d-column {
+    display: flex;
+    flex-direction: column
 }
 
-.flex-nowrap {
-    flex-wrap: nowrap !important;
+.d-column-reverse {
+    display: flex;
+    flex-direction: column-reverse;
 }
 
-/* 主轴 */
-.flex-j-c {
-    justify-content: center;
+.d-row [class*="d-col"] {
+    float: none;
+    margin: 0 0 10px 0;
+    padding: 0 10px;
 }
 
-.flex-j-sb {
-    justify-content: space-between;
+.d-row.row-p20 {
+    float: none;
+    margin: 0 0 10px 0;
+    padding: 0 20;
 }
 
-.flex-j-sa {
-    justify-content: space-around;
+.d-row .d-col1 {
+    width: 8.3333%;
 }
 
-.flex-j-fs {
+.d-row .d-col2 {
+    width: 16.6666%;
+}
+
+.d-row .d-col3 {
+    width: 25%;
+}
+
+.d-row .d-col4 {
+    width: 33.3333%;
+}
+
+.d-row .d-col5 {
+    width: 41.6666%;
+}
+
+.d-row .d-col6 {
+    width: 50%;
+}
+
+.d-row .d-col7 {
+    width: 58.3333%;
+}
+
+.d-row .d-col8 {
+    width: 66.6666%;
+}
+
+.d-row .d-col9 {
+    width: 75%;
+}
+
+.d-row .d-col10 {
+    width: 83.3333%;
+}
+
+.d-row .d-col11 {
+    width: 91.6666%;
+}
+
+.d-row .d-col12 {
+    width: 100%;
+}
+
+.d-flex-start {
     justify-content: flex-start;
 }
 
-.flex-j-fe {
+.d-flex-end {
     justify-content: flex-end;
 }
 
-/* 交叉轴 */
-.flex-a-c {
-    align-items: center;
+.d-flex-center {
+    justify-content: center;
 }
 
-.flex-a-s {
+.d-flex-between {
+    justify-content: space-between;
+}
+
+.d-flex-around {
+    justify-content: space-around;
+}
+
+.d-align-stretch {
     align-items: stretch;
 }
 
-.flex-a-fs {
+.d-align-start {
     align-items: flex-start;
 }
 
-.flex-a-fe {
+.d-align-end {
     align-items: flex-end;
 }
 
-.flex-a-bs {
+.d-align-center {
+    align-items: center;
+}
+
+.d-align-baseline {
     align-items: baseline;
 }
 
-/* 项目属性  在主轴上伸缩 0 1 auto*/
-.flex-auto {
-    flex: auto;
-}
-
-/* 等价于 flex: 1 1 auto; */
-.flex-none {
-    flex: none;
-}
-
-/* 等价于 flex: 0 0 auto; */
-.flex-11 {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: auto;
-}
-
-.flex-00 {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: auto;
-}
-
-.flex-10 {
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: auto;
-}
-
-.flex-01 {
-    flex-grow: 0;
-    flex-shrink: 1;
-    flex-basis: auto;
-}
-
-.flex-grow1 {
-    flex-grow: 1;
-}
-
-.flex-grow0 {
-    flex-grow: 0;
-}
-
-.flex-shrink0 {
-    flex-shrink: 0;
-}
-
-.flex-shrink1 {
-    flex-shrink: 1;
-}
-
-/* 交叉轴 align-self 对齐方式*/
-.flex-self-fs {
-    align-self: flex-start;
-}
-
-.flex-self-fe {
-    align-self: flex-end;
-}
-
-.flex-self-center {
-    align-self: center;
-}
-
-.flex-self-baseline {
-    align-self: baseline;
-}
-
-.flex-self-stretch {
+/* 个体 start */
+.d-alignself-stretch {
     align-self: stretch;
 }
 
+.d-alignself-start {
+    align-self: flex-start;
+}
+
+.d-alignself-end {
+    align-self: flex-end;
+}
+
+.d-alignself-center {
+    align-self: center;
+}
+
+.d-alignself-baseline {
+    align-self: baseline;
+}
+
+.d-grow0 {
+    flex-grow: 0;
+}
+
+.d-grow1 {
+    flex-grow: 1;
+}
+
+.d-shrink0 {
+    flex-shrink: 0;
+}
+
+.d-shrink1 {
+    flex-shrink: 1;
+}
+
+.d-flex-auto {
+    flex: 1 1 auto;
+}
+
+/* 等价于  flex: auto; */
+.d-flex-none {
+    flex: 0 1 auto;
+}
+
+/* 等价于  flex: auto; */
+
 /* End flex */
+
+
+
+/* Start Grid */
+.d-grid{display: grid;}
+/* End Grid */
+
+
+
+
+
+
+
 
 .header {
     width: 100%;

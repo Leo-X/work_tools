@@ -9,14 +9,8 @@
     <link rel="stylesheet" href="../css/core.css">
 </head>
 <style>
-    body::after { content: ''; position: fixed; top: 5px; bottom: 0; width: 100%; z-index: -1;
-background: #fff; }
-body {
-    background-image: linear-gradient(to right top, #0089f2 50%, rgba(245, 240, 240, 0.192) 50%);
-    background-size: 100% calc(100% - 100vh + 5px);
-    background-repeat: no-repeat;
-}
-.list-span span{display:inline-block;*zoom:1;*display: inline; width: 160px;}
+
+    .list-span span{display:inline-block;*zoom:1;*display: inline; width: 160px;}
 .layout [class*="d-col"]{background-color: #d9edf7;border-radius: 4px;}
 </style>
 </head>
@@ -69,7 +63,13 @@ body {
 
     </div>
 
-    <div class="d-container mt20 f24">layout control style</div>
+    <div class="d-container f24">Position</div>
+    <div class="d-container">
+        <span class="d-ib pv5 ph20 d-bg-blue-c d-bdr8 mr5">相对定位： .d-relative</span>
+        <span class="d-ib pv5 ph20 d-bg-blue-c d-bdr8 mr5">绝对定位： .d-absolute</span>
+    </div>
+
+    <div class="d-container f24">Box</div>
     <div class="d-container">
         <table class="d-table d-table-style01">
             <thead>
@@ -87,9 +87,14 @@ body {
         </table>
     </div>
 
-    <div class="d-container mt20 f24">elements</div>
+    <div class="d-container f24">Text</div>
     <div class="d-container">
         <a href="javascript:void(0);">link color</a>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <span>文字对齐：</span>
+        <span class="d-ib pv5 ph10 d-bg-blue-c d-bdr8 mr5 ml10 ta-l" style="width: 100px;">ta-l</span>
+        <span class="d-ib pv5 ph10 d-bg-blue-c d-bdr8 mr5 ta-c" style="width: 100px;">ta-c</span>
+        <span class="d-ib pv5 ph10 d-bg-blue-c d-bdr8 mr5 ta-r" style="width: 100px;">ta-r</span>
         <div class="list-span">
             <span class="d-red">文本示例 d-red</span>
             <span class="d-orange">文本示例 d-yellow</span>
@@ -99,14 +104,14 @@ body {
             <span class="d-lightblue">文本示例 d-lightblue</span>
             <span class="d-green">文本示例 d-green</span>
             <span class="d-brown">文本示例 d-brown</span>
-            <span><span class="d-white d-bg-black ph5" style="width: auto;">文本示例 d-white</span>
-            </span>
             <span class="d-black">文本示例 d-black</span>
             <span class="d-dark">文本示例 d-dark</span>
             <span class="d-gray0">文本示例 d-gray0</span>
             <span class="d-gray1">文本示例 d-gray1</span>
             <span class="d-gray2">文本示例 d-gray2</span>
             <span class="d-gray3">文本示例 d-gray3</span>
+            <span><span class="d-white d-bg-black ph5" style="width: auto;">文本示例 d-white</span>
+            </span>
             <br />
             <br />
             <span class="d-underline">文本示例 d-underline</span>
@@ -156,7 +161,7 @@ body {
             <span class="d-ib pv5 ph20 d-bg-white-c d-bdr8 mr5 d-box-shadow02">d-box-shadow02</span>
         </div>
     </div>
-    <div class="d-container mt20 f24">tag</div>
+    <div class="d-container f24">tag</div>
     <div class="d-container">
         <span class="d-ico-state d-ico-red">标签1</span>
         <span class="d-ico-state d-ico-violet">标签1</span>
@@ -173,7 +178,7 @@ body {
         <span class="d-ico-lucency-tag d-ico-lucency-green">标签10</span>
         <span class="d-ico-lucency-tag d-ico-complex-yellow">标签11</span>
     </div>
-    <div class="d-container mt20">
+    <div class="d-container">
         <div class="mb10 f24">table style</div>
         <div class="d-col6">
             <table class="d-table">
@@ -284,7 +289,7 @@ body {
             </table>
         </div>
     </div>
-    <div class="d-container mt20">
+    <div class="d-container">
         <div class="mb10 f24">Button</div>
         <div class="clearfix">
             <div class="d-col3">
@@ -329,7 +334,7 @@ body {
             </div>
         </div>
     </div>
-    <div class="d-container mt20">
+    <div class="d-container">
         <div class="mb10 f24">form element</div>
         <div class="d-col2">
             <input class="d-input" type="text" placeholder="填写内容" value="" />
@@ -450,7 +455,7 @@ body {
         <i class="d-arr d-arr-ll d-ib" style="border-width: 16px 8px;"></i>
         <i class="d-arr d-arr-lr d-ib" style="border-width: 16px 8px;"></i>
     </div>
-    <div class="d-container mt20">
+    <div class="d-container">
         <div class="mb10 f24">layer 浮层</div>
         <div class="d-col6">
             <div class="d-layer">
@@ -608,7 +613,7 @@ body {
             </div>
         </div>
     </div>
-    <div class="d-container mt20">
+    <div class="d-container">
         <div class="mb10 f24">breadcrumb</div>
         <div class="d-bread">
             <a href="javascript:" class="d-bread-item">上一级标题</a>
@@ -616,7 +621,7 @@ body {
             <span class="d-bread-item-cur">当前标题</span>
         </div>
     </div>
-    <div class="d-container mt20">
+    <div class="d-container">
         <div class="mb10 f24">tabs</div>
         <div class="d-col6">
             <ul class="d-tabs clearfix">
@@ -657,7 +662,7 @@ body {
         </div>
     </div>
 
-    <div class="d-container mt20">
+    <div class="d-container">
         <div class="mb10 f24">hover</div>
         普通文字普通文字普通文字
         <div class="d-hover">
@@ -665,11 +670,124 @@ body {
             <div class="d-hover-cont" style="top: 21px;left: 0;width: 180px;">hover内部内容内部内容dddddddddddddddddd</div>
         </div>
     </div>
+
+    <div class="d-container">
+        <div class="mb10 f24">Flex</div>
+        <div class="p10">d-row :</div>
+        <div class="d-row  ta-c d-flex-wrap clearfix">
+            <div class="d-col6">
+                <div class="d-bg-blue">.d-flex{display: flex;}</div>
+            </div>
+            <div class="d-col6">
+                <div class="d-bg-blue">.d-flex-inline{display: inline-flex !important;}</div>
+            </div>
+            <div class="d-col6">
+                <div class="d-bg-blue">.d-flex-wrap{flex-wrap: wrap !important;}</div>
+            </div>
+            <div class="d-col6">
+                <div class="d-bg-blue">.d-flex-nowrap{flex-wrap: nowrap !important;}</div>
+            </div>
+            <div class="d-col4">
+                <div class="d-bg-blue">.d-row{display: flex; flex-direction: row;}</div>
+            </div>
+            <div class="d-col4">
+                <div class="d-bg-blue"> .d-row-reverse{display: flex; flex-direction: row-reverse;}</div>
+            </div>
+            <div class="d-col4">
+                <div class="d-bg-blue">.d-column{display: flex;flex-flow: column nowrap}</div>
+            </div>
+            <div class="d-col4">
+                <div class="d-bg-blue">.d-column-reverse{display: flex;flex-direction: column-reverse;}</div>
+            </div>
+            <div class="d-col1 d-flex d-align-center d-flex-center">
+                <a class="btn-toggle" toggle-target="pre" href="javascript:void(0);">更多</a>
+            </div>
+        </div>
+
+        <div class="hidden" toggle-name="pre">
+            <div class="d-row f16">
+                <div class="d-col6">
+                    <pre>
+/* 容器 */
+.d-flex{display: flex;}
+.d-flex-inline{display: inline-flex !important;}
+.d-flex-wrap{flex-wrap: wrap !important;}
+.d-flex-nowrap{flex-wrap: nowrap !important;}
+
+.d-row{display: flex; flex-direction: row;}
+.d-row-reverse{display: flex; flex-direction: row-reverse;}
+.d-column{display: flex;flex-direction: column}
+.d-column-reverse{display: flex;flex-direction: column-reverse;}
+.d-row [class*="d-col"]{float: none;margin: 0 0 10px 0;padding: 0 10px;}
+.d-row.row-p20{float: none;margin: 0 0 10px 0;padding: 0 20;}
+
+.d-flex-start{justify-content: flex-start;}
+.d-flex-end{justify-content: flex-end;}
+.d-flex-center{justify-content: center;}
+.d-flex-between{justify-content: space-between;}
+.d-flex-around{justify-content: space-around;}
+
+.d-align-stretch{align-items: stretch ;}
+.d-align-start{align-items: flex-start;}
+.d-align-end{align-items: flex-end;}
+.d-align-center{align-items: center;}
+.d-align-baseline{align-items: baseline;}
+                    </pre>
+                </div>
+                <div class="d-col6">
+                    <pre>
+/* 个体 */
+.d-alignself-stretch{align-self: stretch ;}
+.d-alignself-start{align-self: flex-start;}
+.d-alignself-end{align-self: flex-end;}
+.d-alignself-center{align-self: center;}
+.d-alignself-baseline{align-self: baseline;}
+
+.d-grow0{flex-grow: 0;}
+.d-grow1{flex-grow: 1;}
+.d-shrink0{flex-shrink: 0;}
+.d-shrink1{flex-shrink: 1;}
+.d-flex-auto{flex: 1 1 auto;}
+/* 等价于  flex: auto; */
+.d-flex-none{flex: 0 1 auto;}
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="d-container">
+        <div class="mb10 f24">Grid</div>
+        <div class="d-grid">
+            <div class="item item-1"></div>
+            <div class="item item-2"></div>
+            <div class="item item-3"></div>
+        </div>
+
+    </div>
+
+
     <br>
     <br>
     <br>
     <br>
     <br>
+
 </body>
+<script src="../js/libs/jquery.js"></script>
+<script src="../js/libs/scrollpup.js"></script>
+<script>
+    $(function () {
+
+        $('.btn-toggle').on("click", function (e) {
+            var toggleName = $(this).attr("toggle-target");
+            $("[toggle-name=" + toggleName + "]").toggle();
+        });
+    });
+   
+
+</script>
 
 </html>

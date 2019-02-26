@@ -1,3 +1,6 @@
+
+
+
 .h100vh{height: 100vh;}
 .min-h100vh{min-height: 100vh;}
 .side-nav{ width: 250px;max-width: 250px;min-width: 250px;min-height: 100vh;background-color: #001529;}
@@ -14,7 +17,7 @@
 .header-fixed .page-content{padding-top: 80px;}
 .header-fixed .page-content01{padding-top: 80px;}
 .nav-fixed .side-nav{position: fixed;top: 0;left: 0;z-index: 20;height: 100vh;}
-.nav-fixed .flex-layer-col{padding-left: 250px;}
+.nav-fixed .page-content{padding-left: 270px;}
 
 .side-nav .scroll{overflow-y: auto;height: -moz-calc(100% - 60px); height: -webkit-calc(100% - 60px); height: calc(100% - 60px);}
 .side-logo{height: 60px;line-height: 60px;background-color: #002140;}
