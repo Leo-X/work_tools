@@ -1031,10 +1031,6 @@ safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "2.1.2"
   resolved "http://registry.npm.taobao.org/safer-buffer/download/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
-scrollpup@^0.0.1:
-  version "0.0.1"
-  resolved "http://registry.npm.taobao.org/scrollpup/download/scrollpup-0.0.1.tgz#b2e586633505cb280a2e54b7302bc92f89c4fe20"
-
 "semver@2 || 3 || 4 || 5", semver@^5.3.0:
   version "5.6.0"
   resolved "http://registry.npm.taobao.org/semver/download/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
