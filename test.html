@@ -1,665 +1,149 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>导航与面包屑</title>
-    <!-- <link rel="stylesheet" href="./src/lib_ui/layui_2.3/css/layui.css"> -->
-    <link rel="stylesheet" href="./src/css/core.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>OA系统邮件模板</title>
+    <style type="text/css">
+    </style>
 </head>
-<style>
-    * {
-        margin: 0px;
-        padding: 0px;
-    }
-
-    table {
-        table-layout: fixed;
-    }
-
-    th {
-        position: -webkit-sticky;
-        position: sticky;
-    }
-
-    thead tr th {
-        top: 0;
-    }
-
-    thead tr th:first-of-type {
-        left: 0;
-        z-index: 1;
-    }
-
-    tbody th {
-        left: 0;
-    }
-
-    /*styling*/
-
-    tbody tr:nth-of-type(odd) td:nth-of-type(odd),
-    tbody tr:nth-of-type(even) td:nth-of-type(even) {
-        background: #eee;
-    }
-
-    th,
-    td {
-        text-align: center;
-        vertical-align: middle;
-    }
-
-    th {
-        padding: 2ch;
-        background: #222;
-        color: #eee;
-    }
-</style>
 
 <body>
-    <div style="margin: 30px;">55</div>
-
-    <div class="clearfix">
-        <div class="fl mr10" style="width: 100px;">666</div>
-        <div class="fl" style="width: 600px;height: 500px; overflow: auto;">
-            <table style="width: auto;">
-                <thead>
+    <table width="1000px" align="center" cellspacing="0" cellpadding="0"
+           style='border-collapse: collapse;font-size: 16px; color: #333;font-family:"微软雅黑","sans-serif";'>
+        <tr>
+            <td class="email-head">
+                <!--<img src="./email-ehead.png" width="1000" height="116"/>-->
+                <img src="" width="1000" height="116"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table align="center" border="0" cellspacing="0" cellspadding="0" width="900">
                     <tr>
-                        <th>×</th>
-                        <th scope="col">1</th>
-                        <th scope="col">2</th>
-                        <th scope="col">3</th>
-                        <th scope="col">4</th>
-                        <th scope="col">5</th>
-                        <th scope="col">6</th>
-                        <th scope="col">7</th>
-                        <th scope="col">8</th>
-                        <th scope="col">9</th>
-                        <th scope="col">10</th>
-                        <th scope="col">11</th>
-                        <th scope="col">12</th>
-                        <th scope="col">13</th>
-                        <th scope="col">14</th>
-                        <th scope="col">15</th>
-                        <th scope="col">16</th>
-                        <th scope="col">17</th>
-                        <th scope="col">18</th>
-                        <th scope="col">19</th>
-                        <th scope="col">20</th>
-                        <th scope="col">21</th>
-                        <th scope="col">22</th>
-                        <th scope="col">23</th>
-                        <th scope="col">24</th>
-
+                        <td colspan="" height="8"></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
+                    <tr class="email-title">
+                        <td valign="middle" height="77px" style="font-size: 30px;line-height: 77px;border-bottom:1px solid #baccd7;padding: 0;"><img src="./email3.png" alt="" width="52" height="52">上传失败</td>
                     </tr>
 
-                </tbody>
-            </table>
-        </div>
-    </div>
+                    <tr>
+                        <td colspan="">
+                            <table border="0" cellspacing="0" cellpadding="0" width="760" align="center">
+                                <tr>
+                                    <td width="20"></td>
+                                    <td width="205" height="58">
+                                        项目信息
+                                    </td>
+                                    <td width="514">王者荣耀服务器端（wzry_svr）</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="border-bottom:1px dashed #baccd7;"></td>
+                                </tr>
+                                <tr>
+                                    <td width="20"></td>
+                                    <td width="205" height="58">
+                                        失败时间
+                                    </td>
+                                    <td width="514">2017-02-12 00:24:02</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" height="1" style="border-bottom:1px dashed #baccd7;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" height="12"></td>
+                                </tr>
+                                <tr>
+                                    <td width="20"></td>
+                                    <td width="205" height="" valign="top" style="line-height: 38px;">
+                                        失败原因
+                                    </td>
+                                    <td width="514">
+                                        <table height="">
+                                            <tr>
+                                                <td height="">
+                                                    <span style="font-weight: bold;line-height: 32px; color: #333;">可能是由于您的开发环境出现了变更，导致编译失败无法上传。试试更改环境重新编译吧。</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="24">
+                                                    <a href=""
+                                                       style="text-decoration: none;color: #0a85f8; font-size: 20px;">前往CodeCC查看>></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" height="20" style=""></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" height="1" style="border-bottom:1px dashed #baccd7;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" height="20" style=""></td>
+                                </tr>
+                                <tr>
+                                    <td width="23" height=""></td>
+                                    <td width="205" height="" valign="top" style="line-height: 28px;">
+                                        相关信息
+                                    </td>
+                                    <td width="514" height="">
+                                        <span style="line-height: 28px; color: #333;">CodeCC的Coverity工具是基于编译的代码检查工具，它会追踪您的编译过程，发现隐含的代码缺陷哦。</span>
 
-    <div class="p20">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        666
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" height="35"></td>
+                                </tr>
+                                <tr>
+                                    <td width="35" height="63" style="border-bottom:1px solid #baccd7;">
+                                        <img src="./email2.png" alt="" width="35" height="39">
+                                    </td>
+                                    <td colspan="2" height="63"
+                                        style="font-size: 24px;border-bottom:1px solid #baccd7;">附Log日志
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <table width="760" style="font-size: 14px;color: #999;">
+                                            <tr>
+                                                <td height="6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="">
+                                                        <span style="line-height: 36px; color: #999;">
+                                                            BUILD FAILED
+                                                            <br>Total time: 53 secondsTotal time: 53 seconds
+                                                            <br>833 Java compilation units (93%) have been captured and are ready for analysis
+                                                            <br>The cov-build utility completed successfully.
+                                                            <br>833 Java compilation units (93%) have been captured and are ready for analysis
+                                                            <br>The cov-build utility completed successfully.
+                                                            <br>833 Java compilation units (93%) have been captured and are ready for analysis833 Java compilation units (93%) have been captured and are ready for analysis833 Java compilation units (93%) have been captured and are ready for analysis</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="25"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
 
-
-    <script src="./src/js/libs/jquery.js"></script>
-
-    <script src="./test.js"></script>
-    <!-- <script src="./src/lib_ui/layui_2.3/layui.all.js" charset="utf-8"></script> -->
-    <script>
-        $(function () {});
-    </script>
+            </td>
+        </tr>
+        <!-- 此处之后不能再编辑 -->
+        <tr>
+            <td align="center" height="57" style="color:#555;font-size: 14px;background-color: #b5dff9;">
+                邮件为CodeCC系统自动生成请勿回复，有问题请RTX联系CodeCC
+            </td>
+        </tr>
+    </table>
 </body>
-
 </html>
