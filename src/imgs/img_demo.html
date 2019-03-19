@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib_ui/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib_ui/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../css/core.css">
+</head>
+
+</head>
+<style>
+
+    .box-icon img {
+        width: 32px;
+        height: 32px;
+    }
+</style>
+
+
+<body>
+    <!-- <div class="mb20 ta-c f24 d-bg-blue">UI</div> -->
+    <div class="d-container">
+        <div class="p20 f32">icon img demo</div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">SVG</div>
+                    <div class="panel-body" style="background-color: #2ecc71;">
+                        <div class="box-icon">
+                            <img src="./SVG/AnimatedSVGIcons/clock.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/down-arrow.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/hourglass.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/mail.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/monitor.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/mobile-phone.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/nav-left-arrow.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/nav-right-arrow.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/nav-up-arrow.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/nav-down-arrow.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/padlock.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/play.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/stop-play.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/plus.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/minus.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/math-times.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/right-arrow.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/smiley.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/bad.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/trash.svg" alt="">
+                            <img src="./SVG/AnimatedSVGIcons/volume.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">emoji</div>
+                    <div class="panel-body">
+                        <div class="box-icon">
+                            <img width="64" height="64" src="./SVG/emoji/kiss.svg" alt="">
+                            <img width="64" height="64" src="./SVG/icons_svg/flamingo.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">icon font</div>
+                    <div class="panel-body" style="background-color: #2ecc71;">
+                        <div class="box-icon">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+
+</body>
+<script src="../js/libs/jquery.js"></script>
+<script src="../js/libs/scrollpup.js"></script>
+<script>
+    $(function () {
+
+        $('.btn-toggle').on("click", function (e) {
+            var toggleName = $(this).attr("toggle-target");
+            $("[toggle-name=" + toggleName + "]").toggle();
+        });
+    });
+</script>
+
+</html>

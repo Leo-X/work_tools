@@ -555,7 +555,7 @@ a:focus {
 .d-container {
     margin: 0 auto 20px;
     padding: 0 20px;
-    width: 1240px;
+    width: 1120px;
 }
 
 .d-container:after {
@@ -575,43 +575,49 @@ a:focus {
 }
 
 .d-col1 {
-    width: 80px;
+    width: 70px;
 }
 
 .d-col2 {
-    width: 180px;
+    width: 160px;
 }
 
 .d-col3 {
-    width: 280px;
+    width: 250px;
 }
 
 .d-col4 {
-    width: 380px;
+    width: 340px;
 }
 
 .d-col5 {
-    width: 480px;
+    width: 430px;
 }
 
 .d-col6 {
-    width: 580px;
+    width: 520px;
 }
 
 .d-col7 {
-    width: 680px;
+    width: 610px;
 }
 
 .d-col8 {
-    width: 780px;
+    width: 700px;
 }
 
 .d-col9 {
-    width: 880px;
+    width: 790px;
 }
 
 .d-col10 {
-    width: 980px;
+    width: 880px;
+}
+.d-col11 {
+    width: 970px;
+}
+.d-col12 {
+    width: 1060px;
 }
 
 /*=E Grids*/
