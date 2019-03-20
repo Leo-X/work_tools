@@ -2082,7 +2082,6 @@ textarea.d-input {
 /*=E modify bootstrap*/
 
 /*Start scroll */
-/* .scroll{overflow-y: auto;height: -moz-calc(100% - 46px); height: -webkit-calc(100% - 46px); height: calc(100% - 46px);} */
 .scroll {
     height: 100%;
     overflow-y: auto;
@@ -2090,17 +2089,19 @@ textarea.d-input {
 
 .scroll::-webkit-scrollbar-thumb {
     border: 1px solid #333c4e;
-    border-radius: 8px;
+    border-radius: 10px;
     outline: 2px solid #cad2d6;
+    /* background-color: #595e62; */
     background-color: #595e62;
     outline-offset: -2px;
 }
 
 .scroll::-webkit-scrollbar-thumb:hover {
     border-radius: 8px;
-    background-color: #747a80;
+    background-color: #83898f;
 }
 
+/*滚动条整体样式*/  /*高宽分别对应横竖滚动条的尺寸, 里面滑块默认100%宽度 */
 .scroll::-webkit-scrollbar {
     width: 10px;
     height: 8px;
