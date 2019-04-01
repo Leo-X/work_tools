@@ -9,9 +9,17 @@
     <link rel="stylesheet" href="../css/core.css">
 </head>
 <style>
+    .list-span span {
+        display: inline-block;
+        *zoom: 1;
+        *display: inline;
+        width: 160px;
+    }
 
-    .list-span span{display:inline-block;*zoom:1;*display: inline; width: 160px;}
-.layout [class*="d-col"]{background-color: #d9edf7;border-radius: 4px;}
+    .layout [class*="d-col"] {
+        background-color: #d9edf7;
+        border-radius: 4px;
+    }
 </style>
 </head>
 
@@ -406,7 +414,8 @@
                 </div>
             </div>
         </div>
-        <div class="d-col6 mv10"><textarea style="width:400px;height:100px;" class="d-input" placeholder="填写内容"></textarea></div>
+        <div class="d-col6 mv10"><textarea style="width:400px;height:100px;" class="d-input"
+                placeholder="填写内容"></textarea></div>
     </div>
 
     <div class="d-container">
@@ -650,10 +659,17 @@
 
     <div class="d-container">
         <div class="mb10 f24">hover</div>
-        普通文字普通文字普通文字
-        <div class="d-hover">
-            <a href="javascript:void(0);">显示的内容</a>
-            <div class="d-hover-cont" style="top: 21px;left: 0;width: 180px;">hover内部内容内部内容dddddddddddddddddd</div>
+        <div class="d-col6">
+            普通文字普通文字普通文字
+            <div class="d-hover">
+                <a href="javascript:void(0);">显示的内容</a>
+                <div class="d-hover-cont" style="top: 21px;left: 0;width: 180px;">hover内部内容内部内容dddddddddddddddddd</div>
+            </div>
+        </div>
+        <div class="d-col6">
+        hover <a href="javascript:void(0);" class="d-hover-border1 mr20"  >边框从左向右扩散</a>
+        <a href="javascript:void(0);" class="d-hover-border2 mr20"  >边框向两边扩散</a>
+        <a href="javascript:void(0);" class="d-hover-border3"  >边框从右向左扩散</a>
         </div>
     </div>
 

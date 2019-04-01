@@ -504,11 +504,11 @@ a:focus {
 }
 
 .clearfix:after {
+    content: "";
     display: block;
     overflow: hidden;
     clear: both;
     height: 0;
-    content: "";
 }
 
 .clearfix {
@@ -559,19 +559,19 @@ a:focus {
 }
 
 .d-container:after {
+    content: " ";
     display: block;
+    visibility: hidden;
     overflow: hidden;
     clear: both;
     height: 0;
-    content: " ";
-    visibility: hidden;
     *zoom: 1;
 }
 
 .d-container [class*="d-col"] {
     float: left;
-    margin-left: 10px;
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 .d-col1 {
@@ -1381,23 +1381,23 @@ a:focus {
 }
 
 .d-sort-arrows:before {
+    content: " ";
     display: block;
     overflow: hidden;
     margin-bottom: 2px;
     width: 0;
     height: 0;
-    content: " ";
     border-width: 4px;
     border-style: solid;
     border-color: transparent transparent #999;
 }
 
 .d-sort-arrows:after {
+    content: " ";
     display: block;
     overflow: hidden;
     width: 0;
     height: 0;
-    content: " ";
     border-width: 4px;
     border-style: solid;
     border-color: #999 transparent transparent;
@@ -1771,9 +1771,9 @@ textarea.d-input {
 }
 
 .d-modal .modal-header:after {
+    content: "";
     display: table;
     clear: both;
-    content: "";
 }
 
 .d-modal .d-close {
@@ -2114,6 +2114,29 @@ textarea.d-input {
 
 /*End scroll */
 
+/* Start Hover border */
+
+.d-hover-border1{position: relative;display: inline-block;text-decoration: none;}
+.d-hover-border1:hover{text-decoration: none;}
+.d-hover-border1:before{  content: ''; position: absolute;visibility: hidden;left: 0;bottom: -2px;width: 0;height: 2px;background-color: #000;transition: all 0.1s ease-in-out 0s;}
+.d-hover-border1:hover:before{visibility: visible;width: 100%;}
+
+.d-hover-border2{position: relative;display: inline-block;text-decoration: none;}
+.d-hover-border2:hover{text-decoration: none;}
+.d-hover-border2:before{  content: ''; position: absolute;visibility: hidden;left: 0;bottom: -2px;width: 100%;height: 2px;background-color: #000;transform: scaleX(0);transition: all 0.1s ease-in-out 0s;}
+.d-hover-border2:hover:before{visibility: visible;transform: scaleX(1);}
+
+.d-hover-border3{position: relative;display: inline-block;text-decoration: none;}
+.d-hover-border3:hover{text-decoration: none;}
+.d-hover-border3:before{  content: ''; position: absolute;visibility: hidden;left: 0;bottom: -2px;width: 100%;height: 2px;background-color: #000;transform: scaleX(0);transition: all 0.1s ease-in-out 0s;transform-origin:100% 50%;}
+.d-hover-border3:hover:before{visibility: visible;transform: scaleX(1);}
+
+/* End Hover border */
+
+
+
+
+
 /* Start flex */
 .flex-layer {
     position: relative;
@@ -2148,7 +2171,7 @@ textarea.d-input {
 
 .d-column {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
 }
 
 .d-column-reverse {
