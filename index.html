@@ -37,16 +37,21 @@
                             其他 <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" id="dropdownMenu1">
-                            <li><a target="_blank" href="http://hfdoc.qa.nt.ctripcorp.com/offline/ebk_v4/UI.php?r=release">ebk_v4
+                            <li><a target="_blank"
+                                    href="http://hfdoc.qa.nt.ctripcorp.com/offline/ebk_v4/UI.php?r=release">ebk_v4
                                     online</a></li>
-                            <li><a target="_blank" href="http://hfdoc.qa.nt.ctripcorp.com/docmapp/#/docs-list">项目文档管理</a></li>
-                            <li><a target="_blank" href="http://app.ares.fx.ctripcorp.com/portal#/croller/">图片发布</a></li>
+                            <li><a target="_blank"
+                                    href="http://hfdoc.qa.nt.ctripcorp.com/docmapp/#/docs-list">项目文档管理</a></li>
+                            <li><a target="_blank" href="http://app.ares.fx.ctripcorp.com/portal#/croller/">图片发布</a>
+                            </li>
                             <li><a target="_blank" href="./test.html">test</a></li>
                             <li><a target="_blank" href="./src/pages/layout.html">layout</a></li>
                             <li><a target="_blank" href="http://localhost:8080/">8080 端口</a></li>
                             <!-- <li class="disabled"><a href="#">8080端口</a></li> -->
                             <li role="separator" class="divider"></li>
-                            <li><a target="_blank" href="http://conf.ctripcorp.com/pages/viewpage.action?pageId=168826520">EBK排期</a></li>
+                            <li><a target="_blank"
+                                    href="http://conf.ctripcorp.com/pages/viewpage.action?pageId=168826520">EBK排期</a>
+                            </li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">link</a></li>
                         </ul>
@@ -65,8 +70,8 @@
                             aria-expanded="false">CSS_UI
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="./src/demo/loaderstyle.html"  target="_blank">loaderstyle</a></li>
-                            <li><a href="./src/demo/animate_shopping.html"  target="_blank">animate_shopping</a></li>
+                            <li><a href="./src/demo/loaderstyle.html" target="_blank">loaderstyle</a></li>
+                            <li><a href="./src/demo/animate_shopping.html" target="_blank">animate_shopping</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">XXX</a></li>
                         </ul>
@@ -80,7 +85,7 @@
         <div class="f16 d-gray">
             <span class="mr10">快捷键:</span>
             <span class="mr10">Alt + C</span>
-            <a href="./src/pages/demo.html" class="mr20"  target="_blank">网站UI Demo</a>
+            <a href="./src/pages/demo.html" class="mr20" target="_blank">网站UI Demo</a>
         </div>
 
         <div class="panel panel-primary mt20">
@@ -138,7 +143,8 @@
 
                     <div class="col-md-6 mt20">
                         <div class="input-group ">
-                            <input id="new_branch" type="text" class="form-control" placeholder="新建分支 : git checkout -b branchname release">
+                            <input id="new_branch" type="text" class="form-control"
+                                placeholder="新建分支 : git checkout -b branchname release">
                             <span class="input-group-btn">
                                 <button class="btn btn-success btn-copy" type="button">Copy</button>
                             </span>
@@ -146,7 +152,8 @@
                     </div>
                     <div class="col-md-6 mt20">
                         <div class="input-group ">
-                            <input id="push_u_branch" type="text" class="form-control" placeholder="推送新分支到远程仓库 : git push -u origin branchname">
+                            <input id="push_u_branch" type="text" class="form-control"
+                                placeholder="推送新分支到远程仓库 : git push -u origin branchname">
                             <span class="input-group-btn">
                                 <button class="btn btn-success btn-copy" type="button">Copy</button>
                             </span>
@@ -162,22 +169,6 @@
                         </div>
                     </div>
                     <div class="col-md-2 mt20">
-                        <!-- 新的  -->
-                        <button onclick=" window.open('http://git.dev.sh.ctripcorp.com/eBooking/reshotelebooking/project_changes','_blank'); "
-                            target="_blank" type="button" class="btn btn-info">CodeReview &gt;&gt;</button>
-                        <!-- 老的 -->
-                        <!-- <button onclick=" window.open('http://code.ctripcorp.com/#/','_blank'); " target="_blank" type="button"
-                            class="btn btn-info">CodeReview &gt;&gt;</button> -->
-                    </div>
-                    <div class="col-md-4 mt20">
-                        <div class="input-group">
-                            <input id="text_push" type="text" class="form-control" placeholder="push">
-                            <span class="input-group-btn">
-                                <button class="btn btn-success btn-copy" type="button">Copy</button>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-md-2 mt20">
                         <div class="input-group">
                             <input type="text" class="form-control btn-git-reset" placeholder="Change ID">
                             <!-- <span class="input-group-btn">
@@ -187,7 +178,44 @@
                     </div>
                     <div class="col-md-4 mt20">
                         <div class="input-group">
-                            <input id="command_reset" type="text" class="form-control" placeholder="git reset --hard 40a9a83****15456">
+                            <input id="command_reset" type="text" class="form-control"
+                                placeholder="git reset --hard 40a9a83****15456">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">Copy</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt20">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input id="commandMergeRequests" type="text" class="form-control"
+                                placeholder="git remote update upstream " value="git remote update upstream ">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">同步上游仓库所有分支代码-copy</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input id="commandMergeRequests" type="text" class="form-control"
+                                placeholder="git pull upstream release" value="git pull upstream release">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-copy" type="button">同步上游release分支-copy</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mt20">
+                        <!-- 新的  -->
+                        <button
+                            onclick=" window.open('http://git.dev.sh.ctripcorp.com/wangchuang/reshotelebooking','_blank'); "
+                            target="_blank" type="button" class="btn btn-info">Merge Requests &gt;&gt;</button>
+                    </div>
+                    <div class="col-md-4 mt20">
+                        <div class="input-group">
+                            <input id="text_push" type="text" class="form-control"
+                                placeholder="push release 分支 到 origin 仓库 ">
                             <span class="input-group-btn">
                                 <button class="btn btn-success btn-copy" type="button">Copy</button>
                             </span>
@@ -208,7 +236,8 @@
                             <label class="mr20">rem=750px/40：</label>
                             <label>设计尺寸( px )&emsp;</label>
                             <div class="input-group mr20">
-                                <input type="text" id="width_px" class="form-control" aria-label="Text input with checkbox">
+                                <input type="text" id="width_px" class="form-control"
+                                    aria-label="Text input with checkbox">
                                 <span class="input-group-addon bold">px</span>
                             </div>
                             <label class="d-red f16"> =>Rem &emsp;</label>
