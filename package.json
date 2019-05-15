@@ -24,7 +24,13 @@
         "eslint-loader": "^2.0.0",
         "eslint-plugin-import": "^2.10.0",
         "eslint-plugin-jsx-a11y": "^6.0.3",
-        "eslint-plugin-react": "^7.7.0"
+        "eslint-plugin-react": "^7.7.0",
+        "prettier": "1.17.1",
+        "prettier-stylelint": "^0.4.2",
+        "stylelint": "^10.0.1",
+        "stylelint-config-ydj": "^0.1.1",
+        "tslint": "^5.16.0",
+        "tslint-config-prettier": "^1.18.0"
     },
     "dependencies": {}
 }
